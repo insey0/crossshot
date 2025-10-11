@@ -1,0 +1,87 @@
+[gd_scene load_steps=11 format=3 uid="uid://0qnfltgrnbra"]
+
+[ext_resource type="Script" uid="uid://ckcswt8lb44p1" path="res://entities/player/scripts/player.gd" id="1_bls4j"]
+[ext_resource type="SpriteFrames" uid="uid://cf8c1gcecr6tg" path="res://entities/player/resources/player_sprite_frames.tres" id="2_8fjmc"]
+[ext_resource type="PackedScene" uid="uid://buqbdh054eqro" path="res://entities/player/bullet.tscn" id="2_fkugw"]
+[ext_resource type="SpriteFrames" uid="uid://dmltpa8gjqkwi" path="res://entities/player/resources/weapon_sprite_frames.tres" id="2_sglur"]
+[ext_resource type="Script" uid="uid://3k5wogfimfr1" path="res://entities/player/scripts/movement_component.gd" id="3_sglur"]
+[ext_resource type="Script" uid="uid://80idee6s2pwl" path="res://entities/player/scripts/input_component.gd" id="4_fkugw"]
+[ext_resource type="Script" uid="uid://gdsbrb75nalr" path="res://entities/player/scripts/weapon_component.gd" id="6_8fjmc"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_bls4j"]
+size = Vector2(36, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
+size = Vector2(36, 66)
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_8fjmc"]
+size = Vector2(65, 10)
+
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_node", "weapon_sprite", "sprite", "muzzle", "input", "movement", "weapon") groups=["player"]]
+collision_layer = 2
+collision_mask = 63
+script = ExtResource("1_bls4j")
+weapon_node = NodePath("weapon")
+weapon_sprite = NodePath("weapon/weapon_sprite")
+sprite = NodePath("player_sprite")
+bullet = ExtResource("2_fkugw")
+muzzle = NodePath("weapon/weapon_muzzle")
+input = NodePath("input_component")
+movement = NodePath("movement_component")
+weapon = NodePath("weapon")
+
+[node name="player_sprite" type="AnimatedSprite2D" parent="."]
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("2_8fjmc")
+animation = &"idle"
+autoplay = "idle"
+
+[node name="player_collision" type="CollisionShape2D" parent="."]
+position = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_bls4j")
+debug_color = Color(0, 1, 0.2627451, 0.41960785)
+
+[node name="player_detect_box" type="Area2D" parent="."]
+
+[node name="detect_box_collision" type="CollisionShape2D" parent="player_detect_box"]
+position = Vector2(3, 3)
+shape = SubResource("RectangleShape2D_abrql")
+debug_color = Color(0.87038714, 1.4439225e-06, 1.2513996e-06, 0)
+
+[node name="floor_detect_box" type="Area2D" parent="."]
+position = Vector2(0, 36)
+
+[node name="floor_detect_collision" type="CollisionShape2D" parent="floor_detect_box"]
+position = Vector2(3.5, 0)
+shape = SubResource("RectangleShape2D_8fjmc")
+debug_color = Color(0.96697253, 0, 0.48019093, 0.41960785)
+
+[node name="weapon" type="Node2D" parent="."]
+
+[node name="weapon_sprite" type="AnimatedSprite2D" parent="weapon"]
+position = Vector2(18, 0)
+scale = Vector2(6, 6)
+sprite_frames = ExtResource("2_sglur")
+animation = &"rifle"
+
+[node name="weapon_muzzle" type="Marker2D" parent="weapon"]
+position = Vector2(51, 0)
+
+[node name="shoot_delay" type="Timer" parent="weapon"]
+
+[node name="input_component" type="Node" parent="."]
+script = ExtResource("4_fkugw")
+
+[node name="movement_component" type="Node" parent="."]
+script = ExtResource("3_sglur")
+jumps_max = 1
+
+[node name="weapon_component" type="Node" parent="."]
+script = ExtResource("6_8fjmc")
+
+[node name="animation_component" type="Node" parent="."]
+
+[connection signal="body_entered" from="floor_detect_box" to="movement_component" method="_on_floor_detect_box_body_entered"]
+[connection signal="body_exited" from="floor_detect_box" to="movement_component" method="_on_floor_detect_box_body_exited"]
+[connection signal="jump" from="input_component" to="." method="_on_jump"]
+[connection signal="shoot" from="input_component" to="." method="_on_shoot"]

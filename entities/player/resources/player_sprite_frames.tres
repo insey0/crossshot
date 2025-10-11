@@ -1,0 +1,19 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://cf8c1gcecr6tg"]
+
+[ext_resource type="Texture2D" uid="uid://btalmd2rk10hj" path="res://entities/player/sprites/player_idle.png" id="1_uuskl"]
+
+[resource]
+animations = [{
+"frames": [],
+"loop": false,
+"name": &"damage",
+"speed": 5.0
+}, {
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_uuskl")
+}],
+"loop": true,
+"name": &"idle",
+"speed": 5.0
+}]

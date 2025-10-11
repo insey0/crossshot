@@ -1,0 +1,14 @@
+[gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://dmltpa8gjqkwi"]
+
+[ext_resource type="Texture2D" uid="uid://dkjeuy0mbbi2j" path="res://entities/player/sprites/weap_rifle.png" id="1_1vp04"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_1vp04")
+}],
+"loop": true,
+"name": &"rifle",
+"speed": 5.0
+}]

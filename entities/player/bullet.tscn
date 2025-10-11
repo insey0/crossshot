@@ -1,0 +1,20 @@
+[gd_scene load_steps=4 format=3 uid="uid://buqbdh054eqro"]
+
+[ext_resource type="Script" uid="uid://c4irsl14wh4fg" path="res://entities/player/scripts/bullet.gd" id="1_2qgwa"]
+[ext_resource type="Texture2D" uid="uid://buy5ibr6mlyo2" path="res://entities/player/sprites/proj_bullet.png" id="1_o27as"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_2qgwa"]
+
+[node name="bullet" type="Area2D"]
+script = ExtResource("1_2qgwa")
+
+[node name="bullet_sprite" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("1_o27as")
+
+[node name="bullet_collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_2qgwa")
+debug_color = Color(1, 0.3137255, 0, 0.41960785)
+
+[connection signal="area_exited" from="." to="." method="_on_area_exited"]
+[connection signal="body_entered" from="." to="." method="_on_body_entered"]
