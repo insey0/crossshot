@@ -1,0 +1,37 @@
+[gd_scene load_steps=4 format=3 uid="uid://306nu0iivvw4"]
+
+[ext_resource type="Script" uid="uid://cv1usogmbcggi" path="res://ui/scripts/item_icon.gd" id="1_84ti5"]
+[ext_resource type="LabelSettings" uid="uid://crls46ui7nhuh" path="res://ui/resources/label_settings.tres" id="2_ckqgg"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_ckqgg"]
+size = Vector2(96, 96)
+
+[node name="item_icon" type="Area2D" node_paths=PackedStringArray("amount_label", "texture")]
+script = ExtResource("1_84ti5")
+amount_label = NodePath("amount")
+texture = NodePath("icon_texture")
+
+[node name="item_icon_collision" type="CollisionShape2D" parent="."]
+position = Vector2(48, 48)
+shape = SubResource("RectangleShape2D_ckqgg")
+debug_color = Color(0.06666667, 1, 0, 0.105882354)
+
+[node name="icon_texture" type="TextureRect" parent="."]
+offset_left = 40.0
+offset_top = 40.0
+offset_right = 56.0
+offset_bottom = 56.0
+scale = Vector2(6, 6)
+pivot_offset = Vector2(8, 8)
+
+[node name="amount" type="Label" parent="."]
+offset_left = -10.0
+offset_top = 80.0
+offset_right = 106.0
+offset_bottom = 106.0
+text = "0"
+label_settings = ExtResource("2_ckqgg")
+horizontal_alignment = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

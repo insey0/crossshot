@@ -1,0 +1,10 @@
+[gd_scene load_steps=3 format=3 uid="uid://d3icem4blh8nd"]
+
+[ext_resource type="Texture2D" uid="uid://dkltta6uocivp" path="res://ui/sprites/slot.png" id="1_mityc"]
+[ext_resource type="Script" uid="uid://cwhvsvpakyhu5" path="res://ui/scripts/slot.gd" id="2_laex7"]
+
+[node name="slot" type="TextureRect"]
+offset_right = 128.0
+offset_bottom = 128.0
+texture = ExtResource("1_mityc")
+script = ExtResource("2_laex7")

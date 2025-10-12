@@ -1,8 +1,16 @@
-[gd_scene load_steps=6 format=3 uid="uid://durxg5gxlqbd6"]
+[gd_scene load_steps=14 format=3 uid="uid://durxg5gxlqbd6"]
 
 [ext_resource type="PackedScene" uid="uid://0qnfltgrnbra" path="res://entities/player/player.tscn" id="1_2v3iu"]
 [ext_resource type="Script" uid="uid://b14fg2moi3ywp" path="res://levels/test/test_level_1.gd" id="1_l86f2"]
 [ext_resource type="Texture2D" uid="uid://ygqb30lt336f" path="res://levels/test/test_level_1/tiles/tile_metallic.png" id="2_h1gk1"]
+[ext_resource type="Texture2D" uid="uid://icayfbucto54" path="res://ui/sprites/vignette_small.png" id="4_02l7c"]
+[ext_resource type="Script" uid="uid://bxaue670nkai7" path="res://ui/scripts/ui_manager.gd" id="4_eo5hk"]
+[ext_resource type="PackedScene" uid="uid://306nu0iivvw4" path="res://ui/item_icon.tscn" id="6_3h0vw"]
+[ext_resource type="Theme" uid="uid://caxycusoad52c" path="res://ui/resources/theme.tres" id="7_1e6f1"]
+[ext_resource type="LabelSettings" uid="uid://crls46ui7nhuh" path="res://ui/resources/label_settings.tres" id="7_eo5hk"]
+[ext_resource type="PackedScene" uid="uid://d3icem4blh8nd" path="res://ui/slot.tscn" id="7_sarhx"]
+[ext_resource type="Script" uid="uid://dhryl2v1gtq01" path="res://entities/player/scripts/item_equipment_component.gd" id="9_sarhx"]
+[ext_resource type="Texture2D" uid="uid://357wtgexjik4" path="res://items/placeholder.png" id="11_3jcvb"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_l86f2"]
 size = Vector2(96, 96)
@@ -10,11 +18,12 @@ size = Vector2(96, 96)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02l7c"]
 size = Vector2(1920, 1080)
 
-[node name="test_level_1" type="Node2D"]
+[node name="test_level_1" type="Node2D" node_paths=PackedStringArray("info")]
 script = ExtResource("1_l86f2")
+info = NodePath("ui/info")
 
 [node name="player" parent="." instance=ExtResource("1_2v3iu")]
-position = Vector2(635, 583)
+position = Vector2(616, 611)
 
 [node name="block" type="StaticBody2D" parent="." groups=["obstacles"]]
 position = Vector2(619, 695)
@@ -44,3 +53,52 @@ position = Vector2(960, 540)
 [node name="camera_zone_collision" type="CollisionShape2D" parent="camera/camera_zone"]
 shape = SubResource("RectangleShape2D_02l7c")
 debug_color = Color(0, 1, 0.69803923, 0)
+
+[node name="ui" type="Control" parent="." node_paths=PackedStringArray("equipment_ui")]
+z_index = 2
+layout_mode = 3
+anchors_preset = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+script = ExtResource("4_eo5hk")
+slot = ExtResource("7_sarhx")
+item_icon = ExtResource("6_3h0vw")
+equipment_ui = NodePath("equipment_ui")
+
+[node name="vignette" type="TextureRect" parent="ui"]
+modulate = Color(1, 1, 1, 0.6862745)
+layout_mode = 0
+offset_right = 1920.0
+offset_bottom = 1080.0
+texture = ExtResource("4_02l7c")
+
+[node name="info" type="Label" parent="ui"]
+z_index = 3
+layout_mode = 0
+offset_left = 1654.0
+offset_top = 4.0
+offset_right = 1916.0
+offset_bottom = 59.0
+text = "ass"
+label_settings = ExtResource("7_eo5hk")
+horizontal_alignment = 2
+
+[node name="equipment_ui" type="Control" parent="ui"]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="dev_console" type="LineEdit" parent="ui"]
+layout_mode = 0
+offset_left = 25.0
+offset_top = 1003.0
+offset_right = 725.0
+offset_bottom = 1052.0
+theme = ExtResource("7_1e6f1")
+placeholder_text = "Enter a command..."
+
+[node name="item_equipment_component" type="Node" parent="."]
+script = ExtResource("9_sarhx")
+placeholder_icon = ExtResource("11_3jcvb")
+
+[connection signal="items_updated" from="item_equipment_component" to="ui" method="_on_items_updated"]

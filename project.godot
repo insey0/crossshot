@@ -11,14 +11,15 @@ config_version=5
 [application]
 
 config/name="CroSSShot!"
-config/description="CroSSShot! - A hardcore 2D shooter platformer with interesting mechanics. Be an SSS!"
-config/version="Alpha 1.0"
+config/description="CroSSShot! - A hardcore 2D shooter platformer with interesting mechanics. 
+Be an SSS! (SuperSuperSuper, not SuckerSuckerSucker)"
+config/version="Prototype 2, dev 121025.1"
 run/main_scene="uid://durxg5gxlqbd6"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/fullsize=false
-config/icon="res://icon.svg"
+config/icon="uid://p5krqhs2tcs7"
 
 [display]
 
@@ -46,6 +47,9 @@ folder_colors={
 player="A group for player(s)"
 obstacles=""
 camera_zone=""
+dangers=""
+enemies=""
+items=""
 
 [input]
 
