@@ -101,4 +101,5 @@ placeholder_text = "Enter a command..."
 script = ExtResource("9_sarhx")
 placeholder_icon = ExtResource("11_3jcvb")
 
+[connection signal="item_moved" from="ui" to="item_equipment_component" method="_on_ui_item_moved"]
 [connection signal="items_updated" from="item_equipment_component" to="ui" method="_on_items_updated"]

@@ -50,6 +50,7 @@ camera_zone=""
 dangers=""
 enemies=""
 items=""
+inventory_slots=""
 
 [input]
 

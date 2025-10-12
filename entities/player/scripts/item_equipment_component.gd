@@ -132,3 +132,10 @@ func _get_cached_item(item_name: String):
 		item_cache[item_name] = item_instance
 		return item_instance # Item scene instantiated
 	return null # Item not found
+
+# НЕ РАБОТАЕТ
+func _on_ui_item_moved(item_icon_name: String, item_icon_amount: int,
+from_set: int, to_set: int, from_slot: int, to_slot: int) -> void:
+	items[from_set][from_slot] = {"name": "", "amount": 0}
+	items[to_set][to_slot] = {"name": item_icon_name, "amount": item_icon_amount}
+	items_updated.emit(items)

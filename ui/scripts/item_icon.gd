@@ -1,35 +1,36 @@
+# НЕ РАБОТАЕТ
 class_name ItemIcon
-extends Area2D
+extends TextureRect
 
 @export var amount_label: Label
-@export var texture: TextureRect
+var item_name: String
 var current_set: int
 var current_slot: int
 
-var mouse_overlaps: bool
-var is_dragged: bool
-var drag_offset: Vector2
+var mouse_overlaps: bool = false
+var is_dragged: bool = false
 
-signal drag_started(item_name)
-signal drag_ended(set_number, slot_number)
+signal drag_started(item: ItemIcon)
 
-# Функции перетаскивания
+func _process(_delta: float) -> void:
+	if is_dragged:
+		global_position = get_global_mouse_position()
+
 func start_dragging():
 	is_dragged = true
-	drag_offset = global_position - get_global_mouse_position()
 	z_index = 100
 	modulate.a = 0.8
-	drag_started.emit()
+	drag_started.emit(self)
 func end_dragging():
 	is_dragged = false
 	z_index = 0
 	modulate.a = 1.0
-	drag_ended.emit()
 
 # Проверка наложения мыши
 func _on_mouse_entered() -> void:
 	mouse_overlaps = true
-	modulate = Color(1.2, 1.2, 1.2)
+	if not is_dragged:
+		modulate = Color(1.2, 1.2, 1.2)
 func _on_mouse_exited() -> void:
 	mouse_overlaps = false
-	modulate = Color(1.2, 1.2, 1.2)
+	modulate = Color(1.0, 1.0, 1.0)
