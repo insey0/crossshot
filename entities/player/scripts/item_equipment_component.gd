@@ -13,7 +13,7 @@ var sets: int = 2: # Количество сетов
 		items_updated.emit(items)
 var current_set: int = 0 # ID текущего выбранного сета
 
-var slots_per_set: int = 2: # Количество слотов на каждый сет
+var slots_per_set: int = 3: # Количество слотов на каждый сет
 	set(value):
 		update_slots(value)
 		items_updated.emit(items)
@@ -81,6 +81,15 @@ func pickup_item(item_name: String, item_amount: int, set_to_equip_in: int) -> b
 			return true # Предмет успешно экипирован
 	return false # Нет свободных слотов
 
+func drop_item(item_name: String, drop_set: int, drop_slot: int):
+	var dropped: Dictionary = items[drop_set][drop_slot]
+	if dropped["name"] == item_name and dropped["amount"] > 1:
+		dropped["amount"] -= 1
+	elif dropped["name"] != item_name and dropped["amount"] == 1:
+		dropped = {"name": "", "amount": 0}
+	else:
+		return
+
 func use_item() -> void:
 	var item_name = items[current_set][current_slot]["name"]
 	if item_name == "":
@@ -132,10 +141,3 @@ func _get_cached_item(item_name: String):
 		item_cache[item_name] = item_instance
 		return item_instance # Item scene instantiated
 	return null # Item not found
-
-# НЕ РАБОТАЕТ
-func _on_ui_item_moved(item_icon_name: String, item_icon_amount: int,
-from_set: int, to_set: int, from_slot: int, to_slot: int) -> void:
-	items[from_set][from_slot] = {"name": "", "amount": 0}
-	items[to_set][to_slot] = {"name": item_icon_name, "amount": item_icon_amount}
-	items_updated.emit(items)

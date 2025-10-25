@@ -1,0 +1,23 @@
+[gd_scene load_steps=4 format=3 uid="uid://bgu7cwkxorsuh"]
+
+[ext_resource type="Texture2D" uid="uid://cypanlp30tysn" path="res://ui/sprites/effects/test.png" id="1_0je1q"]
+[ext_resource type="FontFile" uid="uid://cnl3r4gx413xr" path="res://font.ttf" id="2_ov5i4"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_ov5i4"]
+font = ExtResource("2_ov5i4")
+
+[node name="effect" type="VBoxContainer"]
+custom_minimum_size = Vector2(32, 32)
+offset_right = 48.0
+offset_bottom = 48.0
+
+[node name="effect_texture" type="TextureRect" parent="."]
+layout_mode = 2
+texture = ExtResource("1_0je1q")
+expand_mode = 5
+
+[node name="time_left" type="Label" parent="."]
+layout_mode = 2
+text = "1000s"
+label_settings = SubResource("LabelSettings_ov5i4")
+horizontal_alignment = 1
