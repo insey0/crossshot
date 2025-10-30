@@ -3,6 +3,7 @@ extends Node
 
 signal jump
 signal shoot
+signal interact
 var shoot_held: bool
 var direction: float
 var mouse_pos: Vector2
@@ -25,6 +26,8 @@ func get_input():
 	# Jump
 	if Input.is_action_just_pressed("plr_jump"):
 		jump.emit()
+	if Input.is_action_just_pressed("plr_interact"):
+		interact.emit()
 	# Shoot
 	if Input.is_action_just_pressed("plr_shoot"):
 		shoot.emit()

@@ -1,9 +1,10 @@
-[gd_scene load_steps=9 format=3 uid="uid://durxg5gxlqbd6"]
+[gd_scene load_steps=10 format=3 uid="uid://durxg5gxlqbd6"]
 
 [ext_resource type="PackedScene" uid="uid://0qnfltgrnbra" path="res://entities/player/player.tscn" id="1_2v3iu"]
 [ext_resource type="Script" uid="uid://b14fg2moi3ywp" path="res://levels/test/test_level_1.gd" id="1_l86f2"]
 [ext_resource type="Texture2D" uid="uid://ygqb30lt336f" path="res://levels/test/test_level_1/tiles/tile_metallic.png" id="2_h1gk1"]
 [ext_resource type="PackedScene" uid="uid://brwbp1g6m0wex" path="res://ui/ui_manager.tscn" id="6_cjhge"]
+[ext_resource type="PackedScene" uid="uid://ck1al2s5awp8s" path="res://items/test/test_world.tscn" id="7_1e6f1"]
 [ext_resource type="Script" uid="uid://dhryl2v1gtq01" path="res://entities/player/scripts/item_equipment_component.gd" id="9_sarhx"]
 [ext_resource type="Texture2D" uid="uid://357wtgexjik4" path="res://items/placeholder.png" id="11_3jcvb"]
 
@@ -16,8 +17,9 @@ size = Vector2(1920, 1080)
 [node name="test_level_1" type="Node2D"]
 script = ExtResource("1_l86f2")
 
-[node name="player" parent="." instance=ExtResource("1_2v3iu")]
+[node name="player" parent="." node_paths=PackedStringArray("inventory") instance=ExtResource("1_2v3iu")]
 position = Vector2(616, 611)
+inventory = NodePath("../item_equipment_component")
 
 [node name="block" type="StaticBody2D" parent="." groups=["obstacles"]]
 position = Vector2(619, 695)
@@ -51,5 +53,8 @@ debug_color = Color(0, 1, 0.69803923, 0)
 [node name="item_equipment_component" type="Node" parent="."]
 script = ExtResource("9_sarhx")
 placeholder_icon = ExtResource("11_3jcvb")
+
+[node name="test_world" parent="." instance=ExtResource("7_1e6f1")]
+position = Vector2(1211, 563)
 
 [node name="ui_manager" parent="." instance=ExtResource("6_cjhge")]

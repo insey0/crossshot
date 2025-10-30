@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://0qnfltgrnbra"]
+[gd_scene load_steps=13 format=3 uid="uid://0qnfltgrnbra"]
 
 [ext_resource type="Script" uid="uid://ckcswt8lb44p1" path="res://entities/player/scripts/player.gd" id="1_bls4j"]
 [ext_resource type="SpriteFrames" uid="uid://cf8c1gcecr6tg" path="res://entities/player/resources/player_sprite_frames.tres" id="2_8fjmc"]
@@ -9,6 +9,7 @@
 [ext_resource type="Script" uid="uid://gdsbrb75nalr" path="res://entities/player/scripts/weapon_component.gd" id="6_8fjmc"]
 [ext_resource type="Script" uid="uid://ddntbtb0a4jhg" path="res://entities/player/scripts/health_component.gd" id="8_26q78"]
 [ext_resource type="Theme" uid="uid://caxycusoad52c" path="res://ui/resources/theme.tres" id="9_bectd"]
+[ext_resource type="Script" uid="uid://db88gmf8yaven" path="res://entities/player/scripts/message_manager.gd" id="10_wvtmh"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bls4j"]
 size = Vector2(36, 66)
@@ -30,7 +31,7 @@ input = NodePath("input_component")
 movement = NodePath("movement_component")
 weapon = NodePath("weapon_component")
 health = NodePath("health_component")
-message = NodePath("player_message")
+message = NodePath("message_manager")
 
 [node name="player_sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
@@ -88,6 +89,10 @@ theme = ExtResource("9_bectd")
 bbcode_enabled = true
 horizontal_alignment = 1
 vertical_alignment = 1
+
+[node name="message_manager" type="Node" parent="." node_paths=PackedStringArray("msg")]
+script = ExtResource("10_wvtmh")
+msg = NodePath("../player_message")
 
 [connection signal="area_entered" from="player_detect_box" to="." method="_on_item_entered"]
 [connection signal="area_exited" from="player_detect_box" to="." method="_on_item_exited"]

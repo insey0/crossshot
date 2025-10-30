@@ -1,12 +1,19 @@
-[gd_scene load_steps=3 format=3 uid="uid://ck1al2s5awp8s"]
+[gd_scene load_steps=5 format=3 uid="uid://ck1al2s5awp8s"]
 
 [ext_resource type="Texture2D" uid="uid://b0pyxwi6jfnnr" path="res://items/test/sprites/world.png" id="1_02nkv"]
+[ext_resource type="Script" uid="uid://2b8ltwdsajy" path="res://items/_classes/item_world.gd" id="1_rq6cv"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_rq6cv"]
 size = Vector2(48, 48)
 
-[node name="test_world" type="RigidBody2D" groups=["items"]]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_02nkv"]
+size = Vector2(48, 48)
+
+[node name="test_world" type="RigidBody2D"]
+collision_layer = 128
 lock_rotation = true
+script = ExtResource("1_rq6cv")
+item_name = "test"
 
 [node name="item_sprite" type="Sprite2D" parent="."]
 scale = Vector2(6, 6)
@@ -15,3 +22,11 @@ texture = ExtResource("1_02nkv")
 [node name="item_collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_rq6cv")
 debug_color = Color(0, 1, 1, 0)
+
+[node name="player_detector" type="Area2D" parent="." groups=["items_world"]]
+collision_layer = 16
+collision_mask = 2
+
+[node name="player_detector_collision" type="CollisionShape2D" parent="player_detector"]
+shape = SubResource("RectangleShape2D_02nkv")
+debug_color = Color(0.87058824, 0, 0.2901961, 0.5529412)

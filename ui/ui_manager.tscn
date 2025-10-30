@@ -1,4 +1,4 @@
-[gd_scene load_steps=12 format=3 uid="uid://brwbp1g6m0wex"]
+[gd_scene load_steps=13 format=3 uid="uid://brwbp1g6m0wex"]
 
 [ext_resource type="Script" uid="uid://bxaue670nkai7" path="res://ui/scripts/ui_manager.gd" id="1_30b5s"]
 [ext_resource type="PackedScene" uid="uid://d3icem4blh8nd" path="res://ui/slot.tscn" id="1_q5581"]
@@ -10,18 +10,21 @@
 [ext_resource type="Theme" uid="uid://caxycusoad52c" path="res://ui/resources/theme.tres" id="7_c2mbh"]
 [ext_resource type="Texture2D" uid="uid://icayfbucto54" path="res://ui/sprites/vignette_small.png" id="8_hcyq4"]
 [ext_resource type="PackedScene" uid="uid://bgu7cwkxorsuh" path="res://ui/effect.tscn" id="8_nymso"]
+[ext_resource type="Script" uid="uid://dxxc3mvm5h1nw" path="res://items/_classes/item_icon.gd" id="11_i3dcd"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_57ya5"]
 font = ExtResource("6_cd8r4")
 font_size = 28
 
-[node name="ui_manager" type="Control"]
+[node name="ui_manager" type="Control" node_paths=PackedStringArray("game_info", "inventory_container")]
 z_index = 10
 layout_mode = 3
 anchors_preset = 0
 offset_right = 1920.0
 offset_bottom = 1080.0
 script = ExtResource("1_30b5s")
+game_info = NodePath("screen_margin_container/info_container/label_container/info_label")
+inventory_container = NodePath("screen_margin_container/inventory_container")
 
 [node name="screen_margin_container" type="MarginContainer" parent="."]
 layout_mode = 1
@@ -69,10 +72,7 @@ theme_override_constants/margin_bottom = 8
 
 [node name="info_label" type="Label" parent="screen_margin_container/info_container/label_container"]
 layout_mode = 2
-text = "CroSSShot! Prototype 2
-dev 131025.1
-UI Test v1.0
-FPS: 0.0"
+text = "ass"
 label_settings = ExtResource("2_hcyq4")
 
 [node name="console_container" type="MarginContainer" parent="screen_margin_container"]
@@ -133,3 +133,14 @@ grow_vertical = 2
 modulate = Color(1, 1, 1, 0.47058824)
 layout_mode = 2
 texture = ExtResource("8_hcyq4")
+
+[node name="drag_layer" type="Control" parent="."]
+anchors_preset = 0
+offset_right = 40.0
+offset_bottom = 40.0
+
+[node name="item_icon" type="TextureRect" parent="drag_layer"]
+layout_mode = 0
+offset_right = 40.0
+offset_bottom = 40.0
+script = ExtResource("11_i3dcd")
