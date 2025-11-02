@@ -7,6 +7,9 @@ extends Node
 @export var deceleration: float = 12.0
 @export var jump_force: float = -800.0
 
+var can_double_jump: bool = false
+@export var jump_count: int
+
 # Gravity
 func handle_gravity(player: CharacterBody2D, delta_time: float) -> void:
 	if not player.is_on_floor():
@@ -25,5 +28,15 @@ func handle_movement(player: CharacterBody2D, direction: float, delta_time: floa
 
 # Jumping
 func handle_jump(player: CharacterBody2D) -> void:
-	if player.is_on_floor():
+	if not can_double_jump and player.is_on_floor():
 		player.velocity.y = jump_force
+	elif can_double_jump and jump_count > 0:
+		if player.is_on_floor():
+			player.velocity.y = jump_force
+			jump_count -= 1
+		if not player.is_on_floor():
+			player.velocity.y = jump_force
+			jump_count -= 2
+
+func handle_bounce(player: CharacterBody2D, direction: Vector2, bounce_power: float) -> void:
+	player.velocity = direction * bounce_power

@@ -1,3 +1,4 @@
+class_name Player
 extends CharacterBody2D
 
 @export var weapon_node: Node2D
@@ -12,12 +13,6 @@ extends CharacterBody2D
 @export var movement: MovementComponent
 @export var weapon: WeaponComponent
 @export var health: HealthComponent
-
-@export var inventory: ItemEquipmentComponent
-
-@export var message: RichTextLabel
-
-var pickup_item: String = ""
 
 func _physics_process(delta: float) -> void:
 	# Movement
@@ -34,26 +29,39 @@ func _physics_process(delta: float) -> void:
 	else:
 		sprite.flip_h = true
 		weapon_sprite.flip_v = true
+	
+	# Double Jump
+	if is_on_floor():
+		movement.jump_count = 2
 
-# Jump (signal)
+# Прыжок (signal)
 func _on_jump() -> void:
 	movement.handle_jump(self)
-
-# Shoot (signal)
+# Выстрел (signal)
 func _on_shoot() -> void:
 	weapon.shoot(bullet, muzzle, shoot_delay)
-
 func _on_shoot_delay_timeout() -> void:
 	if weapon.automatic and input.shoot_held:
 		weapon.shoot(bullet, muzzle, shoot_delay)
 
-func _on_item_entered(area: Area2D) -> void:
-	if area.is_in_group("items_world"):
-		var item: ItemWorld = area.get_parent()
-		pickup_item = item.item_name
-		message.text = "[color=white]'E' - pick up [/color][color=yellow]" + pickup_item
+# Изменение здоровья
+func _on_health_changed(new_health: int, is_damaged: bool) -> void:
+	if new_health > 0 and is_damaged:
+		print("Damaged to ", new_health)
+	if not is_damaged:
+		print("Healed to ", new_health)
+	if new_health == 0:
+		print("Died")
 
-func _on_item_exited(area: Area2D) -> void:
-	if area.is_in_group("items_world"):
-		pickup_item = ""
-		message.text = ""
+# Проверка столкновений (враги, опасности, интерактивные объедки...)
+func _on_area_entered(area: Area2D) -> void:
+	if area.is_in_group("dangers"):
+		var danger: DangerProperties = area
+		movement.handle_bounce(self, (global_position - danger.global_position).normalized(), danger.bounce_power)
+		health.take_damage(danger.damage)
+
+func _on_body_entered(body: Node2D) -> void:
+	if body.is_in_group("powerups"):
+		var pwup: Powerup = body
+		pwup.on_pickup(self)
+		pwup.queue_free()

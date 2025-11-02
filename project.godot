@@ -13,7 +13,7 @@ config_version=5
 config/name="CroSSShot!"
 config/description="CroSSShot! - A hardcore 2D shooter platformer with interesting mechanics. 
 Be an SSS! (SuperSuperSuper, not SuckerSuckerSucker)"
-config/version="Prototype 2 dev 261025.1"
+config/version="Prototype 2 dev 021125"
 run/main_scene="uid://durxg5gxlqbd6"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
@@ -36,9 +36,9 @@ mouse_cursor/custom_image_hotspot=Vector2(30, 30)
 folder_colors={
 "res://_legacy/": "purple",
 "res://entities/": "teal",
-"res://items/": "red",
 "res://levels/": "yellow",
 "res://objects/": "green",
+"res://tiles/": "blue",
 "res://ui/": "orange"
 }
 
@@ -49,8 +49,9 @@ obstacles=""
 camera_zone=""
 dangers=""
 enemies=""
-inventory_slots=""
-items_world=""
+moving_obstacles=""
+ui_manager=""
+powerups=""
 
 [input]
 
@@ -114,7 +115,7 @@ eqp_inventory={
 2d_physics/layer_5="sensors"
 2d_physics/layer_6="special"
 2d_physics/layer_7="gibs"
-2d_physics/layer_8="items"
+2d_physics/layer_8="powerups"
 
 [rendering]
 

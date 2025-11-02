@@ -1,0 +1,21 @@
+[gd_scene load_steps=4 format=3 uid="uid://bkvwv3ygul52p"]
+
+[ext_resource type="Script" uid="uid://buhrq3qat1lc4" path="res://objects/dangers/danger_properties.gd" id="1_ba7a5"]
+[ext_resource type="Texture2D" uid="uid://btwa08h6iho04" path="res://objects/dangers/spike/spike.png" id="2_b5yk6"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_5fwn3"]
+size = Vector2(24, 36)
+
+[node name="spike" type="Area2D" groups=["dangers", "obstacles"]]
+collision_layer = 8
+script = ExtResource("1_ba7a5")
+
+[node name="spike_sprite" type="Sprite2D" parent="."]
+position = Vector2(4, -8)
+scale = Vector2(6, 6)
+texture = ExtResource("2_b5yk6")
+
+[node name="spike_collision" type="CollisionShape2D" parent="."]
+position = Vector2(4, -2)
+shape = SubResource("RectangleShape2D_5fwn3")
+debug_color = Color(1, 0, 0.02745098, 0.41960785)
