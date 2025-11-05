@@ -7,9 +7,15 @@ extends CanvasLayer
 @export var hp_percentage: Label
 @export var level_timer: Timer
 @export var time_text: Label
+@export var effects_container: HBoxContainer
+@export var mouse_tooltip: RichTextLabel
 var time: int = 0
 var app_version: String
 var fps_update_timer: float = 0.0
+
+func _input(event: InputEvent) -> void:
+	if event is InputEventMouseMotion and mouse_tooltip.text != "":
+		mouse_tooltip.position = get_viewport().get_mouse_position() + Vector2(16.0, 16.0)
 
 func _ready():
 	add_to_group("ui_manager")
@@ -38,3 +44,13 @@ func _on_level_timer_timeout() -> void:
 	@warning_ignore("integer_division")
 	time_text.text = "Time " + str(int(time / 60)) + divisor + str(time - int(time / 60) * 60)
 	level_timer.start()
+
+func _on_new_effect(effect_texture: Texture2D, effect_name: String, effect_description: String):
+	var new_effect := Effect.new()
+	effects_container.add_child(new_effect)
+	new_effect.custom_minimum_size = Vector2(48.0, 48.0)
+	
+	new_effect.effect_texture = effect_texture
+	new_effect.description = effect_description
+	new_effect.display_name = effect_name.capitalize()
+	new_effect.tooltip = mouse_tooltip

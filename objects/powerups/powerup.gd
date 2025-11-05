@@ -4,6 +4,10 @@ extends RigidBody2D
 @export var has_physics: bool
 @export var is_destructible: bool
 @export var destruction_time: int
+@export var effect: Texture2D
+
+@export var display_name: String
+@export var description: String
 
 func _ready() -> void:
 	if is_destructible:

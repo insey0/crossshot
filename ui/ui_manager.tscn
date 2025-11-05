@@ -1,12 +1,16 @@
-[gd_scene load_steps=10 format=3 uid="uid://brwbp1g6m0wex"]
+[gd_scene load_steps=14 format=3 uid="uid://brwbp1g6m0wex"]
 
 [ext_resource type="Script" uid="uid://bxaue670nkai7" path="res://ui/scripts/ui_manager.gd" id="1_30b5s"]
 [ext_resource type="LabelSettings" uid="uid://crls46ui7nhuh" path="res://ui/resources/label_settings.tres" id="2_hcyq4"]
 [ext_resource type="Texture2D" uid="uid://41fk3w5b4pw3" path="res://ui/sprites/hp_bar/under.png" id="3_nymso"]
 [ext_resource type="Texture2D" uid="uid://c7qqlhvbn5mxq" path="res://ui/sprites/hp_bar/over.png" id="4_30b5s"]
 [ext_resource type="Texture2D" uid="uid://c6mv6ow1k1p1h" path="res://ui/sprites/hp_bar/progress.png" id="5_i3dcd"]
-[ext_resource type="FontFile" uid="uid://cnl3r4gx413xr" path="res://font.ttf" id="6_cd8r4"]
+[ext_resource type="FontFile" uid="uid://cnl3r4gx413xr" path="res://fonts/font.ttf" id="6_cd8r4"]
 [ext_resource type="Texture2D" uid="uid://icayfbucto54" path="res://ui/sprites/vignette_small.png" id="8_hcyq4"]
+[ext_resource type="Theme" uid="uid://caxycusoad52c" path="res://ui/resources/theme.tres" id="8_nymso"]
+[ext_resource type="FontFile" uid="uid://b0abyfw0kw5gt" path="res://fonts/font_b.ttf" id="9_i3dcd"]
+[ext_resource type="FontFile" uid="uid://by6nnvmcgmek7" path="res://fonts/font_bi.ttf" id="10_cd8r4"]
+[ext_resource type="FontFile" uid="uid://bqk618xan8rk6" path="res://fonts/font_i.ttf" id="11_c2mbh"]
 
 [sub_resource type="LabelSettings" id="LabelSettings_57ya5"]
 font = ExtResource("6_cd8r4")
@@ -16,13 +20,15 @@ font_size = 28
 font = ExtResource("6_cd8r4")
 font_size = 36
 
-[node name="ui_manager" type="CanvasLayer" node_paths=PackedStringArray("game_info", "hp_bar", "hp_percentage", "level_timer", "time_text")]
+[node name="ui_manager" type="CanvasLayer" node_paths=PackedStringArray("game_info", "hp_bar", "hp_percentage", "level_timer", "time_text", "effects_container", "mouse_tooltip")]
 script = ExtResource("1_30b5s")
 game_info = NodePath("screen_margin_container/info_container/label_container/info_label")
 hp_bar = NodePath("screen_margin_container/state_info_container/hpbar_container/hp_bar")
 hp_percentage = NodePath("screen_margin_container/state_info_container/hpbar_container/hp_percentage")
 level_timer = NodePath("level_timer")
 time_text = NodePath("screen_margin_container/state_info_container/time")
+effects_container = NodePath("screen_margin_container/state_info_container/effects_container")
+mouse_tooltip = NodePath("mouse_tooltip")
 
 [node name="screen_margin_container" type="MarginContainer" parent="."]
 z_index = 10
@@ -31,6 +37,7 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 16
 theme_override_constants/margin_top = 16
 theme_override_constants/margin_right = 16
@@ -41,9 +48,11 @@ z_index = 2
 layout_mode = 2
 size_flags_horizontal = 8
 size_flags_vertical = 0
+mouse_filter = 2
 
 [node name="label_container" type="MarginContainer" parent="screen_margin_container/info_container"]
 layout_mode = 2
+mouse_filter = 2
 theme_override_constants/margin_left = 8
 theme_override_constants/margin_top = 8
 theme_override_constants/margin_right = 8
@@ -56,12 +65,14 @@ label_settings = ExtResource("2_hcyq4")
 
 [node name="state_info_container" type="VBoxContainer" parent="screen_margin_container"]
 layout_mode = 2
+mouse_filter = 2
 
 [node name="hpbar_container" type="HBoxContainer" parent="screen_margin_container/state_info_container"]
 z_index = 2
 layout_mode = 2
 size_flags_horizontal = 0
 size_flags_vertical = 0
+mouse_filter = 2
 
 [node name="hp_bar" type="TextureProgressBar" parent="screen_margin_container/state_info_container/hpbar_container"]
 custom_minimum_size = Vector2(700, 40)
@@ -76,6 +87,10 @@ layout_mode = 2
 text = "100%"
 label_settings = SubResource("LabelSettings_57ya5")
 
+[node name="effects_container" type="HBoxContainer" parent="screen_margin_container/state_info_container"]
+layout_mode = 2
+mouse_filter = 2
+
 [node name="time" type="Label" parent="screen_margin_container/state_info_container"]
 layout_mode = 2
 size_flags_horizontal = 0
@@ -89,13 +104,29 @@ anchor_right = 1.0
 anchor_bottom = 1.0
 grow_horizontal = 2
 grow_vertical = 2
+mouse_filter = 2
 
 [node name="vignette" type="TextureRect" parent="vignette_container"]
 modulate = Color(1, 1, 1, 0.47058824)
 layout_mode = 2
+mouse_filter = 2
 texture = ExtResource("8_hcyq4")
 
 [node name="level_timer" type="Timer" parent="."]
 autostart = true
+
+[node name="mouse_tooltip" type="RichTextLabel" parent="."]
+z_index = 12
+offset_right = 765.0
+offset_bottom = 93.0
+theme = ExtResource("8_nymso")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/normal_font = ExtResource("6_cd8r4")
+theme_override_fonts/bold_font = ExtResource("9_i3dcd")
+theme_override_fonts/bold_italics_font = ExtResource("10_cd8r4")
+theme_override_fonts/italics_font = ExtResource("11_c2mbh")
+bbcode_enabled = true
+fit_content = true
 
 [connection signal="timeout" from="level_timer" to="." method="_on_level_timer_timeout"]

@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cypanlp30tysn"
-path="res://.godot/imported/test.png-be69017d34dc2cc9a1fd0dfa05fc30d7.ctex"
+uid="uid://edi2c7k68xfe"
+path="res://.godot/imported/shoot_delay.png-08f048d60c1f044529a7b1f525ed1681.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://ui/sprites/effects/test.png"
-dest_files=["res://.godot/imported/test.png-be69017d34dc2cc9a1fd0dfa05fc30d7.ctex"]
+source_file="res://ui/sprites/effects/shoot_delay.png"
+dest_files=["res://.godot/imported/shoot_delay.png-08f048d60c1f044529a7b1f525ed1681.ctex"]
 
 [params]
 

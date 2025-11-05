@@ -9,6 +9,7 @@ size = Vector2(24, 36)
 [node name="spike" type="Area2D" groups=["dangers", "obstacles"]]
 collision_layer = 8
 script = ExtResource("1_ba7a5")
+damage = 10
 
 [node name="spike_sprite" type="Sprite2D" parent="."]
 position = Vector2(4, -8)

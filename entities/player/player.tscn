@@ -1,4 +1,4 @@
-[gd_scene load_steps=11 format=3 uid="uid://0qnfltgrnbra"]
+[gd_scene load_steps=17 format=3 uid="uid://0qnfltgrnbra"]
 
 [ext_resource type="Script" uid="uid://ckcswt8lb44p1" path="res://entities/player/scripts/player.gd" id="1_bls4j"]
 [ext_resource type="SpriteFrames" uid="uid://cf8c1gcecr6tg" path="res://entities/player/resources/player_sprite_frames.tres" id="2_8fjmc"]
@@ -8,6 +8,12 @@
 [ext_resource type="Script" uid="uid://80idee6s2pwl" path="res://entities/player/scripts/input_component.gd" id="4_fkugw"]
 [ext_resource type="Script" uid="uid://gdsbrb75nalr" path="res://entities/player/scripts/weapon_component.gd" id="6_8fjmc"]
 [ext_resource type="Script" uid="uid://ddntbtb0a4jhg" path="res://entities/player/scripts/health_component.gd" id="8_26q78"]
+[ext_resource type="Script" uid="uid://dhktuwftm0qt5" path="res://entities/player/scripts/message_manager.gd" id="9_afbqv"]
+[ext_resource type="Theme" uid="uid://caxycusoad52c" path="res://ui/resources/theme.tres" id="9_bectd"]
+[ext_resource type="FontFile" uid="uid://cnl3r4gx413xr" path="res://fonts/font.ttf" id="10_j3ovn"]
+[ext_resource type="FontFile" uid="uid://b0abyfw0kw5gt" path="res://fonts/font_b.ttf" id="11_afbqv"]
+[ext_resource type="FontFile" uid="uid://by6nnvmcgmek7" path="res://fonts/font_bi.ttf" id="12_gx6sm"]
+[ext_resource type="FontFile" uid="uid://bqk618xan8rk6" path="res://fonts/font_i.ttf" id="13_yqrof"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bls4j"]
 size = Vector2(36, 66)
@@ -15,7 +21,7 @@ size = Vector2(36, 66)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
 size = Vector2(36, 66)
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_node", "weapon_sprite", "sprite", "muzzle", "shoot_delay", "input", "movement", "weapon", "health") groups=["player"]]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_node", "weapon_sprite", "sprite", "muzzle", "shoot_delay", "input", "movement", "weapon", "health", "message") groups=["player"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_bls4j")
@@ -29,6 +35,7 @@ input = NodePath("input_component")
 movement = NodePath("movement_component")
 weapon = NodePath("weapon_component")
 health = NodePath("health_component")
+message = NodePath("message_manager")
 
 [node name="player_sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
@@ -42,6 +49,7 @@ shape = SubResource("RectangleShape2D_bls4j")
 debug_color = Color(0, 1, 0.2627451, 0.41960785)
 
 [node name="player_detect_box" type="Area2D" parent="." groups=["player"]]
+collision_layer = 2
 collision_mask = 188
 
 [node name="detect_box_collision" type="CollisionShape2D" parent="player_detect_box"]
@@ -77,11 +85,37 @@ automatic = true
 [node name="health_component" type="Node" parent="."]
 script = ExtResource("8_26q78")
 
-[node name="animation_component" type="Node" parent="."]
+[node name="message_manager" type="Node" parent="." node_paths=PackedStringArray("msg", "message_clear_timer")]
+script = ExtResource("9_afbqv")
+msg = NodePath("../message")
+message_clear_timer = NodePath("../message_clear_timer")
+
+[node name="message_clear_timer" type="Timer" parent="."]
+one_shot = true
+
+[node name="message" type="RichTextLabel" parent="."]
+offset_left = -263.0
+offset_top = -100.0
+offset_right = 262.0
+offset_bottom = -39.0
+theme = ExtResource("9_bectd")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/normal_font = ExtResource("10_j3ovn")
+theme_override_fonts/bold_font = ExtResource("11_afbqv")
+theme_override_fonts/bold_italics_font = ExtResource("12_gx6sm")
+theme_override_fonts/italics_font = ExtResource("13_yqrof")
+bbcode_enabled = true
+fit_content = true
+horizontal_alignment = 1
+vertical_alignment = 1
 
 [connection signal="area_entered" from="player_detect_box" to="." method="_on_area_entered"]
+[connection signal="area_exited" from="player_detect_box" to="." method="_on_area_exited"]
 [connection signal="body_entered" from="player_detect_box" to="." method="_on_body_entered"]
 [connection signal="timeout" from="weapon/shoot_delay" to="." method="_on_shoot_delay_timeout"]
 [connection signal="jump" from="input_component" to="." method="_on_jump"]
 [connection signal="shoot" from="input_component" to="." method="_on_shoot"]
 [connection signal="health_changed" from="health_component" to="." method="_on_health_changed"]
+[connection signal="hidden" from="message_manager" to="." method="_on_message_hidden"]
+[connection signal="timeout" from="message_clear_timer" to="message_manager" method="_on_message_clear_timer_timeout"]

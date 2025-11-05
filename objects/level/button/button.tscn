@@ -26,9 +26,14 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vfu0"]
 size = Vector2(64, 112)
 
-[node name="button" type="Area2D" node_paths=PackedStringArray("sprite")]
+[node name="button" type="Area2D" node_paths=PackedStringArray("sprite") groups=["interactables"]]
+collision_layer = 16
+collision_mask = 0
 script = ExtResource("1_j3qcb")
 sprite = NodePath("button_sprite")
+display_name = "button"
+globally_interactable = true
+interact_limit = 1
 
 [node name="button_sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
@@ -39,6 +44,3 @@ autoplay = "default"
 position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_5vfu0")
 debug_color = Color(0, 0.6313726, 0.48235294, 0.5254902)
-
-[connection signal="area_entered" from="." to="." method="_on_area_entered"]
-[connection signal="area_exited" from="." to="." method="_on_area_exited"]

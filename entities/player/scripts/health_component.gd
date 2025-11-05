@@ -5,7 +5,7 @@ extends Node
 var health: int = 100
 var defense: int = 1
 
-signal health_changed(new_health: int, is_damaged: bool)
+signal health_changed(new_health: int, damage_value: int, is_damaged: bool)
 
 func take_damage(damage: int):
 	var final_damage: int = damage
@@ -19,9 +19,9 @@ func take_damage(damage: int):
 	
 	health -= final_damage
 	get_tree().call_group("ui_manager", "on_health_changed", health)
-	health_changed.emit(health, true)
+	health_changed.emit(health, -final_damage, true)
 
 func heal(heal_value: int):
 	health += heal_value
 	get_tree().call_group("ui_manager", "on_health_changed", health)
-	health_changed.emit(health, false)
+	health_changed.emit(health, heal_value, false)
