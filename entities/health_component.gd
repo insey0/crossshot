@@ -2,10 +2,10 @@ class_name HealthComponent
 extends Node
 
 @export var max_health: int
-var health: int = 100
-var defense: int = 1
+@export var health: int = 100
+@export var defense: int = 1
 
-signal health_changed(new_health: int, damage_value: int, is_damaged: bool)
+signal health_changed(new_health: int, new_max_health: int, damage_value: int, is_damaged: bool)
 
 func take_damage(damage: int):
 	var final_damage: int = damage
@@ -18,10 +18,10 @@ func take_damage(damage: int):
 		final_damage = health
 	
 	health -= final_damage
-	get_tree().call_group("ui_manager", "on_health_changed", health)
-	health_changed.emit(health, -final_damage, true)
+	get_tree().call_group("ui_manager", "on_health_changed", health, max_health)
+	health_changed.emit(health, max_health, -final_damage, true)
 
 func heal(heal_value: int):
 	health += heal_value
 	get_tree().call_group("ui_manager", "on_health_changed", health)
-	health_changed.emit(health, heal_value, false)
+	health_changed.emit(health, max_health, heal_value, false)

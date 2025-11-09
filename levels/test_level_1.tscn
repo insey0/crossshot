@@ -1,9 +1,9 @@
-[gd_scene load_steps=18 format=4 uid="uid://durxg5gxlqbd6"]
+[gd_scene load_steps=19 format=4 uid="uid://durxg5gxlqbd6"]
 
-[ext_resource type="Script" uid="uid://b14fg2moi3ywp" path="res://levels/test_level_1.gd" id="1_vodbx"]
+[ext_resource type="Script" uid="uid://b14fg2moi3ywp" path="res://levels/root_node.gd" id="1_vodbx"]
 [ext_resource type="PackedScene" uid="uid://0qnfltgrnbra" path="res://entities/player/player.tscn" id="2_plkrb"]
 [ext_resource type="Script" uid="uid://cg250f4sjeds3" path="res://ui/scripts/camera.gd" id="3_grhbk"]
-[ext_resource type="Texture2D" uid="uid://ygqb30lt336f" path="res://tiles/test_level/tile_metallic.png" id="4_kql2n"]
+[ext_resource type="Texture2D" uid="uid://ygqb30lt336f" path="res://_legacy/tiles/test_level/tile_metallic.png" id="4_kql2n"]
 [ext_resource type="PackedScene" uid="uid://brwbp1g6m0wex" path="res://ui/ui_manager.tscn" id="5_02ec3"]
 [ext_resource type="PackedScene" uid="uid://bnlrjelia7q3r" path="res://objects/level/moving_platform/moving_platform.tscn" id="6_5vfu0"]
 [ext_resource type="PackedScene" uid="uid://bkvwv3ygul52p" path="res://objects/dangers/spike/spike_u.tscn" id="7_kgy88"]
@@ -11,6 +11,7 @@
 [ext_resource type="PackedScene" uid="uid://3bvkaurlj5r6" path="res://objects/powerups/shoot_delay/shoot_delay_pwup.tscn" id="9_grhbk"]
 [ext_resource type="PackedScene" uid="uid://ursnofj1oqmn" path="res://objects/level/door/door.tscn" id="10_kql2n"]
 [ext_resource type="PackedScene" uid="uid://bm02v4c802lev" path="res://objects/level/button/button.tscn" id="11_02ec3"]
+[ext_resource type="PackedScene" uid="uid://cx3cf5xqu0gea" path="res://entities/enemies/wasp/wasp.tscn" id="12_5vfu0"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_02l7c"]
 size = Vector2(1920, 1080)
@@ -47,6 +48,7 @@ follow_speed = 5.5
 [node name="camera_zone" type="Area2D" parent="camera" groups=["camera_zone"]]
 
 [node name="camera_zone_collision" type="CollisionShape2D" parent="camera/camera_zone"]
+position = Vector2(4, 0)
 shape = SubResource("RectangleShape2D_02l7c")
 debug_color = Color(0, 1, 0.69803923, 0)
 
@@ -216,5 +218,8 @@ button = NodePath("../button")
 
 [node name="button" parent="interactive_objects" instance=ExtResource("11_02ec3")]
 position = Vector2(1648, 496)
+
+[node name="wasp" parent="." instance=ExtResource("12_5vfu0")]
+position = Vector2(1002, 176)
 
 [connection signal="picked_up_powerup" from="player" to="ui_manager" method="_on_new_effect"]

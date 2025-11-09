@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://vc6hufl0incp"
-path="res://.godot/imported/level_0_tileset.png-464a6a3adb94249c39b207ef4cb9e5bd.ctex"
+uid="uid://cfnmvnqvpt5oy"
+path="res://.godot/imported/parallax_2_noglow.png-5fb27ad0371cebc624a0f72521c16991.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://tiles/level_0_tileset.png"
-dest_files=["res://.godot/imported/level_0_tileset.png-464a6a3adb94249c39b207ef4cb9e5bd.ctex"]
+source_file="res://levels/level1/parallax_2_noglow.png"
+dest_files=["res://.godot/imported/parallax_2_noglow.png-5fb27ad0371cebc624a0f72521c16991.ctex"]
 
 [params]
 

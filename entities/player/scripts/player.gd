@@ -51,7 +51,7 @@ func _on_shoot_delay_timeout() -> void:
 		weapon.shoot(bullet, muzzle, shoot_delay)
 
 # Изменение здоровья
-func _on_health_changed(new_health: int, damage_value: int, is_damaged: bool) -> void:
+func _on_health_changed(new_health: int, _new_max_health: int, damage_value: int, is_damaged: bool) -> void:
 	if new_health > 0 and is_damaged:
 		total_damage -= damage_value
 		message.display("damage", [total_damage], 1.5)

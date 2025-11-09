@@ -7,7 +7,7 @@
 [ext_resource type="Script" uid="uid://3k5wogfimfr1" path="res://entities/player/scripts/movement_component.gd" id="3_sglur"]
 [ext_resource type="Script" uid="uid://80idee6s2pwl" path="res://entities/player/scripts/input_component.gd" id="4_fkugw"]
 [ext_resource type="Script" uid="uid://gdsbrb75nalr" path="res://entities/player/scripts/weapon_component.gd" id="6_8fjmc"]
-[ext_resource type="Script" uid="uid://ddntbtb0a4jhg" path="res://entities/player/scripts/health_component.gd" id="8_26q78"]
+[ext_resource type="Script" uid="uid://ddntbtb0a4jhg" path="res://entities/health_component.gd" id="8_26q78"]
 [ext_resource type="Script" uid="uid://dhktuwftm0qt5" path="res://entities/player/scripts/message_manager.gd" id="9_afbqv"]
 [ext_resource type="Theme" uid="uid://caxycusoad52c" path="res://ui/resources/theme.tres" id="9_bectd"]
 [ext_resource type="FontFile" uid="uid://cnl3r4gx413xr" path="res://fonts/font.ttf" id="10_j3ovn"]
@@ -84,6 +84,7 @@ automatic = true
 
 [node name="health_component" type="Node" parent="."]
 script = ExtResource("8_26q78")
+max_health = 100
 
 [node name="message_manager" type="Node" parent="." node_paths=PackedStringArray("msg", "message_clear_timer")]
 script = ExtResource("9_afbqv")

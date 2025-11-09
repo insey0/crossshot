@@ -29,9 +29,10 @@ func _process(delta: float) -> void:
 		fps_update_timer = 0.0
 		game_info.text = "CroSSShot!\n%s\nFPS: %d" % [app_version, Engine.get_frames_per_second()]
 
-func  on_health_changed(health):
+func on_health_changed(health: int, max_health: int):
 	hp_percentage.text = str(health) + "%"
 	hp_bar.value = health
+	hp_bar.max_value = max_health
 
 func _on_level_timer_timeout() -> void:
 	time += 1

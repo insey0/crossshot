@@ -13,8 +13,8 @@ config_version=5
 config/name="CroSSShot!"
 config/description="CroSSShot! - A hardcore 2D shooter platformer with interesting mechanics. 
 Be an SSS! (SuperSuperSuper, not SuckerSuckerSucker)"
-config/version="Prototype 2 dev 051125.1"
-run/main_scene="uid://durxg5gxlqbd6"
+config/version="Prototype 2 dev 051125.2"
+run/main_scene="uid://crbi6la3qck65"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/fullsize=false
@@ -36,11 +36,11 @@ mouse_cursor/custom_image_hotspot=Vector2(30, 30)
 
 folder_colors={
 "res://_legacy/": "purple",
+"res://_legacy/tiles/": "purple",
 "res://entities/": "teal",
 "res://fonts/": "pink",
 "res://levels/": "yellow",
 "res://objects/": "green",
-"res://tiles/": "blue",
 "res://ui/": "orange"
 }
 
@@ -125,3 +125,5 @@ eqp_inventory={
 textures/canvas_textures/default_texture_filter=0
 renderer/rendering_method="gl_compatibility"
 renderer/rendering_method.mobile="gl_compatibility"
+environment/defaults/default_clear_color=Color(0, 0, 0, 1)
+2d/snap/snap_2d_transforms_to_pixel=true

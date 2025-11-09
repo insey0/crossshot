@@ -1,6 +1,7 @@
 class_name WeaponComponent
 extends Node
 
+@export var weapon_id: String = "none"
 @export var automatic: bool
 
 func handle_aim(player_pos: Vector2, mouse_pos: Vector2) -> float:

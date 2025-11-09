@@ -11,8 +11,6 @@ func _ready() -> void:
 	mouse_entered.connect(_on_mouse_entered)
 	mouse_exited.connect(_on_mouse_exited)
 	_draw()
-	size_flags_horizontal = Control.SIZE_FILL
-	size_flags_vertical = Control.SIZE_FILL
 
 func _on_mouse_entered():
 	tooltip.text = "[font_size=22][color=#FFFFFF]" + str(display_name) + "[p][color=#С4С4С4][font_size=18]" + str(description)
