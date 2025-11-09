@@ -1,5 +1,5 @@
 extends Powerup
 
 func on_pickup(player: Player):
-	if player.shoot_delay.wait_time > 0.05:
-		player.shoot_delay.wait_time -= 0.05
+	if player.weapon.automatic_shoot_delay > 0.05:
+		player.weapon.automatic_shoot_delay -= 0.05

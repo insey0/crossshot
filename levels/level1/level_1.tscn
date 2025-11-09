@@ -13,7 +13,7 @@
 [ext_resource type="PackedScene" uid="uid://bnlrjelia7q3r" path="res://objects/level/moving_platform/moving_platform.tscn" id="9_u3t6j"]
 [ext_resource type="FontFile" uid="uid://by6nnvmcgmek7" path="res://fonts/font_bi.ttf" id="10_54k3g"]
 [ext_resource type="FontFile" uid="uid://bqk618xan8rk6" path="res://fonts/font_i.ttf" id="11_u3t6j"]
-[ext_resource type="PackedScene" uid="uid://ccofjq66buuat" path="res://objects/powerups/weapon_test.tscn" id="14_tl3cw"]
+[ext_resource type="PackedScene" uid="uid://c3p84ghicmnd6" path="res://objects/powerups/weapons/pistol/pistol_pwup.tscn" id="14_tl3cw"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icxts"]
 size = Vector2(1920, 1080)
@@ -30,7 +30,7 @@ script = ExtResource("1_icxts")
 [node name="bg_layer" type="Parallax2D" parent="level_bg"]
 repeat_size = Vector2(1080, 1080)
 autoscroll = Vector2(64, 0)
-repeat_times = 10
+repeat_times = 5
 
 [node name="bg_image" type="Sprite2D" parent="level_bg/bg_layer"]
 scale = Vector2(6, 6)
@@ -195,10 +195,5 @@ text = "[i]Use
 to jump"
 horizontal_alignment = 1
 
-[node name="shoot_delay_pwup" parent="." instance=ExtResource("14_tl3cw")]
-position = Vector2(902, -415)
-is_destructible = false
-destruction_time = 999
-effect = null
-display_name = "pistol"
-description = "You're carrying a pistol"
+[node name="pistol_pwup" parent="." instance=ExtResource("14_tl3cw")]
+position = Vector2(1148, -414)

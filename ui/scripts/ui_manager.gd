@@ -47,11 +47,12 @@ func _on_level_timer_timeout() -> void:
 	level_timer.start()
 
 func _on_new_effect(effect_texture: Texture2D, effect_name: String, effect_description: String):
-	var new_effect := Effect.new()
-	effects_container.add_child(new_effect)
-	new_effect.custom_minimum_size = Vector2(48.0, 48.0)
+	if effect_texture:
+		var new_effect := Effect.new()
+		effects_container.add_child(new_effect)
+		new_effect.custom_minimum_size = Vector2(48.0, 48.0)
 	
-	new_effect.effect_texture = effect_texture
-	new_effect.description = effect_description
-	new_effect.display_name = effect_name.capitalize()
-	new_effect.tooltip = mouse_tooltip
+		new_effect.effect_texture = effect_texture
+		new_effect.description = effect_description
+		new_effect.display_name = effect_name.capitalize()
+		new_effect.tooltip = mouse_tooltip

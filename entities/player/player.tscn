@@ -21,16 +21,13 @@ size = Vector2(36, 66)
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
 size = Vector2(36, 66)
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_node", "weapon_sprite", "sprite", "muzzle", "shoot_delay", "input", "movement", "weapon", "health", "message") groups=["player"]]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("weapon_node", "weapon_sprite", "sprite", "input", "movement", "weapon", "health", "message") groups=["player"]]
 z_index = 1
 collision_layer = 2
 script = ExtResource("1_bls4j")
 weapon_node = NodePath("weapon")
 weapon_sprite = NodePath("weapon/weapon_sprite")
 sprite = NodePath("player_sprite")
-bullet = ExtResource("2_fkugw")
-muzzle = NodePath("weapon/weapon_muzzle")
-shoot_delay = NodePath("weapon/shoot_delay")
 input = NodePath("input_component")
 movement = NodePath("movement_component")
 weapon = NodePath("weapon_component")
@@ -63,7 +60,7 @@ debug_color = Color(0.87038714, 1.4439225e-06, 1.2513996e-06, 0)
 position = Vector2(18, 0)
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_sglur")
-animation = &"rifle"
+animation = &"none"
 
 [node name="weapon_muzzle" type="Marker2D" parent="weapon"]
 position = Vector2(51, 0)
@@ -78,9 +75,12 @@ script = ExtResource("4_fkugw")
 script = ExtResource("3_sglur")
 speed = 800.0
 
-[node name="weapon_component" type="Node" parent="."]
+[node name="weapon_component" type="Node" parent="." node_paths=PackedStringArray("shoot_timer", "muzzle", "sprite")]
 script = ExtResource("6_8fjmc")
-automatic = true
+shoot_timer = NodePath("../weapon/shoot_delay")
+bullet = ExtResource("2_fkugw")
+muzzle = NodePath("../weapon/weapon_muzzle")
+sprite = NodePath("../weapon/weapon_sprite")
 
 [node name="health_component" type="Node" parent="."]
 script = ExtResource("8_26q78")
