@@ -20,7 +20,7 @@ font_size = 28
 font = ExtResource("6_cd8r4")
 font_size = 36
 
-[node name="ui_manager" type="CanvasLayer" node_paths=PackedStringArray("game_info", "hp_bar", "hp_percentage", "level_timer", "time_text", "effects_container", "mouse_tooltip")]
+[node name="ui_manager" type="CanvasLayer" node_paths=PackedStringArray("game_info", "hp_bar", "hp_percentage", "level_timer", "time_text", "effects_container", "mouse_tooltip") groups=["ui_manager"]]
 script = ExtResource("1_30b5s")
 game_info = NodePath("screen_margin_container/info_container/label_container/info_label")
 hp_bar = NodePath("screen_margin_container/state_info_container/hpbar_container/hp_bar")

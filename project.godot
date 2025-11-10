@@ -35,12 +35,13 @@ mouse_cursor/custom_image_hotspot=Vector2(30, 30)
 [file_customization]
 
 folder_colors={
-"res://_legacy/": "purple",
+"res://_legacy/": "gray",
 "res://_legacy/tiles/": "purple",
-"res://entities/": "teal",
-"res://fonts/": "pink",
-"res://levels/": "yellow",
+"res://entities/": "purple",
+"res://fonts/": "blue",
+"res://levels/": "teal",
 "res://objects/": "green",
+"res://particles/": "yellow",
 "res://ui/": "orange"
 }
 

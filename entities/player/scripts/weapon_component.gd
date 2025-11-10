@@ -24,7 +24,9 @@ func shoot():
 		get_tree().current_scene.add_child(bullet_instance)
 		bullet_instance.global_rotation = muzzle.global_rotation
 		bullet_instance.global_position = muzzle.global_position
-
+	
+	if automatic:
+		shoot_timer.wait_time = automatic_shoot_delay
 	shoot_timer.start()
 
 func equip(id: String):
@@ -39,5 +41,4 @@ func equip(id: String):
 			bullet_damage = 5
 		"rifle":
 			automatic = true
-			shoot_timer.wait_time = automatic_shoot_delay
 			bullet_damage = 3
