@@ -41,14 +41,15 @@ func _on_jump() -> void:
 	movement.handle_jump(self)
 # Выстрел (signal)
 func _on_shoot() -> void:
-	if not weapon.automatic and weapon.can_single_shoot:
+	if weapon.can_shoot:
 		weapon.shoot()
-		weapon.can_single_shoot = false
+		weapon.can_shoot = false
 func _on_shoot_delay_timeout() -> void:
 	if weapon.automatic and input.shoot_held:
 		weapon.shoot()
-	if not weapon.automatic:
-		weapon.can_single_shoot = true
+		weapon.can_shoot = true
+	elif not weapon.automatic:
+		weapon.can_shoot = true
 
 # Изменение здоровья
 func _on_health_changed(new_health: int, _new_max_health: int, damage_value: int, is_damaged: bool) -> void:

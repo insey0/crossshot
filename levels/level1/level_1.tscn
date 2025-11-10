@@ -1,4 +1,4 @@
-[gd_scene load_steps=17 format=4 uid="uid://crbi6la3qck65"]
+[gd_scene load_steps=20 format=4 uid="uid://crbi6la3qck65"]
 
 [ext_resource type="PackedScene" uid="uid://0qnfltgrnbra" path="res://entities/player/player.tscn" id="1_0fil7"]
 [ext_resource type="Script" uid="uid://b14fg2moi3ywp" path="res://levels/root_node.gd" id="1_icxts"]
@@ -13,7 +13,10 @@
 [ext_resource type="PackedScene" uid="uid://bnlrjelia7q3r" path="res://objects/level/moving_platform/moving_platform.tscn" id="9_u3t6j"]
 [ext_resource type="FontFile" uid="uid://by6nnvmcgmek7" path="res://fonts/font_bi.ttf" id="10_54k3g"]
 [ext_resource type="FontFile" uid="uid://bqk618xan8rk6" path="res://fonts/font_i.ttf" id="11_u3t6j"]
+[ext_resource type="PackedScene" uid="uid://ursnofj1oqmn" path="res://objects/level/door/door.tscn" id="12_wad40"]
+[ext_resource type="PackedScene" uid="uid://bm02v4c802lev" path="res://objects/level/button/button.tscn" id="13_i1o1g"]
 [ext_resource type="PackedScene" uid="uid://c3p84ghicmnd6" path="res://objects/powerups/weapons/pistol/pistol_pwup.tscn" id="14_tl3cw"]
+[ext_resource type="PackedScene" uid="uid://cxrkf38lgi3ac" path="res://objects/powerups/weapons/rifle/rifle_pwup.tscn" id="15_o80m7"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icxts"]
 size = Vector2(1920, 1080)
@@ -157,6 +160,22 @@ distance = 850.0
 
 [node name="powerups" type="Node2D" parent="."]
 
+[node name="pistol_pwup" parent="powerups" instance=ExtResource("14_tl3cw")]
+position = Vector2(882, -414)
+
+[node name="rifle_pwup" parent="powerups" instance=ExtResource("15_o80m7")]
+position = Vector2(771, -414)
+
+[node name="interactables" type="Node2D" parent="."]
+
+[node name="door" parent="interactables" node_paths=PackedStringArray("button") instance=ExtResource("12_wad40")]
+z_index = -1
+position = Vector2(1560, -528)
+button = NodePath("../button")
+
+[node name="button" parent="interactables" instance=ExtResource("13_i1o1g")]
+position = Vector2(1633, -462)
+
 [node name="tut_1" type="RichTextLabel" parent="."]
 z_index = -1
 offset_left = 159.0
@@ -174,6 +193,7 @@ theme_override_fonts/italics_font = ExtResource("11_u3t6j")
 bbcode_enabled = true
 text = "[i]Use 'A' & 'D' keys to move"
 horizontal_alignment = 1
+metadata/_edit_use_anchors_ = true
 
 [node name="tut_2" type="RichTextLabel" parent="."]
 z_index = -1
@@ -194,6 +214,4 @@ text = "[i]Use
 'Space'
 to jump"
 horizontal_alignment = 1
-
-[node name="pistol_pwup" parent="." instance=ExtResource("14_tl3cw")]
-position = Vector2(1148, -414)
+metadata/_edit_use_anchors_ = true
