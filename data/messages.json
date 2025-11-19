@@ -1,0 +1,8 @@
+{
+	"": "[i][color=#ADADAD]Empty message, nothing to display!",
+	"heal": "[i][color=#00FF6A]Health +%d",
+	"damage": "[i][color=#FF3B00]Health -%d",
+	"death": "[b][i][color=#FF0043]Player was too weak for this world",
+	"e_to_interact": "[color=#FFFFFF]'E' to interact with [b]%s",
+	"picked_up": "[i][color=#00FF6A]Picked up [b]%s"
+}

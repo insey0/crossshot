@@ -1,7 +1,7 @@
 [gd_resource type="SpriteFrames" load_steps=3 format=3 uid="uid://dmltpa8gjqkwi"]
 
-[ext_resource type="Texture2D" uid="uid://dkjeuy0mbbi2j" path="res://entities/player/sprites/weap_rifle.png" id="1_1vp04"]
-[ext_resource type="Texture2D" uid="uid://dmhmkolxkfnn1" path="res://entities/player/sprites/weap_pistol.png" id="1_fb8j8"]
+[ext_resource type="Texture2D" uid="uid://dkjeuy0mbbi2j" path="res://weapons/sprites/weapons/weap_rifle_inhand.png" id="1_1vp04"]
+[ext_resource type="Texture2D" uid="uid://dmhmkolxkfnn1" path="res://weapons/sprites/weapons/weap_pistol_inhand.png" id="1_fb8j8"]
 
 [resource]
 animations = [{

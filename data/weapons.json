@@ -1,0 +1,5 @@
+{
+	"none": {"can_shoot": false, "automatic": false, "shoot_delay": 1.0, "bullet_damage": 0},
+	"pistol": {"can_shoot": true, "automatic": false, "shoot_delay": 0.3, "bullet_damage": 5},
+	"rifle": {"can_shoot": true, "automatic": true, "shoot_delay": 0.2, "bullet_damage": 3}
+}

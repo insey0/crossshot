@@ -11,21 +11,22 @@ config_version=5
 [application]
 
 config/name="CroSSShot!"
-config/description="CroSSShot! - A hardcore 2D shooter platformer with interesting mechanics."
-config/version="Prototype 2 dev 1125.2"
-run/main_scene="uid://crbi6la3qck65"
+config/description="CroSSShot! - A hardcore 2D shooter/platformer by insey"
+config/version="PreAlpha 0.1"
+run/main_scene="uid://bp85evandb5ut"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
+boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-boot_splash/image="uid://dy5df6fjd48ve"
 config/icon="uid://p5krqhs2tcs7"
 
 [display]
 
 window/size/viewport_width=1920
 window/size/viewport_height=1080
-window/size/mode=2
+window/size/mode=3
+window/size/resizable=false
 window/stretch/mode="viewport"
 window/stretch/aspect="ignore"
 mouse_cursor/custom_image="uid://bvkyswojtbi5m"
@@ -34,14 +35,15 @@ mouse_cursor/custom_image_hotspot=Vector2(30, 30)
 [file_customization]
 
 folder_colors={
-"res://_legacy/": "gray",
-"res://_legacy/tiles/": "purple",
+"res://components/": "pink",
+"res://data/": "gray",
 "res://entities/": "purple",
 "res://fonts/": "blue",
 "res://levels/": "teal",
 "res://objects/": "green",
 "res://particles/": "yellow",
-"res://ui/": "orange"
+"res://ui/": "orange",
+"res://weapons/": "red"
 }
 
 [global_group]

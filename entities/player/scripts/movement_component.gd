@@ -1,25 +1,31 @@
+# Movement Component
 class_name MovementComponent
 extends Node
 
-@export var gravity: float = 1800.0
-@export var speed: float = 1000.0
-@export var acceleration: float = 10.0
-@export var deceleration: float = 12.0
-@export var jump_force: float = -800.0
-
-var can_double_jump: bool = false
-@export var jump_count: int
-
+# Variables
 # Gravity
+@export var gravity: float
+# Speed
+@export var speed: float
+@export var acceleration: float
+@export var deceleration: float
+# Jump
+@export var jump_force: float
+@export var can_jump: bool = true
+# Double jump
+var max_extra_jumps: int
+var extra_jumps_left: int
+
+# Handle gravity
 func handle_gravity(player: CharacterBody2D, delta_time: float) -> void:
 	if not player.is_on_floor():
 		player.velocity.y += gravity * delta_time
 
-# Horizontal Movement
-func handle_movement(player: CharacterBody2D, direction: float, delta_time: float) -> void:
-	var target_velocity: float = speed * direction
+# Handle horizontal Movement
+func handle_movement(player: CharacterBody2D, horizontal_direction: float, delta_time: float) -> void:
+	var target_velocity: float = speed * horizontal_direction
 	
-	if direction != 0:
+	if horizontal_direction != 0:
 		player.velocity.x = lerp(player.velocity.x, target_velocity, acceleration * delta_time)
 	else:
 		player.velocity.x = lerp(player.velocity.x, 0.0, deceleration * delta_time)
@@ -27,16 +33,20 @@ func handle_movement(player: CharacterBody2D, direction: float, delta_time: floa
 	player.move_and_slide()
 
 # Jumping
-func handle_jump(player: CharacterBody2D) -> void:
-	if not can_double_jump and player.is_on_floor():
-		player.velocity.y = jump_force
-	elif can_double_jump and jump_count > 0:
+func handle_jump(player: Player) -> bool:
+	if can_jump:
 		if player.is_on_floor():
 			player.velocity.y = jump_force
-			jump_count -= 1
-		if not player.is_on_floor():
+			return true
+		elif extra_jumps_left > 0:
 			player.velocity.y = jump_force
-			jump_count -= 2
+			extra_jumps_left -= 1
+			return true
+	return false
+
+func renew_jumps(player: Player):
+	if player.is_on_floor():
+		extra_jumps_left = max_extra_jumps
 
 func handle_bounce(player: CharacterBody2D, direction: Vector2, bounce_power: float) -> void:
-	player.velocity = direction * bounce_power
+	player.velocity = Vector2(direction.x * bounce_power, direction.y * bounce_power)

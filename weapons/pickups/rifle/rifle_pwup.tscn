@@ -1,0 +1,29 @@
+[gd_scene load_steps=5 format=3 uid="uid://cxrkf38lgi3ac"]
+
+[ext_resource type="Script" uid="uid://q744ev50p5e5" path="res://weapons/pickups/rifle/rifle_pwup.gd" id="1_niawe"]
+[ext_resource type="Texture2D" uid="uid://b2aurqfjtmrd1" path="res://weapons/pickups/weapon_template.png" id="2_unjvi"]
+[ext_resource type="Texture2D" uid="uid://cvon8gwrymb28" path="res://weapons/sprites/weapons/weap_rifle.png" id="3_niawe"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_x725c"]
+size = Vector2(60, 60)
+
+[node name="rifle_pwup" type="RigidBody2D" groups=["powerups"]]
+collision_layer = 128
+lock_rotation = true
+script = ExtResource("1_niawe")
+display_name = "rifle"
+
+[node name="pwup_collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_x725c")
+debug_color = Color(0.88235295, 0, 0.3647059, 0.56078434)
+
+[node name="pwup_sprite" type="Sprite2D" parent="."]
+modulate = Color(1, 0, 0.28627452, 1)
+scale = Vector2(6, 6)
+texture = ExtResource("2_unjvi")
+
+[node name="pwup_over" type="Sprite2D" parent="."]
+position = Vector2(-2.5722775, 0.245262)
+rotation = -0.7853982
+scale = Vector2(3.9756646, 3.9756649)
+texture = ExtResource("3_niawe")
