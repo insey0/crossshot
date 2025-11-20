@@ -223,6 +223,7 @@ position = Vector2(2106, -462)
 [node name="rocket_fire_1" type="GPUParticles2D" parent="particles"]
 z_index = -1
 position = Vector2(-288, 864)
+emitting = false
 amount = 20
 texture = ExtResource("18_i1o1g")
 lifetime = 4.0
@@ -234,6 +235,7 @@ process_material = ExtResource("19_8pclc")
 [node name="rocket_fire_2" type="GPUParticles2D" parent="particles"]
 z_index = -1
 position = Vector2(-288, 144)
+emitting = false
 amount = 20
 texture = ExtResource("18_i1o1g")
 lifetime = 4.0
@@ -245,6 +247,7 @@ process_material = ExtResource("19_8pclc")
 [node name="rocket_fire_small_1" type="GPUParticles2D" parent="particles"]
 z_index = -1
 position = Vector2(96, 1536)
+emitting = false
 amount = 10
 texture = ExtResource("18_i1o1g")
 lifetime = 4.0
@@ -256,6 +259,7 @@ process_material = ExtResource("20_jvve5")
 [node name="rocket_fire_small_2" type="GPUParticles2D" parent="particles"]
 z_index = -1
 position = Vector2(96, -528)
+emitting = false
 amount = 10
 texture = ExtResource("18_i1o1g")
 lifetime = 4.0

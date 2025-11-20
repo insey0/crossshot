@@ -3,7 +3,7 @@
 [ext_resource type="Texture2D" uid="uid://cp63k4yg4nvoy" path="res://levels/menus/main_menu/sprites/parallax.png" id="1_3ot5b"]
 [ext_resource type="Script" uid="uid://4lypwloy4wpd" path="res://levels/menus/settings_menu/scripts/settings_menu.gd" id="1_vtppc"]
 [ext_resource type="Texture2D" uid="uid://5hixy7oxunmg" path="res://levels/level1/parallax_glow.png" id="2_s6b6t"]
-[ext_resource type="FontFile" uid="uid://bl62v25gapxad" path="res://fonts/game_font.ttf" id="3_2bq7h"]
+[ext_resource type="FontFile" uid="uid://bl62v25gapxad" path="res://crossshot/assets/fonts/game_font.ttf" id="3_2bq7h"]
 [ext_resource type="Texture2D" uid="uid://41fk3w5b4pw3" path="res://ui/sprites/hp_bar/under.png" id="4_5h7h7"]
 [ext_resource type="StyleBox" uid="uid://ckuhtihr17dy6" path="res://levels/menus/main_menu/resources/button_style.tres" id="4_7hjlh"]
 [ext_resource type="Texture2D" uid="uid://mvucm37iks5u" path="res://levels/menus/main_menu/sprites/logo_small.png" id="5_v3gl5"]

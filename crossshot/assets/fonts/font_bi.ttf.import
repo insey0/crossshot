@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://by6nnvmcgmek7"
-path="res://.godot/imported/font_bi.ttf-18454e776e8684375b669667bbc77b90.fontdata"
+path="res://.godot/imported/font_bi.ttf-05e5184f47849f645ad27cb4046d5d2f.fontdata"
 
 [deps]
 
-source_file="res://fonts/font_bi.ttf"
-dest_files=["res://.godot/imported/font_bi.ttf-18454e776e8684375b669667bbc77b90.fontdata"]
+source_file="res://crossshot/assets/fonts/font_bi.ttf"
+dest_files=["res://.godot/imported/font_bi.ttf-05e5184f47849f645ad27cb4046d5d2f.fontdata"]
 
 [params]
 

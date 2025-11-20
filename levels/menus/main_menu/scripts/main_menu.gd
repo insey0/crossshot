@@ -8,7 +8,7 @@ var app_version: String
 var fps_update_timer: float = 0.0
 
 func _ready():
-	sound.emit_sound("amb_main_menu", &"Music")
+	sound.emit_sound("main_menu", &"Music")
 	app_version = ProjectSettings.get_setting("application/config/version")
 
 func _process(delta: float) -> void:

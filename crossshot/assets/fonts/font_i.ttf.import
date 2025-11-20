@@ -3,12 +3,12 @@
 importer="font_data_dynamic"
 type="FontFile"
 uid="uid://bqk618xan8rk6"
-path="res://.godot/imported/font_i.ttf-25cf4af85f546777825a0c12b47e4b22.fontdata"
+path="res://.godot/imported/font_i.ttf-88fa0ab4109b5e0c269653ec030e7a18.fontdata"
 
 [deps]
 
-source_file="res://fonts/font_i.ttf"
-dest_files=["res://.godot/imported/font_i.ttf-25cf4af85f546777825a0c12b47e4b22.fontdata"]
+source_file="res://crossshot/assets/fonts/font_i.ttf"
+dest_files=["res://.godot/imported/font_i.ttf-88fa0ab4109b5e0c269653ec030e7a18.fontdata"]
 
 [params]
 

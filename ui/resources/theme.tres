@@ -1,6 +1,6 @@
 [gd_resource type="Theme" load_steps=2 format=3 uid="uid://caxycusoad52c"]
 
-[ext_resource type="FontFile" uid="uid://cnl3r4gx413xr" path="res://fonts/font.ttf" id="1_j8dt5"]
+[ext_resource type="FontFile" uid="uid://cnl3r4gx413xr" path="res://crossshot/assets/fonts/font.ttf" id="1_j8dt5"]
 
 [resource]
 default_font = ExtResource("1_j8dt5")

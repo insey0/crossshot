@@ -2,13 +2,13 @@
 
 importer="font_data_dynamic"
 type="FontFile"
-uid="uid://b0abyfw0kw5gt"
-path="res://.godot/imported/font_b.ttf-ccc4814e53ac5fbe06d6c1a555d1195b.fontdata"
+uid="uid://dslvhnuqdut55"
+path="res://.godot/imported/game_font_b.ttf-54c3b4db84dfcb8dc43fe94879cf7c8d.fontdata"
 
 [deps]
 
-source_file="res://fonts/font_b.ttf"
-dest_files=["res://.godot/imported/font_b.ttf-ccc4814e53ac5fbe06d6c1a555d1195b.fontdata"]
+source_file="res://crossshot/assets/fonts/game_font_b.ttf"
+dest_files=["res://.godot/imported/game_font_b.ttf-54c3b4db84dfcb8dc43fe94879cf7c8d.fontdata"]
 
 [params]
 
