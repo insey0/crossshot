@@ -1,7 +1,7 @@
 [gd_scene load_steps=4 format=3 uid="uid://buqbdh054eqro"]
 
 [ext_resource type="Script" uid="uid://c4irsl14wh4fg" path="res://entities/player/scripts/bullet.gd" id="1_2qgwa"]
-[ext_resource type="Texture2D" uid="uid://buy5ibr6mlyo2" path="res://weapons/sprites/projectiles/proj_bullet.png" id="1_o27as"]
+[ext_resource type="Texture2D" uid="uid://buy5ibr6mlyo2" path="res://crossshot/assets/graphics/objects/projectiles/bullet_pistol.png" id="1_o27as"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2qgwa"]
 

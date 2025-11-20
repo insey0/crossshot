@@ -1,9 +1,9 @@
 [gd_scene load_steps=8 format=3 uid="uid://bp85evandb5ut"]
 
 [ext_resource type="Script" uid="uid://blunfa0p0e8w6" path="res://levels/menus/logo_screen/logo_screen.gd" id="1_1ctld"]
-[ext_resource type="Texture2D" uid="uid://c6qe5sh7yx68r" path="res://levels/menus/logo_screen/logo.png" id="1_7jkau"]
-[ext_resource type="Texture2D" uid="uid://vem51cv6y3x6" path="res://levels/menus/logo_screen/godot.png" id="3_8xqsu"]
-[ext_resource type="AudioStream" uid="uid://bp8xvx00e0lqx" path="res://levels/menus/logo_screen/logo.wav" id="4_8xqsu"]
+[ext_resource type="Texture2D" uid="uid://c6qe5sh7yx68r" path="res://crossshot/assets/graphics/ui/logos/insey_logo.png" id="1_7jkau"]
+[ext_resource type="Texture2D" uid="uid://vem51cv6y3x6" path="res://crossshot/assets/graphics/ui/logos/godot_logo.png" id="3_8xqsu"]
+[ext_resource type="AudioStream" uid="uid://bp8xvx00e0lqx" path="res://crossshot/assets/audio/sounds/insey_logo.wav" id="4_8xqsu"]
 
 [sub_resource type="Animation" id="Animation_8xqsu"]
 length = 6.5

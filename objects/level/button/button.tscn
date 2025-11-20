@@ -1,8 +1,8 @@
 [gd_scene load_steps=6 format=3 uid="uid://bm02v4c802lev"]
 
-[ext_resource type="Texture2D" uid="uid://br7iuct7t6kcu" path="res://objects/level/button/button_1.png" id="1_3sqip"]
+[ext_resource type="Texture2D" uid="uid://br7iuct7t6kcu" path="res://crossshot/assets/graphics/objects/interactive/button/button.png" id="1_3sqip"]
 [ext_resource type="Script" uid="uid://4gw3dajvrmrl" path="res://objects/level/button/button.gd" id="1_j3qcb"]
-[ext_resource type="Texture2D" uid="uid://5e1vb7krxdqo" path="res://objects/level/button/button_2.png" id="2_j3qcb"]
+[ext_resource type="Texture2D" uid="uid://5e1vb7krxdqo" path="res://crossshot/assets/graphics/objects/interactive/button/button_pressed.png" id="2_j3qcb"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aupmd"]
 animations = [{

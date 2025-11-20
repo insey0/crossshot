@@ -1,6 +1,6 @@
 [gd_resource type="SpriteFrames" load_steps=2 format=3 uid="uid://cf8c1gcecr6tg"]
 
-[ext_resource type="Texture2D" uid="uid://btalmd2rk10hj" path="res://entities/player/sprites/player_idle.png" id="1_uuskl"]
+[ext_resource type="Texture2D" uid="uid://btalmd2rk10hj" path="res://crossshot/assets/graphics/entities/player/player_idle_nohands.png" id="1_uuskl"]
 
 [resource]
 animations = [{

@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://3bvkaurlj5r6"]
 
 [ext_resource type="Script" uid="uid://bpni5se4tbkkk" path="res://objects/powerups/shoot_delay/shoot_delay_pwup.gd" id="1_lbgeq"]
-[ext_resource type="Texture2D" uid="uid://edi2c7k68xfe" path="res://ui/sprites/effects/shoot_delay.png" id="2_gyxhd"]
-[ext_resource type="Texture2D" uid="uid://cieo4k7824gct" path="res://objects/powerups/shoot_delay/shoot_delay_powerup.png" id="2_lbgeq"]
+[ext_resource type="Texture2D" uid="uid://edi2c7k68xfe" path="res://crossshot/assets/graphics/ui/in_game/pickup_indicators/shoot_delay.png" id="2_gyxhd"]
+[ext_resource type="Texture2D" uid="uid://cieo4k7824gct" path="res://crossshot/assets/graphics/objects/pickups/shoot_delay.png" id="2_lbgeq"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x725c"]
 size = Vector2(60, 60)

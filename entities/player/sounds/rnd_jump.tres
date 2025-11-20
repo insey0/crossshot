@@ -1,9 +1,0 @@
-[gd_resource type="AudioStreamRandomizer" load_steps=3 format=3 uid="uid://dxcxpd6gtnxvj"]
-
-[ext_resource type="AudioStream" uid="uid://cq4sr72b26wjy" path="res://entities/player/sounds/res/jump_1.wav" id="1_av8yl"]
-[ext_resource type="AudioStream" uid="uid://ctpm5a1vu0208" path="res://entities/player/sounds/res/jump_2.wav" id="2_sjp63"]
-
-[resource]
-streams_count = 2
-stream_0/stream = ExtResource("1_av8yl")
-stream_1/stream = ExtResource("2_sjp63")

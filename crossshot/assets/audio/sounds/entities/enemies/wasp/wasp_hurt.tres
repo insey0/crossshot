@@ -1,0 +1,11 @@
+[gd_resource type="AudioStreamRandomizer" load_steps=4 format=3 uid="uid://pq2phkv3cydp"]
+
+[ext_resource type="AudioStream" uid="uid://bcl56voa4xgt3" path="res://crossshot/assets/audio/sounds/entities/enemies/wasp/_wasp_hurt_1.wav" id="1_8hgtg"]
+[ext_resource type="AudioStream" uid="uid://4b5duyy160dk" path="res://crossshot/assets/audio/sounds/entities/enemies/wasp/_wasp_hurt_2.wav" id="2_kcdh0"]
+[ext_resource type="AudioStream" uid="uid://c2ga4bdxeygr4" path="res://crossshot/assets/audio/sounds/entities/enemies/wasp/_wasp_hurt_3.wav" id="3_d2idh"]
+
+[resource]
+streams_count = 3
+stream_0/stream = ExtResource("1_8hgtg")
+stream_1/stream = ExtResource("2_kcdh0")
+stream_2/stream = ExtResource("3_d2idh")

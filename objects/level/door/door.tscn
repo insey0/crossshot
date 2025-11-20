@@ -1,7 +1,7 @@
 [gd_scene load_steps=7 format=3 uid="uid://ursnofj1oqmn"]
 
 [ext_resource type="Script" uid="uid://b2ckp5771nvt4" path="res://objects/level/door/door.gd" id="1_2ebfc"]
-[ext_resource type="Texture2D" uid="uid://bcpi40vlll3us" path="res://objects/level/door/door.png" id="1_ou7m8"]
+[ext_resource type="Texture2D" uid="uid://bcpi40vlll3us" path="res://crossshot/assets/graphics/objects/interactive/door/door.png" id="1_ou7m8"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ebfc"]
 size = Vector2(48, 288)
