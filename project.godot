@@ -14,12 +14,14 @@ config/name="CroSSShot!"
 config/description="CroSSShot! - A hardcore 2D shooter/platformer by insey"
 config/version="PreAlpha 0.1.1"
 run/main_scene="uid://bp85evandb5ut"
+config/use_custom_user_dir=true
+config/custom_user_dir_name="<OS user data directory>/Insey/<project name>"
 config/features=PackedStringArray("4.5", "GL Compatibility")
 boot_splash/bg_color=Color(0, 0, 0, 1)
 boot_splash/show_image=false
 boot_splash/fullsize=false
 boot_splash/use_filter=false
-config/icon="uid://p5krqhs2tcs7"
+config/icon="uid://ftgowul5o6mt"
 
 [display]
 

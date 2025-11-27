@@ -1,9 +1,9 @@
 [gd_scene load_steps=19 format=3 uid="uid://0qnfltgrnbra"]
 
 [ext_resource type="Script" uid="uid://ckcswt8lb44p1" path="res://entities/player/scripts/player.gd" id="1_bls4j"]
-[ext_resource type="SpriteFrames" uid="uid://cf8c1gcecr6tg" path="res://entities/player/resources/player_sprite_frames.tres" id="2_8fjmc"]
+[ext_resource type="SpriteFrames" uid="uid://cf8c1gcecr6tg" path="res://crossshot/resources/entities/player/player_frames.tres" id="2_8fjmc"]
 [ext_resource type="PackedScene" uid="uid://buqbdh054eqro" path="res://weapons/bullet.tscn" id="2_fkugw"]
-[ext_resource type="SpriteFrames" uid="uid://dmltpa8gjqkwi" path="res://entities/player/resources/weapon_sprite_frames.tres" id="2_sglur"]
+[ext_resource type="SpriteFrames" uid="uid://dmltpa8gjqkwi" path="res://crossshot/resources/entities/weapons/weapon_h_frames.tres" id="2_sglur"]
 [ext_resource type="Script" uid="uid://3k5wogfimfr1" path="res://entities/player/scripts/movement_component.gd" id="3_sglur"]
 [ext_resource type="Script" uid="uid://80idee6s2pwl" path="res://components/input_component.gd" id="4_afbqv"]
 [ext_resource type="Script" uid="uid://gdsbrb75nalr" path="res://entities/player/scripts/weapon_component.gd" id="6_8fjmc"]

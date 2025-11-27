@@ -5,7 +5,7 @@
 [ext_resource type="Texture2D" uid="uid://5hixy7oxunmg" path="res://crossshot/assets/graphics/levels/1_spaceship/backgrounds/parallax_glow.png" id="2_s6b6t"]
 [ext_resource type="FontFile" uid="uid://bl62v25gapxad" path="res://crossshot/assets/fonts/game_font.ttf" id="3_2bq7h"]
 [ext_resource type="Texture2D" uid="uid://41fk3w5b4pw3" path="res://crossshot/assets/graphics/ui/bars/std_under.png" id="4_5h7h7"]
-[ext_resource type="StyleBox" uid="uid://ckuhtihr17dy6" path="res://levels/menus/main_menu/resources/button_style.tres" id="4_7hjlh"]
+[ext_resource type="StyleBox" uid="uid://ckuhtihr17dy6" path="res://crossshot/resources/ui/button_style.tres" id="4_7hjlh"]
 [ext_resource type="Texture2D" uid="uid://mvucm37iks5u" path="res://crossshot/assets/graphics/ui/logos/insey_logo_small.png" id="5_v3gl5"]
 [ext_resource type="Texture2D" uid="uid://c7qqlhvbn5mxq" path="res://crossshot/assets/graphics/ui/bars/std_over.png" id="5_vtppc"]
 [ext_resource type="LabelSettings" uid="uid://crls46ui7nhuh" path="res://ui/resources/label_settings.tres" id="6_5h7h7"]
