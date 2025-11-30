@@ -23,6 +23,10 @@ boot_splash/fullsize=false
 boot_splash/use_filter=false
 config/icon="uid://ftgowul5o6mt"
 
+[audio]
+
+buses/default_bus_layout="res://crossshot/resources/default_bus_layout.tres"
+
 [display]
 
 window/size/viewport_width=1920
@@ -37,20 +41,14 @@ mouse_cursor/custom_image_hotspot=Vector2(30, 30)
 [file_customization]
 
 folder_colors={
-"res://components/": "pink",
 "res://crossshot/": "orange",
-"res://crossshot/assets/": "blue",
+"res://crossshot/assets/": "green",
 "res://crossshot/core/": "red",
-"res://crossshot/data/": "green",
-"res://crossshot/resources/": "pink",
-"res://crossshot/scenes/": "yellow",
+"res://crossshot/data/": "yellow",
+"res://crossshot/resources/": "blue",
+"res://crossshot/scenes/": "red",
 "res://crossshot/scripts/": "teal",
-"res://entities/": "purple",
-"res://levels/": "teal",
-"res://objects/": "green",
-"res://particles/": "yellow",
-"res://ui/": "orange",
-"res://weapons/": "red"
+"res://crossshot/scripts/components/": "teal"
 }
 
 [global_group]
