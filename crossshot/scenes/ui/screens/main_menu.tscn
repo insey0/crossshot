@@ -265,7 +265,7 @@ custom_minimum_size = Vector2(600, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 theme_override_constants/margin_left = 150
-theme_override_constants/margin_top = 80
+theme_override_constants/margin_top = 180
 theme_override_constants/margin_right = 24
 theme_override_constants/margin_bottom = 24
 
@@ -286,70 +286,6 @@ text = "PLAY"
 alignment = 0
 
 [node name="button_animation" type="AnimationPlayer" parent="main_menu_ui/screen_container/left_panel/action_buttons/play_button_container"]
-libraries = {
-&"": SubResource("AnimationLibrary_ii3ol")
-}
-autoplay = "fly_out"
-
-[node name="editor_button_container" type="MarginContainer" parent="main_menu_ui/screen_container/left_panel/action_buttons"]
-custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/margin_left = 150
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="btn_editor" type="Button" parent="main_menu_ui/screen_container/left_panel/action_buttons/editor_button_container"]
-texture_filter = 2
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.73333335)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.2627451)
-theme_override_fonts/font = ExtResource("2_86fa0")
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = ExtResource("3_h370v")
-theme_override_styles/pressed = ExtResource("3_h370v")
-theme_override_styles/hover = ExtResource("3_h370v")
-theme_override_styles/disabled = ExtResource("3_h370v")
-theme_override_styles/focus = ExtResource("3_h370v")
-disabled = true
-text = "EDITOR"
-alignment = 0
-
-[node name="button_animation" type="AnimationPlayer" parent="main_menu_ui/screen_container/left_panel/action_buttons/editor_button_container"]
-libraries = {
-&"": SubResource("AnimationLibrary_ii3ol")
-}
-autoplay = "fly_out"
-
-[node name="profile_button_container" type="MarginContainer" parent="main_menu_ui/screen_container/left_panel/action_buttons"]
-custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/margin_left = 150
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="btn_profile" type="Button" parent="main_menu_ui/screen_container/left_panel/action_buttons/profile_button_container"]
-texture_filter = 2
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.73333335)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.2627451)
-theme_override_fonts/font = ExtResource("2_86fa0")
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = ExtResource("3_h370v")
-theme_override_styles/pressed = ExtResource("3_h370v")
-theme_override_styles/hover = ExtResource("3_h370v")
-theme_override_styles/disabled = ExtResource("3_h370v")
-theme_override_styles/focus = ExtResource("3_h370v")
-disabled = true
-text = "PROFILE"
-alignment = 0
-
-[node name="button_animation" type="AnimationPlayer" parent="main_menu_ui/screen_container/left_panel/action_buttons/profile_button_container"]
 libraries = {
 &"": SubResource("AnimationLibrary_ii3ol")
 }
@@ -381,38 +317,6 @@ text = "SETTINGS"
 alignment = 0
 
 [node name="button_animation" type="AnimationPlayer" parent="main_menu_ui/screen_container/left_panel/action_buttons/settings_button_container"]
-libraries = {
-&"": SubResource("AnimationLibrary_ii3ol")
-}
-autoplay = "fly_out"
-
-[node name="credits_button_container" type="MarginContainer" parent="main_menu_ui/screen_container/left_panel/action_buttons"]
-custom_minimum_size = Vector2(600, 0)
-layout_mode = 2
-size_flags_horizontal = 0
-theme_override_constants/margin_left = 150
-theme_override_constants/margin_top = 24
-theme_override_constants/margin_right = 24
-theme_override_constants/margin_bottom = 24
-
-[node name="btn_credits" type="Button" parent="main_menu_ui/screen_container/left_panel/action_buttons/credits_button_container"]
-texture_filter = 2
-layout_mode = 2
-theme_override_colors/font_color = Color(1, 1, 1, 0.73333335)
-theme_override_colors/font_hover_color = Color(1, 1, 1, 1)
-theme_override_colors/font_disabled_color = Color(1, 1, 1, 0.2627451)
-theme_override_fonts/font = ExtResource("2_86fa0")
-theme_override_font_sizes/font_size = 48
-theme_override_styles/normal = ExtResource("3_h370v")
-theme_override_styles/pressed = ExtResource("3_h370v")
-theme_override_styles/hover = ExtResource("3_h370v")
-theme_override_styles/disabled = ExtResource("3_h370v")
-theme_override_styles/focus = ExtResource("3_h370v")
-disabled = true
-text = "CREDITS"
-alignment = 0
-
-[node name="button_animation" type="AnimationPlayer" parent="main_menu_ui/screen_container/left_panel/action_buttons/credits_button_container"]
 libraries = {
 &"": SubResource("AnimationLibrary_ii3ol")
 }
@@ -499,15 +403,8 @@ libraries = {
 }
 autoplay = "fade_in"
 
-[node name="sound_manager" type="Node" parent="." node_paths=PackedStringArray("player", "amb_player")]
+[node name="sound_manager" type="Node" parent="."]
 script = ExtResource("10_yika2")
-player = NodePath("../sound_player")
-amb_player = NodePath("../ambiance_player")
-entity_path = "res://levels/menus/main_menu/"
-
-[node name="sound_player" type="AudioStreamPlayer2D" parent="."]
-
-[node name="ambiance_player" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="pressed" from="main_menu_ui/screen_container/left_panel/action_buttons/play_button_container/btn_play" to="." method="_on_btn_play_pressed"]
 [connection signal="pressed" from="main_menu_ui/screen_container/left_panel/action_buttons/settings_button_container/btn_settings" to="." method="_on_btn_settings_pressed"]

@@ -8,8 +8,8 @@ var app_version: String
 var fps_update_timer: float = 0.0
 
 func _ready():
-	sound.emit_sound("main_menu", &"Music")
 	app_version = ProjectSettings.get_setting("application/config/version")
+	sound.play_sound("mus_main_menu", &"Music", true)
 
 func _process(delta: float) -> void:
 	fps_update_timer += delta # Info update timer
@@ -21,11 +21,11 @@ func _process(delta: float) -> void:
 
 func _on_btn_play_pressed() -> void:
 	fader.play("fade_out")
-	next_scene_path = "res://levels/level1/level_1.tscn"
+	next_scene_path = "res://crossshot/scenes/levels/level_1.tscn"
 
 func _on_btn_settings_pressed() -> void:
 	fader.play("fade_out")
-	next_scene_path = "res://levels/menus/settings_menu/settings_menu.tscn"
+	next_scene_path = "res://crossshot/scenes/ui/screens/settings_menu.tscn"
 
 func _on_btn_exit_pressed() -> void:
 	fader.play("fade_out")

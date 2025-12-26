@@ -11,7 +11,7 @@ var is_constant: bool = false
 var messages: Dictionary = {}
 
 func _ready() -> void:
-	messages = _load_data("res://data/messages.json")
+	messages = _load_data("res://crossshot/data/messages.json")
 
 func display(msg_key: String, values: Array, hide_after: float):
 	var final_message: String

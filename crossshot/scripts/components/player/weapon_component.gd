@@ -9,6 +9,7 @@ extends Node
 @export var weapon_node: Node2D
 @export var muzzle: Marker2D
 @export var sprite: AnimatedSprite2D
+@export var sound: SoundManager
 
 # Weapon properties
 var can_shoot: bool = false
@@ -24,7 +25,7 @@ var bullet_speed: float
 var weapons: Dictionary = {}
 
 func _ready() -> void:
-	weapons = _load_data("res://data/weapons.json")
+	weapons = _load_data("res://crossshot/data/weapons.json")
 
 func handle_aim(player_pos: Vector2, mouse_pos: Vector2) -> void:
 	var direction: Vector2 = mouse_pos - player_pos
@@ -43,6 +44,7 @@ func shoot() -> void:
 		
 		bullet_instance.global_rotation = muzzle.global_rotation
 		bullet_instance.global_position = muzzle.global_position
+		sound.play_sound("weap_rifle_shoot")
 
 func equip(id: String):
 	can_shoot = true

@@ -29,7 +29,7 @@ func _physics_process(delta: float) -> void:
 # Jump (signal)
 func _on_jump() -> void:
 	if movement.handle_jump(self):
-		sound.emit_sound("rnd_jump", &"Sound")
+		sound.play_sound("player_jump_" + str(randi_range(1,2)))
 	movement.handle_jump(self)
 # Shoot (signal)
 func _on_shoot() -> void:
@@ -73,7 +73,7 @@ func _on_body_entered(body: Node2D) -> void:
 		picked_up_powerup.emit(pwup.effect, pwup.display_name, pwup.description)
 		pwup.on_pickup(self)
 		pwup.queue_free()
-		sound.emit_sound("powerup")
+		sound.play_sound("player_pickup_powerup")
 
 # Message values cleaning
 func _on_message_hidden() -> void:

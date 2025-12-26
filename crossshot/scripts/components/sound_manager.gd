@@ -1,51 +1,95 @@
+# Sound Manager
 class_name SoundManager
 extends Node
 
-@export var player: AudioStreamPlayer2D
-@export var amb_player: AudioStreamPlayer2D
-@export var entity_path: String
-var sounds: Dictionary = {}
+var sound_cache: Dictionary = {} # Кэш звуков
+
+var ext_path: String = "user://audio/"
+var active_players: Array = [] # Текущие AudioStreamPlayer'ы
+var max_players: int = 10
+
+# signal sounds_loaded
 
 func _ready() -> void:
-	_load_sounds("res://entities/")
-	_load_sounds(entity_path)
+	# Загрузка звуковых файлов в кэш
+	_load_external_sounds(ext_path)
 
-func emit_sound(id: String, bus: StringName = &"Sound", vol: float = 0.0, random_pitch: bool = false, min_pitch: float = 0.0, std_max_pitch: float = 1.0):
-	player.stream = sounds[id]
-	player.bus = bus
-	player.volume_db = vol
-	if random_pitch:
-		player.pitch_scale = randf_range(min_pitch, std_max_pitch)
+# Функция проигрывания звука
+func play_sound(sound_name: String, bus: StringName = &"Sound", loop: bool = false,
+volume_db: float = 0.0, pitch_scale: float = 1.0, start_from: float = 0.0) -> void:
+	if not sound_cache.has(sound_name):
+		push_error("SoundManager: Couldn't find ", sound_name, " in sounds cache.")
+	
 	else:
-		player.pitch_scale = std_max_pitch
+		var player = AudioStreamPlayer2D.new()
+		player.stream = sound_cache[sound_name]
+		player.volume_db = volume_db
+		player.pitch_scale = pitch_scale
+		player.bus = bus
+	
+		player.finished.connect(_on_player_finished.bind(player, loop)) # Подключение сигнала завершения звука
+	
+		get_parent().add_child(player)
+		player.play(start_from) # Проигрывание звука с конкретной секунды
+	
+		active_players.append(player) # Добавление в активные ASP
+	
+		cleanup_player_pool()
+
+func _load_external_sounds(path: String):
+	# Директория
+	var dir = DirAccess.open(path)
+	var stream = null
+	
+	if dir:
+		for file in dir.get_files():
+			if file.ends_with(".wav"):
+				stream = AudioStreamWAV.load_from_file(path.path_join(file))
+				sound_cache[file.get_basename()] = stream
+	
+# Удаление неиспользуемых ASP из active_players[]
+func cleanup_player_pool() -> void:
+	if active_players.size() > max_players:
+		var to_remove: Array = [] # Список индексов элементов для удаления
+		for i in range(active_players.size()):
+			var player: AudioStreamPlayer2D = active_players[i]
+			if not player or not player.playing:
+				to_remove.append(i)
+
+		to_remove.reverse()
+		for n in to_remove:
+			var player: AudioStreamPlayer2D = active_players[n]
+			if player and is_instance_valid(player):
+				player.queue_free()
+			active_players.remove_at(n)
+
+# Проверка проигрывания звука
+func is_sound_playing(sound_name: String) -> bool:
+	for player in active_players:
+		if player and player.stream == sound_cache.get(sound_name) and player.playing:
+			return true
+	return false
+
+# Остановка всех звуков
+func stop_all_sounds() -> void:
+	for player: AudioStreamPlayer in active_players:
+		if player and is_instance_valid(player):
+			player.stop()
+			player.queue_free()
+		active_players.clear()
+
+# Автоудаление или зацикливание ASP
+func _on_player_finished(player: AudioStreamPlayer2D, loop: bool) -> void:
+	if not loop:
+		player.stop()
+		if player and is_instance_valid(player) and not player.playing:
+			active_players.erase(player)
+			player.queue_free()
+			return
+	
 	player.play()
 
-# Sound loader
-func _load_sounds(path: String):
-	var dir_path = path.path_join("sounds") # Getting the directory of the current scene
-	var dir = DirAccess.open(dir_path) # Opening the directory
-	
-	# Error handle
-	if dir == null:
-		push_error("SoundManager: Cannot open sounds directory: " + dir_path)
-		return
-	
-	dir.list_dir_begin() # Entering the loop in the opened directory
-	var elem_name = dir.get_next() # Iterating through the directory elements
-	
-	while elem_name != "":
-		if not dir.current_is_dir() and elem_name.get_extension().to_lower() in ["tres", "wav", "mp3", "ogg"]:
-			var sound_path = dir_path.path_join(elem_name) # Adding filename to the "sounds" directory path
-			var sound_name = elem_name.get_basename() # Getting the file name only ("filename.wav" >>> "filename")
-			
-			var sound_resource = load(sound_path) # Loading the path as a resource
-			if sound_resource and sound_resource is AudioStream:
-				sounds[sound_name] = sound_resource # Adding to the cache
-			# Error handle
-			else:
-				push_error("SoundManager: Failed to load sound: " + sound_path)
-		elem_name = dir.get_next()
-	dir.list_dir_end()
-
-func _on_ambiance_player_finished() -> void:
-	amb_player.play()
+# Очистить кэш
+func unload_cache() -> void:
+	stop_all_sounds()
+	sound_cache.clear()

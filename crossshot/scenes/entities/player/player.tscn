@@ -81,13 +81,14 @@ acceleration = 8.0
 deceleration = 10.0
 jump_force = -800.0
 
-[node name="weapon_component" type="Node" parent="." node_paths=PackedStringArray("shoot_timer", "weapon_node", "muzzle", "sprite")]
+[node name="weapon_component" type="Node" parent="." node_paths=PackedStringArray("shoot_timer", "weapon_node", "muzzle", "sprite", "sound")]
 script = ExtResource("6_8fjmc")
 shoot_timer = NodePath("../weapon/shoot_delay")
 bullet = ExtResource("2_fkugw")
 weapon_node = NodePath("../weapon")
 muzzle = NodePath("../weapon/weapon_muzzle")
 sprite = NodePath("../weapon/weapon_sprite")
+sound = NodePath("../sound_manager")
 
 [node name="health_component" type="Node" parent="."]
 script = ExtResource("8_26q78")
@@ -124,15 +125,8 @@ vertical_alignment = 1
 [node name="message_clear_timer" type="Timer" parent="."]
 one_shot = true
 
-[node name="sound_manager" type="Node" parent="." node_paths=PackedStringArray("player", "amb_player")]
+[node name="sound_manager" type="Node" parent="."]
 script = ExtResource("16_yqrof")
-player = NodePath("../sound_player")
-amb_player = NodePath("../ambiance_player")
-entity_path = "res://entities/player"
-
-[node name="sound_player" type="AudioStreamPlayer2D" parent="."]
-
-[node name="ambiance_player" type="AudioStreamPlayer2D" parent="."]
 
 [connection signal="area_entered" from="player_detect_box" to="." method="_on_area_entered"]
 [connection signal="area_exited" from="player_detect_box" to="." method="_on_area_exited"]
@@ -143,4 +137,3 @@ entity_path = "res://entities/player"
 [connection signal="health_changed" from="health_component" to="." method="_on_health_changed"]
 [connection signal="hidden" from="message_manager" to="." method="_on_message_hidden"]
 [connection signal="timeout" from="message_clear_timer" to="message_manager" method="_on_message_clear_timer_timeout"]
-[connection signal="finished" from="ambiance_player" to="sound_manager" method="_on_ambiance_player_finished"]
