@@ -12,6 +12,7 @@ extends Node
 @export var sound: SoundManager
 
 # Weapon properties
+var current_weapon: String = ""
 var can_shoot: bool = false
 var is_delayed: bool = false
 var shoot_delay: float
@@ -50,6 +51,7 @@ func equip(id: String):
 	can_shoot = true
 	sprite.animation = id
 	
+	current_weapon = id
 	automatic = weapons[id]["automatic"]
 	shoot_delay = weapons[id]["shoot_delay"]
 	bullet_damage = weapons[id]["bullet_damage"]

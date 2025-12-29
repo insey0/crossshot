@@ -1,0 +1,189 @@
+[gd_scene load_steps=7 format=3 uid="uid://clemd2waugkqp"]
+
+[ext_resource type="Texture2D" uid="uid://dw3q8oghi5367" path="res://crossshot/scenes/test_scenes/boss_2_test/seg_1.png" id="1_isirs"]
+[ext_resource type="Texture2D" uid="uid://b0n5pce4whk8d" path="res://crossshot/scenes/test_scenes/boss_2_test/seg_2.png" id="2_stkjq"]
+[ext_resource type="Texture2D" uid="uid://chapjtaoru10e" path="res://crossshot/scenes/test_scenes/boss_2_test/seg_3.png" id="3_j0euj"]
+[ext_resource type="Texture2D" uid="uid://dw7u15woec27h" path="res://crossshot/scenes/test_scenes/boss_2_test/seg_4.png" id="4_xhseb"]
+[ext_resource type="Texture2D" uid="uid://pq2gx31f12s4" path="res://crossshot/scenes/test_scenes/boss_2_test/seg_5.png" id="5_b7n5l"]
+[ext_resource type="Texture2D" uid="uid://d1nvx6i28nnpt" path="res://crossshot/scenes/test_scenes/boss_2_test/seg_6.png" id="6_0drmx"]
+
+[node name="tentacle_noanim" type="Node2D"]
+
+[node name="seg_1" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("1_isirs")
+offset = Vector2(6, 0)
+
+[node name="seg_2" type="Sprite2D" parent="seg_1"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("1_isirs")
+offset = Vector2(6, 0)
+
+[node name="seg_3" type="Sprite2D" parent="seg_1/seg_2"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("2_stkjq")
+offset = Vector2(6, 0)
+
+[node name="seg_4" type="Sprite2D" parent="seg_1/seg_2/seg_3"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("2_stkjq")
+offset = Vector2(6, 0)
+
+[node name="seg_5" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("2_stkjq")
+offset = Vector2(6, 0)
+
+[node name="seg_6" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("2_stkjq")
+offset = Vector2(6, 0)
+
+[node name="seg_7" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("2_stkjq")
+offset = Vector2(6, 0)
+
+[node name="seg_8" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("2_stkjq")
+offset = Vector2(6, 0)
+
+[node name="seg_9" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("3_j0euj")
+offset = Vector2(6, 0)
+
+[node name="seg_10" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("3_j0euj")
+offset = Vector2(6, 0)
+
+[node name="seg_11" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("3_j0euj")
+offset = Vector2(6, 0)
+
+[node name="seg_12" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("3_j0euj")
+offset = Vector2(6, 0)
+
+[node name="seg_13" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("3_j0euj")
+offset = Vector2(6, 0)
+
+[node name="seg_14" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("3_j0euj")
+offset = Vector2(6, 0)
+
+[node name="seg_15" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("3_j0euj")
+offset = Vector2(6, 0)
+
+[node name="seg_16" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("3_j0euj")
+offset = Vector2(6, 0)
+
+[node name="seg_17" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15/seg_16"]
+z_index = -1
+position = Vector2(10, 0)
+texture = ExtResource("4_xhseb")
+offset = Vector2(6, 0)
+
+[node name="seg_18" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15/seg_16/seg_17"]
+z_index = -1
+position = Vector2(9, 0)
+texture = ExtResource("4_xhseb")
+offset = Vector2(6, 0)
+
+[node name="seg_19" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15/seg_16/seg_17/seg_18"]
+z_index = -1
+position = Vector2(9, 0)
+texture = ExtResource("4_xhseb")
+offset = Vector2(6, 0)
+
+[node name="seg_20" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15/seg_16/seg_17/seg_18/seg_19"]
+z_index = -1
+position = Vector2(9, 0)
+texture = ExtResource("4_xhseb")
+offset = Vector2(6, 0)
+
+[node name="seg_21" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15/seg_16/seg_17/seg_18/seg_19/seg_20"]
+z_index = -1
+position = Vector2(9, 0)
+texture = ExtResource("4_xhseb")
+offset = Vector2(6, 0)
+
+[node name="seg_22" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15/seg_16/seg_17/seg_18/seg_19/seg_20/seg_21"]
+z_index = -1
+position = Vector2(9, 0)
+texture = ExtResource("4_xhseb")
+offset = Vector2(6, 0)
+
+[node name="seg_23" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15/seg_16/seg_17/seg_18/seg_19/seg_20/seg_21/seg_22"]
+z_index = -1
+position = Vector2(9, 0)
+texture = ExtResource("4_xhseb")
+offset = Vector2(6, 0)
+
+[node name="seg_24" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15/seg_16/seg_17/seg_18/seg_19/seg_20/seg_21/seg_22/seg_23"]
+z_index = -1
+position = Vector2(9, 0)
+texture = ExtResource("4_xhseb")
+offset = Vector2(6, 0)
+
+[node name="seg_25" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15/seg_16/seg_17/seg_18/seg_19/seg_20/seg_21/seg_22/seg_23/seg_24"]
+z_index = -1
+position = Vector2(9, 0)
+texture = ExtResource("5_b7n5l")
+offset = Vector2(6, 0)
+
+[node name="seg_26" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15/seg_16/seg_17/seg_18/seg_19/seg_20/seg_21/seg_22/seg_23/seg_24/seg_25"]
+z_index = -1
+position = Vector2(9, 0)
+texture = ExtResource("5_b7n5l")
+offset = Vector2(6, 0)
+
+[node name="seg_27" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15/seg_16/seg_17/seg_18/seg_19/seg_20/seg_21/seg_22/seg_23/seg_24/seg_25/seg_26"]
+z_index = -1
+position = Vector2(9, 0)
+texture = ExtResource("5_b7n5l")
+offset = Vector2(6, 0)
+
+[node name="seg_28" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15/seg_16/seg_17/seg_18/seg_19/seg_20/seg_21/seg_22/seg_23/seg_24/seg_25/seg_26/seg_27"]
+z_index = -1
+position = Vector2(8, 0)
+texture = ExtResource("6_0drmx")
+offset = Vector2(6, 0)
+
+[node name="seg_29" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15/seg_16/seg_17/seg_18/seg_19/seg_20/seg_21/seg_22/seg_23/seg_24/seg_25/seg_26/seg_27/seg_28"]
+z_index = -1
+position = Vector2(8, 0)
+texture = ExtResource("6_0drmx")
+offset = Vector2(6, 0)
+
+[node name="seg_30" type="Sprite2D" parent="seg_1/seg_2/seg_3/seg_4/seg_5/seg_6/seg_7/seg_8/seg_9/seg_10/seg_11/seg_12/seg_13/seg_14/seg_15/seg_16/seg_17/seg_18/seg_19/seg_20/seg_21/seg_22/seg_23/seg_24/seg_25/seg_26/seg_27/seg_28/seg_29"]
+z_index = -1
+position = Vector2(8, 0)
+texture = ExtResource("6_0drmx")
+offset = Vector2(6, 0)

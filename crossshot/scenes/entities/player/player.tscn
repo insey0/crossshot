@@ -4,24 +4,75 @@
 [ext_resource type="SpriteFrames" uid="uid://cf8c1gcecr6tg" path="res://crossshot/resources/entities/player/player_frames.tres" id="2_8fjmc"]
 [ext_resource type="PackedScene" uid="uid://buqbdh054eqro" path="res://crossshot/scenes/objects/projectiles/bullet.tscn" id="2_fkugw"]
 [ext_resource type="SpriteFrames" uid="uid://dmltpa8gjqkwi" path="res://crossshot/resources/entities/weapons/weapon_h_frames.tres" id="2_sglur"]
-[ext_resource type="Script" uid="uid://3k5wogfimfr1" path="res://crossshot/scripts/components/player/movement_component.gd" id="3_sglur"]
-[ext_resource type="Script" uid="uid://80idee6s2pwl" path="res://crossshot/scripts/components/input_component.gd" id="4_afbqv"]
-[ext_resource type="Script" uid="uid://gdsbrb75nalr" path="res://crossshot/scripts/components/player/weapon_component.gd" id="6_8fjmc"]
-[ext_resource type="Script" uid="uid://ddntbtb0a4jhg" path="res://crossshot/scripts/components/health_component.gd" id="8_26q78"]
-[ext_resource type="Script" uid="uid://dhktuwftm0qt5" path="res://crossshot/scripts/components/message_manager.gd" id="9_afbqv"]
+[ext_resource type="Script" uid="uid://3k5wogfimfr1" path="res://crossshot/scripts/entities/player/components/movement_manager.gd" id="3_sglur"]
+[ext_resource type="Script" uid="uid://80idee6s2pwl" path="res://crossshot/scripts/entities/player/components/input_manager.gd" id="4_afbqv"]
+[ext_resource type="Script" uid="uid://gdsbrb75nalr" path="res://crossshot/scripts/entities/player/components/weapon_component.gd" id="6_8fjmc"]
+[ext_resource type="Script" uid="uid://ddntbtb0a4jhg" path="res://crossshot/scripts/entities/player/components/health_manager.gd" id="8_26q78"]
+[ext_resource type="Script" uid="uid://dhktuwftm0qt5" path="res://crossshot/scripts/entities/player/components/message_manager.gd" id="9_afbqv"]
 [ext_resource type="Theme" uid="uid://caxycusoad52c" path="res://crossshot/resources/ui/theme.tres" id="9_bectd"]
-[ext_resource type="Script" uid="uid://cbdi2j0mwmyn7" path="res://crossshot/scripts/components/animation_manager.gd" id="10_gx6sm"]
 [ext_resource type="FontFile" uid="uid://cnl3r4gx413xr" path="res://crossshot/assets/fonts/font.ttf" id="10_j3ovn"]
 [ext_resource type="FontFile" uid="uid://b0abyfw0kw5gt" path="res://crossshot/assets/fonts/font_b.ttf" id="11_afbqv"]
 [ext_resource type="FontFile" uid="uid://by6nnvmcgmek7" path="res://crossshot/assets/fonts/font_bi.ttf" id="12_gx6sm"]
 [ext_resource type="FontFile" uid="uid://bqk618xan8rk6" path="res://crossshot/assets/fonts/font_i.ttf" id="13_yqrof"]
-[ext_resource type="Script" uid="uid://c8dbvtaoank7o" path="res://crossshot/scripts/components/sound_manager.gd" id="16_yqrof"]
+[ext_resource type="Script" uid="uid://c8dbvtaoank7o" path="res://crossshot/scripts/entities/player/components/sound_manager.gd" id="16_yqrof"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_bls4j"]
 size = Vector2(36, 66)
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
 size = Vector2(36, 66)
+
+[sub_resource type="GDScript" id="GDScript_o1vvg"]
+script/source = "# Animation Manager
+class_name AnimationManager
+extends Node
+
+var sprites_cache: Dictionary = {}
+var anim_cache: Dictionary = {}
+
+func _ready() -> void:
+	var sprites: Array = _load_sprites(get_parent(), \"sa\")
+
+func play_animation(node: Node2D, id: StringName, speed: float, start_frame: int):
+	var sprites: Array = _load_sprites(node, \"a\")
+	for sprite: AnimatedSprite2D in sprites:
+		if id in sprite.sprite_frames.get_animation_names():
+			sprite.play(id, speed)
+			sprite.frame = start_frame
+	return
+
+# Flip sprites towards the target
+func flip_sprites_targeted(node: Node2D, target_position: Vector2):
+	var sprites: Array = _load_sprites(node, \"sa\")
+	var flip: bool = target_position.x < node.global_position.x
+	
+	for sprite: Array in sprites:
+		if sprite[1].is_in_group(\"flip_h\"):
+			sprite[1].flip_h = flip
+		if sprite[1].is_in_group(\"flip_v\"):
+			sprite[1].flip_v = flip
+
+# Find and cache only AnimatedSprite2Ds
+func _cache_animated_sprites(node: Node) -> void:
+	var sprites: Array = _load_sprites(node, \"a\")
+	for sprite: Array in sprites:
+		sprites_cache[sprite[0]] = [sprite[1], sprite[2]]
+
+func _cache_animations():
+	for idx in range(len(sprites_cache)):
+		pass
+
+# Create sprites array for a node
+func _load_sprites(node: Node, flag: String) -> Array:
+	var sprites: Array = []
+	for child in node.get_children():
+		if child is Sprite2D and \"s\" in flag:
+			sprites.append([child.name, child, \"s\"])
+		if child is AnimatedSprite2D and \"a\" in flag:
+			sprites.append([child.name, child, \"a\"])
+		sprites.append_array(_load_sprites(child, flag))
+	return sprites
+"
 
 [node name="player" type="CharacterBody2D" node_paths=PackedStringArray("input", "movement", "weapon", "health", "sound", "animation", "message") groups=["player"]]
 z_index = 1
@@ -38,7 +89,7 @@ message = NodePath("message_manager")
 [node name="player_sprite" type="AnimatedSprite2D" parent="." groups=["flip_h"]]
 scale = Vector2(6, 6)
 sprite_frames = ExtResource("2_8fjmc")
-animation = &"idle"
+animation = &"idle_noweapon"
 autoplay = "idle"
 
 [node name="player_collision" type="CollisionShape2D" parent="."]
@@ -75,11 +126,6 @@ script = ExtResource("4_afbqv")
 
 [node name="movement_component" type="Node" parent="."]
 script = ExtResource("3_sglur")
-gravity = 1800.0
-speed = 800.0
-acceleration = 8.0
-deceleration = 10.0
-jump_force = -800.0
 
 [node name="weapon_component" type="Node" parent="." node_paths=PackedStringArray("shoot_timer", "weapon_node", "muzzle", "sprite", "sound")]
 script = ExtResource("6_8fjmc")
@@ -94,11 +140,8 @@ sound = NodePath("../sound_manager")
 script = ExtResource("8_26q78")
 max_health = 100
 
-[node name="animation_manager" type="Node" parent="." node_paths=PackedStringArray("animation_player")]
-script = ExtResource("10_gx6sm")
-animation_player = NodePath("../animation")
-
-[node name="animation" type="AnimationPlayer" parent="."]
+[node name="animation_manager" type="Node" parent="."]
+script = SubResource("GDScript_o1vvg")
 
 [node name="message_manager" type="Node" parent="." node_paths=PackedStringArray("msg", "message_clear_timer")]
 script = ExtResource("9_afbqv")

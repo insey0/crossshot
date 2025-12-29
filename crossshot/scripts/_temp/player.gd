@@ -1,13 +1,12 @@
 class_name Player
 extends CharacterBody2D
 
-@export var input: InputComponent
+@export var input: InputManager
 @export var movement: MovementComponent
 @export var weapon: WeaponComponent
-@export var health: HealthComponent
+@export var health: HealthManager
 @export var sound: SoundManager
 
-@export var animation: AnimationManager
 @export var message: MessageManager
 
 signal picked_up_powerup(effect_texture: Texture2D, effect_name: String, effect_description: String)
@@ -20,11 +19,14 @@ func _physics_process(delta: float) -> void:
 	movement.handle_gravity(self, delta)
 	movement.handle_movement(self, input.horizontal_direction, delta)
 	movement.renew_jumps(self)
-	animation.flip_sprites_targeted(self, input.mouse_pos)
 	
 	# Shooting (auto)
 	if input.shoot_held and weapon.automatic:
 		weapon.shoot()
+		
+	# Animation
+	if weapon.current_weapon != "":
+		pass
 
 # Jump (signal)
 func _on_jump() -> void:

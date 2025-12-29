@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://mvucm37iks5u" path="res://crossshot/assets/graphics/ui/logos/insey_logo_small.png" id="5_h370v"]
 [ext_resource type="LabelSettings" uid="uid://crls46ui7nhuh" path="res://crossshot/resources/ui/label_settings.tres" id="6_qhxwq"]
 [ext_resource type="Texture2D" uid="uid://cp63k4yg4nvoy" path="res://crossshot/assets/graphics/ui/main_menu/parallax.png" id="9_2nemu"]
-[ext_resource type="Script" uid="uid://c8dbvtaoank7o" path="res://crossshot/scripts/components/sound_manager.gd" id="10_yika2"]
+[ext_resource type="Script" uid="uid://c8dbvtaoank7o" path="res://crossshot/scripts/entities/player/components/sound_manager.gd" id="10_yika2"]
 
 [sub_resource type="Animation" id="Animation_07nfu"]
 length = 0.001

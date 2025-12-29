@@ -1,20 +1,19 @@
-# Movement Component
-class_name MovementComponent
+# Movement Manager (finish according to player states)
+class_name MovementManager
 extends Node
 
 # Variables
-# Gravity
-@export var gravity: float
-# Speed
-@export var speed: float
-@export var acceleration: float
-@export var deceleration: float
-# Jump
-@export var jump_force: float
-@export var can_jump: bool = true
-# Double jump
 var max_extra_jumps: int
 var extra_jumps_left: int
+var is_climbing: bool
+
+# Config
+@export var gravity: float = 1800.0
+@export var speed: float = 800.0
+@export var acceleration: float = 8.0
+@export var deceleration: float = 10.0
+@export var jump_force: float = -800.0
+@export var can_jump: bool = true
 
 # Handle gravity
 func handle_gravity(player: CharacterBody2D, delta_time: float) -> void:
