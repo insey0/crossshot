@@ -6,9 +6,9 @@
 ### 0.1.2
 - **Оптимизированы компоненты:**
 
-> InputComponent
+> InputComponent -> InputManager
 
-> HealthComponent
+> HealthComponent -> HealthManager
 
 - **Исправлено:**
 
