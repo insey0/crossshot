@@ -3,7 +3,7 @@
 [ext_resource type="Script" uid="uid://b14fg2moi3ywp" path="res://crossshot/scripts/scenes/root_node.gd" id="1_kdvu3"]
 [ext_resource type="Texture2D" uid="uid://b6yie58ay4j77" path="res://crossshot/assets/graphics/levels/1_spaceship/backgrounds/parallax.png" id="2_gjacr"]
 [ext_resource type="Texture2D" uid="uid://5hixy7oxunmg" path="res://crossshot/assets/graphics/levels/1_spaceship/backgrounds/parallax_glow.png" id="3_wigr6"]
-[ext_resource type="PackedScene" uid="uid://0qnfltgrnbra" path="res://crossshot/scenes/entities/player/player.tscn" id="4_ixqub"]
+[ext_resource type="PackedScene" uid="uid://dc7xw8xtq6255" path="res://crossshot/scenes/entities/player/player.tscn" id="4_kdvu3"]
 [ext_resource type="Script" uid="uid://cg250f4sjeds3" path="res://crossshot/scripts/ui/camera.gd" id="5_eehit"]
 [ext_resource type="PackedScene" uid="uid://brwbp1g6m0wex" path="res://crossshot/scenes/ui/ui_manager.tscn" id="6_7d6ra"]
 [ext_resource type="TileSet" uid="uid://dvpmgwtw7htn5" path="res://crossshot/resources/levels/1_spaceship/1_spaceship_bg_tileset.tres" id="7_bjcse"]
@@ -49,19 +49,22 @@ follow_viewport = false
 texture = ExtResource("3_wigr6")
 centered = false
 
-[node name="player" parent="." instance=ExtResource("4_ixqub")]
-position = Vector2(180, 924)
+[node name="player" parent="." instance=ExtResource("4_kdvu3")]
+z_index = 1
+position = Vector2(214, 924)
 
-[node name="camera" type="Camera2D" parent="." node_paths=PackedStringArray("target")]
-position = Vector2(180, 920)
+[node name="camera_anchor" type="Node2D" parent="." node_paths=PackedStringArray("target")]
+position = Vector2(216, 926)
 script = ExtResource("5_eehit")
 mode = "follow"
 target = NodePath("../player")
-follow_speed = 5.5
+follow_speed = 5.0
 
-[node name="camera_zone" type="Area2D" parent="camera" groups=["camera_zone"]]
+[node name="camera" type="Camera2D" parent="camera_anchor"]
 
-[node name="camera_zone_collision" type="CollisionShape2D" parent="camera/camera_zone"]
+[node name="camera_zone" type="Area2D" parent="camera_anchor/camera" groups=["camera_zone"]]
+
+[node name="camera_zone_collision" type="CollisionShape2D" parent="camera_anchor/camera/camera_zone"]
 shape = SubResource("RectangleShape2D_icxts")
 debug_color = Color(0, 1, 0.69803923, 0)
 
@@ -267,5 +270,3 @@ speed_scale = 11.15
 randomness = 0.31
 visibility_rect = Rect2(-250, -250, 500, 500)
 process_material = ExtResource("19_8ay3p")
-
-[connection signal="picked_up_powerup" from="player" to="ui_manager" method="_on_new_effect"]

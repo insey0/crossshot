@@ -1,4 +1,4 @@
-extends Camera2D
+extends Node2D
 
 @export var mode: String # "follow" / "scroll"
 
@@ -8,8 +8,8 @@ extends Camera2D
 @export var scroll_direction: Vector2
 @export var scroll_speed: float
 
-func _process(delta):
-	if mode == "follow":
+func _physics_process(delta: float) -> void:
+	if mode == "follow" and target:
 		global_position = global_position.lerp(target.global_position, follow_speed * delta)
-	elif mode == "scroll":
+	elif mode == "scroll" and target:
 		global_position += scroll_direction * scroll_speed * delta

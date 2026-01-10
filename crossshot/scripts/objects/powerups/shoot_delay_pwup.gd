@@ -1,5 +1,5 @@
 extends Powerup
 
-func on_pickup(player: Player):
+func on_pickup(player: CharacterBody2D):
 	if player.weapon.shoot_delay > 0.05:
 		player.weapon.shoot_delay -= 0.05

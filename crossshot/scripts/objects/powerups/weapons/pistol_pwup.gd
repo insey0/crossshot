@@ -1,4 +1,4 @@
 extends Powerup
 
-func on_pickup(player: Player):
+func on_pickup(player: CharacterBody2D):
 	player.weapon.equip("pistol")

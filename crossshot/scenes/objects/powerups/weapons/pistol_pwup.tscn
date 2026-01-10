@@ -1,8 +1,8 @@
 [gd_scene load_steps=5 format=3 uid="uid://c3p84ghicmnd6"]
 
-[ext_resource type="Texture2D" uid="uid://b2aurqfjtmrd1" path="res://crossshot/assets/graphics/objects/pickups/weapon_pickup.png" id="1_mgvon"]
+[ext_resource type="Texture2D" uid="uid://b2aurqfjtmrd1" path="res://crossshot/assets/graphics/objects/interactive/pickups/weapon_pickup.png" id="1_mgvon"]
 [ext_resource type="Script" uid="uid://0a0q6ru64kt" path="res://crossshot/scripts/objects/powerups/weapons/pistol_pwup.gd" id="1_v232u"]
-[ext_resource type="Texture2D" uid="uid://bivgonej6aroc" path="res://crossshot/assets/graphics/entities/weapons/pistol.png" id="2_v232u"]
+[ext_resource type="Texture2D" uid="uid://bivgonej6aroc" path="res://crossshot/assets/graphics/entities/weapons/pistol/pistol.png" id="2_v232u"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_x725c"]
 size = Vector2(60, 60)

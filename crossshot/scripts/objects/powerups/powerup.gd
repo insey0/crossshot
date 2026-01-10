@@ -18,7 +18,7 @@ func _ready() -> void:
 		timer.timeout.connect(_on_timer_timeout)
 
 @warning_ignore("unused_parameter")
-func on_pickup(player: Player):
+func on_pickup(player: CharacterBody2D):
 	pass
 
 func _on_timer_timeout():

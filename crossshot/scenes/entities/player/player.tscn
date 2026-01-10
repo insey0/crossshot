@@ -1,182 +1,407 @@
-[gd_scene load_steps=19 format=3 uid="uid://0qnfltgrnbra"]
+[gd_scene load_steps=35 format=3 uid="uid://dc7xw8xtq6255"]
 
-[ext_resource type="Script" uid="uid://ckcswt8lb44p1" path="res://crossshot/scripts/_temp/player.gd" id="1_bls4j"]
-[ext_resource type="SpriteFrames" uid="uid://cf8c1gcecr6tg" path="res://crossshot/resources/entities/player/player_frames.tres" id="2_8fjmc"]
-[ext_resource type="PackedScene" uid="uid://buqbdh054eqro" path="res://crossshot/scenes/objects/projectiles/bullet.tscn" id="2_fkugw"]
-[ext_resource type="SpriteFrames" uid="uid://dmltpa8gjqkwi" path="res://crossshot/resources/entities/weapons/weapon_h_frames.tres" id="2_sglur"]
-[ext_resource type="Script" uid="uid://3k5wogfimfr1" path="res://crossshot/scripts/entities/player/components/movement_manager.gd" id="3_sglur"]
-[ext_resource type="Script" uid="uid://80idee6s2pwl" path="res://crossshot/scripts/entities/player/components/input_manager.gd" id="4_afbqv"]
-[ext_resource type="Script" uid="uid://gdsbrb75nalr" path="res://crossshot/scripts/entities/player/components/weapon_component.gd" id="6_8fjmc"]
-[ext_resource type="Script" uid="uid://ddntbtb0a4jhg" path="res://crossshot/scripts/entities/player/components/health_manager.gd" id="8_26q78"]
-[ext_resource type="Script" uid="uid://dhktuwftm0qt5" path="res://crossshot/scripts/entities/player/components/message_manager.gd" id="9_afbqv"]
-[ext_resource type="Theme" uid="uid://caxycusoad52c" path="res://crossshot/resources/ui/theme.tres" id="9_bectd"]
-[ext_resource type="FontFile" uid="uid://cnl3r4gx413xr" path="res://crossshot/assets/fonts/font.ttf" id="10_j3ovn"]
-[ext_resource type="FontFile" uid="uid://b0abyfw0kw5gt" path="res://crossshot/assets/fonts/font_b.ttf" id="11_afbqv"]
-[ext_resource type="FontFile" uid="uid://by6nnvmcgmek7" path="res://crossshot/assets/fonts/font_bi.ttf" id="12_gx6sm"]
-[ext_resource type="FontFile" uid="uid://bqk618xan8rk6" path="res://crossshot/assets/fonts/font_i.ttf" id="13_yqrof"]
-[ext_resource type="Script" uid="uid://c8dbvtaoank7o" path="res://crossshot/scripts/entities/player/components/sound_manager.gd" id="16_yqrof"]
+[ext_resource type="Script" uid="uid://dmg01okpiy5bw" path="res://crossshot/scripts/entities/player/player.gd" id="1_25sog"]
+[ext_resource type="Texture2D" uid="uid://btalmd2rk10hj" path="res://crossshot/assets/graphics/entities/player/player_idle.png" id="1_qfrec"]
+[ext_resource type="Texture2D" uid="uid://0koh7rk2majg" path="res://crossshot/assets/graphics/entities/player/hand.png" id="2_kmp7g"]
+[ext_resource type="Script" uid="uid://c48l1u4rmpq2v" path="res://crossshot/scripts/game/sound_manager.gd" id="3_kmp7g"]
+[ext_resource type="Script" uid="uid://sgsj0q8xodi6" path="res://crossshot/scripts/entities/player/cheats.gd" id="4_bhmcr"]
+[ext_resource type="Script" uid="uid://b5cel82eyli3j" path="res://crossshot/scripts/entities/_managers/health_manager.gd" id="4_jyp4v"]
+[ext_resource type="Script" uid="uid://crstyswkhsucp" path="res://crossshot/scripts/entities/player/managers/armor_manager.gd" id="5_ckofk"]
+[ext_resource type="Script" uid="uid://ca6fhdah7xwoe" path="res://crossshot/scripts/entities/player/managers/input_manager.gd" id="5_vgbk8"]
+[ext_resource type="Script" uid="uid://bi8yncjnohvyi" path="res://crossshot/scripts/entities/_managers/effect_manager.gd" id="6_lgjcb"]
+[ext_resource type="Script" uid="uid://bwgav1xvjankw" path="res://crossshot/scripts/entities/player/managers/movement_manager.gd" id="7_bhmcr"]
+[ext_resource type="Script" uid="uid://dwo08270u0pw3" path="res://crossshot/scripts/entities/player/managers/weapon_manager.gd" id="8_jfy7u"]
+[ext_resource type="Script" uid="uid://b1ogeubqs1ix5" path="res://crossshot/scripts/entities/player/weapon.gd" id="10_a4a4n"]
+[ext_resource type="PackedScene" uid="uid://buqbdh054eqro" path="res://crossshot/scenes/objects/projectiles/bullet.tscn" id="11_4x2rj"]
+[ext_resource type="PackedScene" uid="uid://cw8c44gjeci2d" path="res://crossshot/scenes/particles/shoot_blaze.tscn" id="13_tgfmw"]
+[ext_resource type="Texture2D" uid="uid://48bwh71p4d1b" path="res://crossshot/assets/graphics/entities/weapons/pistol/pistol_h1.png" id="14_o1vvg"]
+[ext_resource type="Texture2D" uid="uid://chv4yeeujjfbh" path="res://crossshot/assets/graphics/entities/weapons/pistol/pistol_h2.png" id="15_8l1m7"]
+[ext_resource type="Script" uid="uid://crfyhp5k2vik4" path="res://crossshot/scripts/game/data_manager.gd" id="15_o1vvg"]
+[ext_resource type="Texture2D" uid="uid://bb4xq7tr7umlx" path="res://crossshot/assets/graphics/entities/weapons/pistol/pistol_h_shoot1.png" id="16_eiwu8"]
+[ext_resource type="Texture2D" uid="uid://b5qrmp3qagqlc" path="res://crossshot/assets/graphics/entities/weapons/pistol/pistol_h_shoot2.png" id="17_tgfmw"]
+[ext_resource type="Texture2D" uid="uid://u0y4hatqc4m8" path="res://crossshot/assets/graphics/entities/weapons/pistol/pistol_h_shoot3.png" id="18_uel0a"]
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_bls4j"]
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_1qoxj"]
 size = Vector2(36, 66)
 
-[sub_resource type="RectangleShape2D" id="RectangleShape2D_abrql"]
+[sub_resource type="Animation" id="Animation_o1vvg"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player_sprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player_hand:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-18, 12)]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("player_hand:flip_h")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
+[sub_resource type="Animation" id="Animation_revw2"]
+resource_name = "player_flipped"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player_sprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player_hand:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("player_hand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(18, 12)]
+}
+
+[sub_resource type="Animation" id="Animation_8l1m7"]
+resource_name = "player_idle"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("player_sprite:flip_h")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("player_hand:flip_h")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+tracks/2/type = "value"
+tracks/2/imported = false
+tracks/2/enabled = true
+tracks/2/path = NodePath("player_hand:position")
+tracks/2/interp = 1
+tracks/2/loop_wrap = true
+tracks/2/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(-18, 12)]
+}
+
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_t2m0i"]
+_data = {
+&"RESET": SubResource("Animation_o1vvg"),
+&"player_flipped": SubResource("Animation_revw2"),
+&"player_unflipped": SubResource("Animation_8l1m7")
+}
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_g4nhu"]
 size = Vector2(36, 66)
 
-[sub_resource type="GDScript" id="GDScript_o1vvg"]
-script/source = "# Animation Manager
-class_name AnimationManager
-extends Node
+[sub_resource type="Animation" id="Animation_4x2rj"]
+resource_name = "pistol_idle"
+loop_mode = 1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.5),
+"transitions": PackedFloat32Array(1, 1),
+"update": 1,
+"values": [ExtResource("14_o1vvg"), ExtResource("15_8l1m7")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("muzzle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(42, 0)]
+}
 
-var sprites_cache: Dictionary = {}
-var anim_cache: Dictionary = {}
+[sub_resource type="Animation" id="Animation_uel0a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("muzzle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(54, 0)]
+}
 
-func _ready() -> void:
-	var sprites: Array = _load_sprites(get_parent(), \"sa\")
+[sub_resource type="Animation" id="Animation_w1tx1"]
+resource_name = "pistol_shoot"
+length = 0.2
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 0.06666667, 0.13333334, 0.2),
+"transitions": PackedFloat32Array(1, 1, 1, 1),
+"update": 1,
+"values": [ExtResource("14_o1vvg"), ExtResource("16_eiwu8"), ExtResource("17_tgfmw"), ExtResource("18_uel0a")]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("muzzle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [Vector2(42, 0)]
+}
 
-func play_animation(node: Node2D, id: StringName, speed: float, start_frame: int):
-	var sprites: Array = _load_sprites(node, \"a\")
-	for sprite: AnimatedSprite2D in sprites:
-		if id in sprite.sprite_frames.get_animation_names():
-			sprite.play(id, speed)
-			sprite.frame = start_frame
-	return
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_o1vvg"]
+_data = {
+&"RESET": SubResource("Animation_uel0a"),
+&"pistol_idle": SubResource("Animation_4x2rj"),
+&"pistol_shoot": SubResource("Animation_w1tx1")
+}
 
-# Flip sprites towards the target
-func flip_sprites_targeted(node: Node2D, target_position: Vector2):
-	var sprites: Array = _load_sprites(node, \"sa\")
-	var flip: bool = target_position.x < node.global_position.x
-	
-	for sprite: Array in sprites:
-		if sprite[1].is_in_group(\"flip_h\"):
-			sprite[1].flip_h = flip
-		if sprite[1].is_in_group(\"flip_v\"):
-			sprite[1].flip_v = flip
+[sub_resource type="Animation" id="Animation_tgfmw"]
+resource_name = "weapon_flipped"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon_sprite:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [true]
+}
 
-# Find and cache only AnimatedSprite2Ds
-func _cache_animated_sprites(node: Node) -> void:
-	var sprites: Array = _load_sprites(node, \"a\")
-	for sprite: Array in sprites:
-		sprites_cache[sprite[0]] = [sprite[1], sprite[2]]
+[sub_resource type="Animation" id="Animation_t2m0i"]
+resource_name = "weapon_unflipped"
+length = 0.1
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon_sprite:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
-func _cache_animations():
-	for idx in range(len(sprites_cache)):
-		pass
+[sub_resource type="Animation" id="Animation_eiwu8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon_sprite:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
 
-# Create sprites array for a node
-func _load_sprites(node: Node, flag: String) -> Array:
-	var sprites: Array = []
-	for child in node.get_children():
-		if child is Sprite2D and \"s\" in flag:
-			sprites.append([child.name, child, \"s\"])
-		if child is AnimatedSprite2D and \"a\" in flag:
-			sprites.append([child.name, child, \"a\"])
-		sprites.append_array(_load_sprites(child, flag))
-	return sprites
-"
+[sub_resource type="AnimationLibrary" id="AnimationLibrary_uel0a"]
+_data = {
+&"RESET": SubResource("Animation_eiwu8"),
+&"weapon_flipped": SubResource("Animation_tgfmw"),
+&"weapon_unflipped": SubResource("Animation_t2m0i")
+}
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("input", "movement", "weapon", "health", "sound", "animation", "message") groups=["player"]]
-z_index = 1
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("input", "movement", "sound", "anim")]
 collision_layer = 2
-script = ExtResource("1_bls4j")
-input = NodePath("input_component")
-movement = NodePath("movement_component")
-weapon = NodePath("weapon_component")
-health = NodePath("health_component")
+script = ExtResource("1_25sog")
+input = NodePath("input_manager")
+movement = NodePath("movement_manager")
 sound = NodePath("sound_manager")
-animation = NodePath("animation_manager")
-message = NodePath("message_manager")
+anim = NodePath("player_flip_animation")
 
-[node name="player_sprite" type="AnimatedSprite2D" parent="." groups=["flip_h"]]
+[node name="cheats" type="Node" parent="." node_paths=PackedStringArray("movement", "weapon")]
+script = ExtResource("4_bhmcr")
+movement = NodePath("../movement_manager")
+weapon = NodePath("../player_weapon/weapon_manager")
+
+[node name="player_sprite" type="Sprite2D" parent="."]
 scale = Vector2(6, 6)
-sprite_frames = ExtResource("2_8fjmc")
-animation = &"idle_noweapon"
-autoplay = "idle"
+texture = ExtResource("1_qfrec")
+
+[node name="player_hand" type="Sprite2D" parent="."]
+position = Vector2(-18, 12)
+scale = Vector2(6, 6)
+texture = ExtResource("2_kmp7g")
 
 [node name="player_collision" type="CollisionShape2D" parent="."]
-position = Vector2(3, 3)
-shape = SubResource("RectangleShape2D_bls4j")
-debug_color = Color(0, 1, 0.2627451, 0.41960785)
+position = Vector2(6, 3)
+shape = SubResource("RectangleShape2D_1qoxj")
+debug_color = Color(0.05490196, 1, 0, 0.42745098)
 
-[node name="player_detect_box" type="Area2D" parent="." groups=["player"]]
-collision_layer = 2
+[node name="player_animation" type="AnimationPlayer" parent="."]
+
+[node name="player_flip_animation" type="AnimationPlayer" parent="."]
+libraries = {
+&"": SubResource("AnimationLibrary_t2m0i")
+}
+
+[node name="player_detect_box" type="Area2D" parent="."]
+collision_layer = 16
 collision_mask = 188
 
 [node name="detect_box_collision" type="CollisionShape2D" parent="player_detect_box"]
-position = Vector2(3, 3)
-shape = SubResource("RectangleShape2D_abrql")
-debug_color = Color(0.87038714, 1.4439225e-06, 1.2513996e-06, 0)
+position = Vector2(6, 3)
+shape = SubResource("RectangleShape2D_g4nhu")
+debug_color = Color(0.80784315, 0, 0.039215688, 0)
 
-[node name="weapon" type="Node2D" parent="."]
+[node name="input_manager" type="Node" parent="."]
+script = ExtResource("5_vgbk8")
 
-[node name="weapon_sprite" type="AnimatedSprite2D" parent="weapon" groups=["flip_v"]]
-position = Vector2(18, 0)
-scale = Vector2(6, 6)
-sprite_frames = ExtResource("2_sglur")
-animation = &"none"
-autoplay = "none"
+[node name="movement_manager" type="Node" parent="."]
+script = ExtResource("7_bhmcr")
 
-[node name="weapon_muzzle" type="Marker2D" parent="weapon"]
-position = Vector2(51, 0)
+[node name="health_manager" type="Node" parent="."]
+script = ExtResource("4_jyp4v")
 
-[node name="shoot_delay" type="Timer" parent="weapon"]
-wait_time = 0.2
-
-[node name="input_component" type="Node" parent="."]
-script = ExtResource("4_afbqv")
-
-[node name="movement_component" type="Node" parent="."]
-script = ExtResource("3_sglur")
-
-[node name="weapon_component" type="Node" parent="." node_paths=PackedStringArray("shoot_timer", "weapon_node", "muzzle", "sprite", "sound")]
-script = ExtResource("6_8fjmc")
-shoot_timer = NodePath("../weapon/shoot_delay")
-bullet = ExtResource("2_fkugw")
-weapon_node = NodePath("../weapon")
-muzzle = NodePath("../weapon/weapon_muzzle")
-sprite = NodePath("../weapon/weapon_sprite")
-sound = NodePath("../sound_manager")
-
-[node name="health_component" type="Node" parent="."]
-script = ExtResource("8_26q78")
-max_health = 100
-
-[node name="animation_manager" type="Node" parent="."]
-script = SubResource("GDScript_o1vvg")
-
-[node name="message_manager" type="Node" parent="." node_paths=PackedStringArray("msg", "message_clear_timer")]
-script = ExtResource("9_afbqv")
-msg = NodePath("../message")
-message_clear_timer = NodePath("../message_clear_timer")
-
-[node name="message" type="RichTextLabel" parent="."]
-offset_left = -263.0
-offset_top = -100.0
-offset_right = 262.0
-offset_bottom = -39.0
-theme = ExtResource("9_bectd")
-theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
-theme_override_constants/shadow_outline_size = 8
-theme_override_fonts/normal_font = ExtResource("10_j3ovn")
-theme_override_fonts/bold_font = ExtResource("11_afbqv")
-theme_override_fonts/bold_italics_font = ExtResource("12_gx6sm")
-theme_override_fonts/italics_font = ExtResource("13_yqrof")
-bbcode_enabled = true
-fit_content = true
-horizontal_alignment = 1
-vertical_alignment = 1
-
-[node name="message_clear_timer" type="Timer" parent="."]
-one_shot = true
+[node name="effect_manager" type="Node" parent="."]
+script = ExtResource("6_lgjcb")
 
 [node name="sound_manager" type="Node" parent="."]
-script = ExtResource("16_yqrof")
+script = ExtResource("3_kmp7g")
 
-[connection signal="area_entered" from="player_detect_box" to="." method="_on_area_entered"]
-[connection signal="area_exited" from="player_detect_box" to="." method="_on_area_exited"]
-[connection signal="body_entered" from="player_detect_box" to="." method="_on_body_entered"]
-[connection signal="timeout" from="weapon/shoot_delay" to="weapon_component" method="_on_shoot_delay_timeout"]
-[connection signal="act_jump" from="input_component" to="." method="_on_jump"]
-[connection signal="act_shoot" from="input_component" to="." method="_on_shoot"]
-[connection signal="health_changed" from="health_component" to="." method="_on_health_changed"]
-[connection signal="hidden" from="message_manager" to="." method="_on_message_hidden"]
-[connection signal="timeout" from="message_clear_timer" to="message_manager" method="_on_message_clear_timer_timeout"]
+[node name="data_manager" type="Node" parent="."]
+script = ExtResource("15_o1vvg")
+
+[node name="player_weapon" type="Node2D" parent="." node_paths=PackedStringArray("data", "sound", "weapon", "input", "tex_anim", "flip_anim", "player", "muzzle", "shoot_timer", "hand_sprite")]
+script = ExtResource("10_a4a4n")
+data = NodePath("../data_manager")
+sound = NodePath("../sound_manager")
+weapon = NodePath("weapon_manager")
+input = NodePath("../input_manager")
+tex_anim = NodePath("current_weapon")
+flip_anim = NodePath("weapon_flip_animation")
+player = NodePath("..")
+muzzle = NodePath("muzzle")
+shoot_timer = NodePath("shoot_timer")
+bullet = ExtResource("11_4x2rj")
+blaze = ExtResource("13_tgfmw")
+hand_sprite = NodePath("../player_hand")
+
+[node name="weapon_manager" type="Node" parent="player_weapon"]
+script = ExtResource("8_jfy7u")
+
+[node name="weapon_sprite" type="Sprite2D" parent="player_weapon"]
+scale = Vector2(6, 6)
+offset = Vector2(3, 0)
+
+[node name="current_weapon" type="AnimationPlayer" parent="player_weapon"]
+libraries = {
+&"": SubResource("AnimationLibrary_o1vvg")
+}
+
+[node name="weapon_flip_animation" type="AnimationPlayer" parent="player_weapon"]
+libraries = {
+&"": SubResource("AnimationLibrary_uel0a")
+}
+
+[node name="muzzle" type="Marker2D" parent="player_weapon"]
+position = Vector2(54, 0)
+
+[node name="shoot_timer" type="Timer" parent="player_weapon"]
+
+[node name="player_armor" type="Node2D" parent="."]
+
+[node name="armor_manager" type="Node" parent="player_armor"]
+script = ExtResource("5_ckofk")
+
+[node name="armor_head" type="Sprite2D" parent="player_armor"]
+
+[node name="armor_body" type="Sprite2D" parent="player_armor"]
+
+[node name="armor_hand" type="Sprite2D" parent="player_armor"]

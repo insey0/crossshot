@@ -9,7 +9,7 @@
 [ext_resource type="Texture2D" uid="uid://mvucm37iks5u" path="res://crossshot/assets/graphics/ui/logos/insey_logo_small.png" id="5_h370v"]
 [ext_resource type="LabelSettings" uid="uid://crls46ui7nhuh" path="res://crossshot/resources/ui/label_settings.tres" id="6_qhxwq"]
 [ext_resource type="Texture2D" uid="uid://cp63k4yg4nvoy" path="res://crossshot/assets/graphics/ui/main_menu/parallax.png" id="9_2nemu"]
-[ext_resource type="Script" uid="uid://c8dbvtaoank7o" path="res://crossshot/scripts/entities/player/components/sound_manager.gd" id="10_yika2"]
+[ext_resource type="Script" uid="uid://c48l1u4rmpq2v" path="res://crossshot/scripts/game/sound_manager.gd" id="10_8k7it"]
 
 [sub_resource type="Animation" id="Animation_07nfu"]
 length = 0.001
@@ -404,7 +404,7 @@ libraries = {
 autoplay = "fade_in"
 
 [node name="sound_manager" type="Node" parent="."]
-script = ExtResource("10_yika2")
+script = ExtResource("10_8k7it")
 
 [connection signal="pressed" from="main_menu_ui/screen_container/left_panel/action_buttons/play_button_container/btn_play" to="." method="_on_btn_play_pressed"]
 [connection signal="pressed" from="main_menu_ui/screen_container/left_panel/action_buttons/settings_button_container/btn_settings" to="." method="_on_btn_settings_pressed"]
