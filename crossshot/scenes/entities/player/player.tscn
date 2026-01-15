@@ -153,6 +153,33 @@ _data = {
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_g4nhu"]
 size = Vector2(36, 66)
 
+[sub_resource type="Animation" id="Animation_uel0a"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon_sprite:texture")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [null]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("muzzle:position")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 0,
+"values": [Vector2(54, 0)]
+}
+
 [sub_resource type="Animation" id="Animation_4x2rj"]
 resource_name = "pistol_idle"
 loop_mode = 1
@@ -179,33 +206,6 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [Vector2(42, 0)]
-}
-
-[sub_resource type="Animation" id="Animation_uel0a"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("weapon_sprite:texture")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [null]
-}
-tracks/1/type = "value"
-tracks/1/imported = false
-tracks/1/enabled = true
-tracks/1/path = NodePath("muzzle:position")
-tracks/1/interp = 1
-tracks/1/loop_wrap = true
-tracks/1/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 0,
-"values": [Vector2(54, 0)]
 }
 
 [sub_resource type="Animation" id="Animation_w1tx1"]
@@ -243,6 +243,21 @@ _data = {
 &"pistol_shoot": SubResource("Animation_w1tx1")
 }
 
+[sub_resource type="Animation" id="Animation_eiwu8"]
+length = 0.001
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("weapon_sprite:flip_v")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0),
+"transitions": PackedFloat32Array(1),
+"update": 1,
+"values": [false]
+}
+
 [sub_resource type="Animation" id="Animation_tgfmw"]
 resource_name = "weapon_flipped"
 length = 0.1
@@ -275,21 +290,6 @@ tracks/0/keys = {
 "values": [false]
 }
 
-[sub_resource type="Animation" id="Animation_eiwu8"]
-length = 0.001
-tracks/0/type = "value"
-tracks/0/imported = false
-tracks/0/enabled = true
-tracks/0/path = NodePath("weapon_sprite:flip_v")
-tracks/0/interp = 1
-tracks/0/loop_wrap = true
-tracks/0/keys = {
-"times": PackedFloat32Array(0),
-"transitions": PackedFloat32Array(1),
-"update": 1,
-"values": [false]
-}
-
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_uel0a"]
 _data = {
 &"RESET": SubResource("Animation_eiwu8"),
@@ -297,13 +297,17 @@ _data = {
 &"weapon_unflipped": SubResource("Animation_t2m0i")
 }
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("input", "movement", "sound", "anim")]
-collision_layer = 2
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("flip", "controller", "movement", "health", "sound", "effects", "anim", "detect_box") groups=["entities"]]
 script = ExtResource("1_25sog")
-input = NodePath("input_manager")
+flip = NodePath("player_flip_animation")
+controller = NodePath("input_manager")
 movement = NodePath("movement_manager")
+health = NodePath("health_manager")
 sound = NodePath("sound_manager")
-anim = NodePath("player_flip_animation")
+effects = NodePath("effect_manager")
+anim = NodePath("player_animation")
+detect_box = NodePath("player_detect_box")
+metadata/_custom_type_script = "uid://cqu3mirha41lh"
 
 [node name="cheats" type="Node" parent="." node_paths=PackedStringArray("movement", "weapon")]
 script = ExtResource("4_bhmcr")
@@ -332,8 +336,6 @@ libraries = {
 }
 
 [node name="player_detect_box" type="Area2D" parent="."]
-collision_layer = 16
-collision_mask = 188
 
 [node name="detect_box_collision" type="CollisionShape2D" parent="player_detect_box"]
 position = Vector2(6, 3)

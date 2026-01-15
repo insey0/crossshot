@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://b2aurqfjtmrd1"
-path="res://.godot/imported/weapon_pickup.png-df6dcd6906c605b8a4cf68d4388b13cd.ctex"
+uid="uid://cieo4k7824gct"
+path="res://.godot/imported/shoot_delay.png-7150d6782b23e7f4cc881de38552265f.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://crossshot/assets/graphics/objects/interactive/pickups/weapon_pickup.png"
-dest_files=["res://.godot/imported/weapon_pickup.png-df6dcd6906c605b8a4cf68d4388b13cd.ctex"]
+source_file="res://crossshot/assets/graphics/objects/interactive/effect_powerups/shoot_delay.png"
+dest_files=["res://.godot/imported/shoot_delay.png-7150d6782b23e7f4cc881de38552265f.ctex"]
 
 [params]
 

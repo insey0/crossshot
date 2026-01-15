@@ -1,28 +1,19 @@
-# Sound Component
+# Sound Manager
 class_name SoundManager
 extends Node
 
-var sound_cache: Dictionary = {} # AudioStreams cache
-
-var ext_path: String = Global.audio_path
-var active_players: Array = [] # Current AudioStreamPlayer'ы
+var active_players: Array = [] # Current AudioStreamPlayers
 var max_players: int = 10
-
-signal sounds_loaded # Signal to know when the sounds are loaded
-
-func _ready() -> void:
-	# Load all sound files into cache
-	_load_external_sounds(ext_path)
 
 # Play sound function
 func play_sound(sound_name: String, bus: StringName = &"Sound", loop: bool = false,
 volume_db: float = 0.0, pitch_scale: float = 1.0, start_from: float = 0.0) -> void:
-	if not sound_cache.has(sound_name):
+	if not Global.audio_cache.has(sound_name):
 		push_error("SoundComponent: Couldn't find ", sound_name, " in sounds cache.")
 	
 	else:
 		var player = AudioStreamPlayer2D.new()
-		player.stream = sound_cache[sound_name]
+		player.stream = Global.audio_cache[sound_name]
 		player.volume_db = volume_db
 		player.pitch_scale = pitch_scale
 		player.bus = bus
@@ -36,24 +27,6 @@ volume_db: float = 0.0, pitch_scale: float = 1.0, start_from: float = 0.0) -> vo
 	
 		cleanup_player_pool()
 
-# Load external sound files
-func _load_external_sounds(path: String) -> void:
-	# Skip if sound_cache is already loaded
-	if sound_cache != {}:
-		return
-
-	# Directory
-	var dir = DirAccess.open(path)
-	var stream = null
-	
-	# Main loop
-	if dir:
-		for file in dir.get_files():
-			if file.ends_with(".wav"):
-				stream = AudioStreamWAV.load_from_file(path.path_join(file))
-				sound_cache[file.get_basename()] = stream
-	sounds_loaded.emit()
-	
 # Clear all silent ASPs from active_players[]
 func cleanup_player_pool() -> void:
 	if active_players.size() > max_players:
@@ -73,7 +46,7 @@ func cleanup_player_pool() -> void:
 # Check if the specific sound is playing
 func is_sound_playing(sound_name: String) -> bool:
 	for player in active_players:
-		if player and player.stream == sound_cache.get(sound_name) and player.playing:
+		if player and player.stream == Global.audio_cache.get(sound_name) and player.playing:
 			return true
 	return false
 
@@ -95,8 +68,3 @@ func _on_player_finished(player: AudioStreamPlayer2D, loop: bool) -> void:
 			return
 	
 	player.play()
-
-# Clear cache and stop all sounds
-func clear_cache() -> void:
-	stop_all_sounds()
-	sound_cache.clear()

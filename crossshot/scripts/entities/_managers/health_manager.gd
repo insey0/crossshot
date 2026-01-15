@@ -75,7 +75,7 @@ func _calculate_final_damage(initial_damage: int) -> int:
 func heal(heal_value: int):
 	health = min(health + heal_value, max_health)
 	# Sending a signal to a global group "ui_manager"
-	get_tree().call_group("ui_manager", "on_health_changed", health, max_health)
+	get_tree().call_group("ui_manager", "_on_health_updated", health, max_health)
 	# Sending the same signal locally
 	health_changed.emit(health, max_health, heal_value, false)
 

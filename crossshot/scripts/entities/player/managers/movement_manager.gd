@@ -2,6 +2,8 @@
 class_name MovementManager
 extends Node
 
+signal jumped()
+
 # Variables
 var max_extra_jumps: int = 0
 var extra_jumps_left: int = 0
@@ -22,16 +24,16 @@ var current_ladder: Node2D = null
 @export var gravity_enabled: bool = true
 
 # Handle gravity
-func apply_gravity(player_body: CharacterBody2D, delta_time: float) -> void:
+func apply_gravity(player_body: Entity, delta_time: float) -> void:
 	if not player_body.is_on_floor() and gravity_enabled:
 		player_body.velocity.y += gravity * delta_time
 
 # Make idle
-func stop(player_body: CharacterBody2D):
+func stop(player_body: Entity):
 	player_body.velocity.x = 0.0
 
 # Handle horizontal Movement
-func handle_movement(player_body: CharacterBody2D, horizontal_direction: float, delta_time: float) -> void:
+func handle_movement(player_body: Entity, horizontal_direction: float, delta_time: float) -> void:
 	if not horizontal_moving_enabled or is_climbing:
 		return
 	
@@ -46,7 +48,7 @@ func handle_movement(player_body: CharacterBody2D, horizontal_direction: float, 
 
 # Ladder climbing
 # When player presses 'up' or 'down' near the ladder
-func start_climbing(player_body: Node2D, ladder: Node2D):
+func start_climbing(player_body: Entity, ladder: Node2D):
 	if not climbing_enabled or is_climbing:
 		return
 	
@@ -71,14 +73,14 @@ func finish_climbing():
 	current_ladder = null
 
 # When player jumps mid-ladder
-func jump_off(player_body: CharacterBody2D):
+func jump_off(player_body: Entity):
 	if not is_climbing:
 		return
 	finish_climbing()
 	player_body.velocity.y = jump_force * 0.8
 
 # Process climbing logic
-func climb(player_body: CharacterBody2D, vertical_direction: float, delta_time: float) -> void:
+func climb(player_body: Entity, vertical_direction: float, delta_time: float) -> void:
 	if not is_climbing or not current_ladder:
 		return
 	
@@ -95,20 +97,22 @@ func climb(player_body: CharacterBody2D, vertical_direction: float, delta_time: 
 		finish_climbing()
 	
 # Jumping
-func jump(player_body: CharacterBody2D) -> bool:
+func jump(player_body: Entity) -> bool:
 	if jump_enabled:
 		if player_body.is_on_floor():
 			player_body.velocity.y = jump_force
+			jumped.emit()
 			return true
 		elif extra_jumps_left > 0:
 			player_body.velocity.y = jump_force
 			extra_jumps_left -= 1
+			jumped.emit()
 			return true
 	return false
 
-func renew_jumps(player_body: CharacterBody2D):
+func renew_jumps(player_body: Entity):
 	if player_body.is_on_floor():
 		extra_jumps_left = max_extra_jumps
 
-func handle_bounce(player_body: CharacterBody2D, direction: Vector2, bounce_power: float) -> void:
+func handle_bounce(player_body: Entity, direction: Vector2, bounce_power: float) -> void:
 	player_body.velocity = Vector2(direction.x * bounce_power, direction.y * bounce_power)

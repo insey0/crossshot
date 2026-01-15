@@ -12,8 +12,7 @@ signal act_shoot_released
 signal act_shift
 signal act_shift_released
 
-signal act_ability
-signal act_interact
+signal interact # Universal
 
 # Constant signals
 signal move_input(direction: Vector2)
@@ -45,10 +44,7 @@ func _input(event: InputEvent) -> void:
 
 	# Interact
 	if event.is_action_pressed("plr_interact"):
-		act_interact.emit()
-	# Special ability
-	if event.is_action_pressed("plr_ability"):
-		act_ability.emit()
+		interact.emit()
 
 	# Holdable
 	# Jump

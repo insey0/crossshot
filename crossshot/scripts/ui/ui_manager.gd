@@ -1,39 +1,47 @@
 class_name UIManager
 extends CanvasLayer
 
-# Информация об игре
+# Game Info
 @export var game_info: Label
-@export var hp_bar: TextureProgressBar
-@export var hp_percentage: Label
-@export var level_timer: Timer
-@export var time_text: Label
-@export var effects_container: HBoxContainer
-@export var mouse_tooltip: RichTextLabel
-var time: int = 0
 var app_version: String
 var fps_update_timer: float = 0.0
+# Health
+@export var hp_bar: TextureProgressBar
+@export var hp_percentage: Label
+# Time
+@export var level_timer: Timer
+@export var time_text: Label
+var time: int = 0
+# Effects
+@export var mouse_tooltip: RichTextLabel
 
+# Mouse tooltip update
 func _input(event: InputEvent) -> void:
+	# Make tooltip follow the mouse when it's not empty
 	if event is InputEventMouseMotion and mouse_tooltip.text != "":
 		mouse_tooltip.position = get_viewport().get_mouse_position() + Vector2(16.0, 16.0)
 
+# Get the game version
 func _ready():
-	add_to_group("ui_manager")
 	app_version = ProjectSettings.get_setting("application/config/version")
 
 func _process(delta: float) -> void:
-	fps_update_timer += delta # Таймер обновления информации
+	fps_update_timer += delta # FPS-relative game info update timer
 	
-	# Обновление информации об игре
+	# Update game info
 	if fps_update_timer >= 0.2:
 		fps_update_timer = 0.0
 		game_info.text = "CroSSShot!\n%s\nFPS: %d" % [app_version, Engine.get_frames_per_second()]
 
-func on_health_changed(health: int, max_health: int):
+# Update health visualization
+func _on_health_updated(health: int, max_health: int):
+	# Update percentage
 	hp_percentage.text = str(health) + "%"
+	# Update bar
 	hp_bar.value = health
 	hp_bar.max_value = max_health
 
+# Update level timer
 func _on_level_timer_timeout() -> void:
 	time += 1
 	var divisor: String
@@ -45,14 +53,3 @@ func _on_level_timer_timeout() -> void:
 	@warning_ignore("integer_division")
 	time_text.text = "Time " + str(int(time / 60)) + divisor + str(time - int(time / 60) * 60)
 	level_timer.start()
-
-func _on_new_effect(effect_texture: Texture2D, effect_name: String, effect_description: String):
-	if effect_texture:
-		var new_effect := Effect.new()
-		effects_container.add_child(new_effect)
-		new_effect.custom_minimum_size = Vector2(48.0, 48.0)
-	
-		new_effect.effect_texture = effect_texture
-		new_effect.description = effect_description
-		new_effect.display_name = effect_name.capitalize()
-		new_effect.tooltip = mouse_tooltip

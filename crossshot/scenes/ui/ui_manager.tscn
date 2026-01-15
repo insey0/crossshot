@@ -20,14 +20,13 @@ font_size = 28
 font = ExtResource("6_cd8r4")
 font_size = 36
 
-[node name="ui_manager" type="CanvasLayer" node_paths=PackedStringArray("game_info", "hp_bar", "hp_percentage", "level_timer", "time_text", "effects_container", "mouse_tooltip") groups=["ui_manager"]]
+[node name="ui_manager" type="CanvasLayer" node_paths=PackedStringArray("game_info", "hp_bar", "hp_percentage", "level_timer", "time_text", "mouse_tooltip")]
 script = ExtResource("1_30b5s")
 game_info = NodePath("screen_margin_container/info_container/label_container/info_label")
 hp_bar = NodePath("screen_margin_container/state_info_container/hpbar_container/hp_bar")
 hp_percentage = NodePath("screen_margin_container/state_info_container/hpbar_container/hp_percentage")
 level_timer = NodePath("level_timer")
 time_text = NodePath("screen_margin_container/state_info_container/time")
-effects_container = NodePath("screen_margin_container/state_info_container/effects_container")
 mouse_tooltip = NodePath("mouse_tooltip")
 
 [node name="screen_margin_container" type="MarginContainer" parent="."]
@@ -87,7 +86,11 @@ layout_mode = 2
 text = "100%"
 label_settings = SubResource("LabelSettings_57ya5")
 
-[node name="effects_container" type="HBoxContainer" parent="screen_margin_container/state_info_container"]
+[node name="active_effects_container" type="HBoxContainer" parent="screen_margin_container/state_info_container"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="passive_effects_container" type="HBoxContainer" parent="screen_margin_container/state_info_container"]
 layout_mode = 2
 mouse_filter = 2
 

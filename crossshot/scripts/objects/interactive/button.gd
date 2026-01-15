@@ -1,9 +1,15 @@
-extends Interactable
+extends Interactive
 
 signal pressed()
 
+@export var sound: SoundManager
 @export var sprite: AnimatedSprite2D
 
-func on_interact():
-	sprite.play("pressed")
+func interact():
+	if sprite.animation == "default":
+		sprite.play("pressed")
+	else:
+		sprite.play("default")
+
 	pressed.emit()
+	sound.play_sound("button_push")

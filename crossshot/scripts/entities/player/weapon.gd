@@ -11,7 +11,7 @@ extends Node2D
 @export var flip_anim: AnimationPlayer
 
 # Nodes
-@export var player: CharacterBody2D
+@export var player: Entity
 @export var muzzle: Marker2D
 @export var shoot_timer: Timer
 @export var bullet: PackedScene
@@ -23,16 +23,17 @@ func _ready() -> void:
 	input.connect("act_shoot", _on_act_shoot)
 	weapon.connect("equipped", _on_equip)
 	weapon.connect("shot", _on_shot_made)
-	
 	tex_anim.connect("animation_finished", _on_animation_finished)
-	
 	shoot_timer.connect("timeout", _on_shoot_delay_timeout)
 	
 	weapon.weapons = data.load_json("res://crossshot/data/weapons.json")
 	weapon.equip("pistol")
 
 func _physics_process(_delta: float) -> void:
+	# Aim towards the cursor
 	weapon.handle_aim(self, player.global_position, input.mouse_pos)
+	
+	# Weapon flip code
 	if input.mouse_pos.x > global_position.x:
 		flip_anim.play(&"weapon_unflipped")
 	else:

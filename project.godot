@@ -57,15 +57,13 @@ folder_colors={
 
 [global_group]
 
-player="A group for player(s)"
 obstacles=""
 camera_zone=""
 dangers=""
-enemies=""
 moving_obstacles=""
-ui_manager=""
-powerups=""
-interactables=""
+ui=""
+interactives=""
+entities=""
 
 [input]
 
@@ -139,7 +137,7 @@ act_dash={
 2d_physics/layer_5="sensors"
 2d_physics/layer_6="special"
 2d_physics/layer_7="gibs"
-2d_physics/layer_8="powerups"
+2d_physics/layer_8="interactives"
 
 [rendering]
 

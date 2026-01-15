@@ -1,0 +1,29 @@
+[gd_resource type="SpriteFrames" load_steps=5 format=3 uid="uid://boprh8615e6r1"]
+
+[ext_resource type="Texture2D" uid="uid://fr38d2krdgrn" path="res://crossshot/assets/graphics/entities/weapons/shoot_1.png" id="1_wrdy7"]
+[ext_resource type="Texture2D" uid="uid://c0pab8hstd1xi" path="res://crossshot/assets/graphics/entities/weapons/shoot_2.png" id="2_grupj"]
+[ext_resource type="Texture2D" uid="uid://bilm0f1g64bmj" path="res://crossshot/assets/graphics/entities/weapons/shoot_3.png" id="3_733j3"]
+[ext_resource type="Texture2D" uid="uid://dcnpkpf4o4vfh" path="res://crossshot/assets/graphics/entities/weapons/shoot_4.png" id="4_oykb8"]
+
+[resource]
+animations = [{
+"frames": [{
+"duration": 1.0,
+"texture": ExtResource("1_wrdy7")
+}, {
+"duration": 1.0,
+"texture": ExtResource("2_grupj")
+}, {
+"duration": 1.0,
+"texture": ExtResource("3_733j3")
+}, {
+"duration": 1.0,
+"texture": ExtResource("4_oykb8")
+}, {
+"duration": 1.0,
+"texture": null
+}],
+"loop": false,
+"name": &"std_blaze",
+"speed": 15.0
+}]

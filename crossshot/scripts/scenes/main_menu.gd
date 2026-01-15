@@ -9,7 +9,7 @@ var fps_update_timer: float = 0.0
 
 func _ready():
 	app_version = ProjectSettings.get_setting("application/config/version")
-	sound.play_sound("mus_main_menu", &"Music", true)
+	sound.play_sound("mus_main_menu", &"Music")
 
 func _process(delta: float) -> void:
 	fps_update_timer += delta # Info update timer

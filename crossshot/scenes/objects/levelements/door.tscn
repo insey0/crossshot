@@ -1,7 +1,8 @@
-[gd_scene load_steps=7 format=3 uid="uid://ursnofj1oqmn"]
+[gd_scene load_steps=9 format=3 uid="uid://ursnofj1oqmn"]
 
 [ext_resource type="Script" uid="uid://b2ckp5771nvt4" path="res://crossshot/scripts/objects/levelements/door.gd" id="1_2ebfc"]
 [ext_resource type="Texture2D" uid="uid://bcpi40vlll3us" path="res://crossshot/assets/graphics/objects/interactive/door/door.png" id="1_ou7m8"]
+[ext_resource type="Script" uid="uid://c48l1u4rmpq2v" path="res://crossshot/scripts/game/sound_manager.gd" id="3_6t8vd"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_2ebfc"]
 size = Vector2(48, 288)
@@ -31,6 +32,33 @@ tracks/1/keys = {
 "transitions": PackedFloat32Array(1),
 "update": 1,
 "values": [0.0]
+}
+
+[sub_resource type="Animation" id="Animation_bmu4b"]
+resource_name = "door_close"
+tracks/0/type = "value"
+tracks/0/imported = false
+tracks/0/enabled = true
+tracks/0/path = NodePath("doorclip/door_sprite:position:y")
+tracks/0/interp = 1
+tracks/0/loop_wrap = true
+tracks/0/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [-104.0, 144.0]
+}
+tracks/1/type = "value"
+tracks/1/imported = false
+tracks/1/enabled = true
+tracks/1/path = NodePath("door_collision:position:y")
+tracks/1/interp = 1
+tracks/1/loop_wrap = true
+tracks/1/keys = {
+"times": PackedFloat32Array(0, 1),
+"transitions": PackedFloat32Array(2, 2),
+"update": 0,
+"values": [-248.0, 0.0]
 }
 
 [sub_resource type="Animation" id="Animation_ou7m8"]
@@ -63,12 +91,14 @@ tracks/1/keys = {
 [sub_resource type="AnimationLibrary" id="AnimationLibrary_vlwcg"]
 _data = {
 &"RESET": SubResource("Animation_2ebfc"),
+&"door_close": SubResource("Animation_bmu4b"),
 &"door_open": SubResource("Animation_ou7m8")
 }
 
-[node name="door" type="StaticBody2D" node_paths=PackedStringArray("animation") groups=["obstacles"]]
+[node name="door" type="StaticBody2D" node_paths=PackedStringArray("animation", "sound") groups=["obstacles"]]
 script = ExtResource("1_2ebfc")
 animation = NodePath("animation")
+sound = NodePath("sound_manager")
 
 [node name="doorclip" type="ColorRect" parent="."]
 self_modulate = Color(1, 1, 1, 0)
@@ -91,3 +121,6 @@ debug_color = Color(0, 0.68235296, 0.7137255, 0.5411765)
 libraries = {
 &"": SubResource("AnimationLibrary_vlwcg")
 }
+
+[node name="sound_manager" type="Node" parent="."]
+script = ExtResource("3_6t8vd")

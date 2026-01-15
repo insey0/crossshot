@@ -1,8 +1,9 @@
-[gd_scene load_steps=6 format=3 uid="uid://bm02v4c802lev"]
+[gd_scene load_steps=7 format=3 uid="uid://bm02v4c802lev"]
 
 [ext_resource type="Texture2D" uid="uid://br7iuct7t6kcu" path="res://crossshot/assets/graphics/objects/interactive/button/button.png" id="1_3sqip"]
 [ext_resource type="Script" uid="uid://4gw3dajvrmrl" path="res://crossshot/scripts/objects/interactive/button.gd" id="1_j3qcb"]
 [ext_resource type="Texture2D" uid="uid://5e1vb7krxdqo" path="res://crossshot/assets/graphics/objects/interactive/button/button_pressed.png" id="2_j3qcb"]
+[ext_resource type="Script" uid="uid://c48l1u4rmpq2v" path="res://crossshot/scripts/game/sound_manager.gd" id="4_tjk4h"]
 
 [sub_resource type="SpriteFrames" id="SpriteFrames_aupmd"]
 animations = [{
@@ -26,21 +27,24 @@ animations = [{
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_5vfu0"]
 size = Vector2(64, 112)
 
-[node name="button" type="Area2D" node_paths=PackedStringArray("sprite") groups=["interactables"]]
+[node name="button" type="Area2D" node_paths=PackedStringArray("sound", "sprite") groups=["interactives"]]
 collision_layer = 16
 collision_mask = 0
 script = ExtResource("1_j3qcb")
+sound = NodePath("sound_manager")
 sprite = NodePath("button_sprite")
-display_name = "button"
-globally_interactable = true
-interact_limit = 1
+display_name = "Button"
 
 [node name="button_sprite" type="AnimatedSprite2D" parent="."]
 scale = Vector2(6, 6)
 sprite_frames = SubResource("SpriteFrames_aupmd")
+animation = &"pressed"
 autoplay = "default"
 
 [node name="button_collision" type="CollisionShape2D" parent="."]
 position = Vector2(0, 24)
 shape = SubResource("RectangleShape2D_5vfu0")
 debug_color = Color(0, 0.6313726, 0.48235294, 0.5254902)
+
+[node name="sound_manager" type="Node" parent="."]
+script = ExtResource("4_tjk4h")

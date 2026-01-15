@@ -2,21 +2,20 @@
 class_name EffectManager
 extends Node
 
-var target: Node2D
-var current_effects: Dictionary = {}
+var target: Entity
+
+var active_effects: Array = []
+var passive_effects: Array = []
 
 func _ready() -> void:
-	target = get_parent()
+	if get_parent() is Entity:
+		target = get_parent()
 
 func add(effect: Effect):
-	current_effects[effect.name] = effect
 	if not effect.is_active:
-		effect.apply()
-
-func activate(id: String):
-	if id in current_effects:
-		current_effects[id].apply()
-
-func remove(id: String):
-	if id in current_effects:
-		current_effects.erase(id)
+		effect.effect_number = len(passive_effects)
+		passive_effects.append([effect.effect_id, effect.effect_number])
+		effect.activate(target)
+	else:
+		effect.effect_number = len(active_effects)
+		active_effects.append([effect.effect_id, effect.effect_number])

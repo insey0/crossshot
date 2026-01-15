@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cieo4k7824gct"
-path="res://.godot/imported/shoot_delay.png-4e4c0c78090e00be21a8e97c85732aaf.ctex"
+uid="uid://cxao0kr8ydodv"
+path="res://.godot/imported/extra_jump.png-8d1cf78aa104ba394cf99a1077e81907.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://crossshot/assets/graphics/objects/interactive/pickups/shoot_delay.png"
-dest_files=["res://.godot/imported/shoot_delay.png-4e4c0c78090e00be21a8e97c85732aaf.ctex"]
+source_file="res://crossshot/assets/graphics/ui/in_game/pickup_indicators/extra_jump.png"
+dest_files=["res://.godot/imported/extra_jump.png-8d1cf78aa104ba394cf99a1077e81907.ctex"]
 
 [params]
 
