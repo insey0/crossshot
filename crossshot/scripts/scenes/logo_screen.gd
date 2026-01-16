@@ -16,10 +16,10 @@ func _input(event: InputEvent) -> void:
 				developer_mode = 4
 			elif event.keycode == KEY_Y and developer_mode == 4:
 				Global.is_devmode_on = true
-				get_tree().change_scene_to_file("res://crossshot/scenes/ui/screens/developer_menu.tscn")
+				get_tree().change_scene_to_file("res://crossshot/scenes/levels/menus/developer_menu.tscn")
 			else:
-				get_tree().change_scene_to_file("res://crossshot/scenes/ui/screens/main_menu.tscn")
+				get_tree().change_scene_to_file("res://crossshot/scenes/levels/menus/main_menu.tscn")
 	
 func _on_logo_animation_animation_finished(anim_name: StringName) -> void:
 	if anim_name == "appear":
-		get_tree().change_scene_to_file("res://crossshot/scenes/ui/screens/main_menu.tscn")
+		get_tree().change_scene_to_file("res://crossshot/scenes/levels/menus/main_menu.tscn")

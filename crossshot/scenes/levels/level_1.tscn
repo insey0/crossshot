@@ -61,7 +61,7 @@ centered = false
 z_index = 1
 position = Vector2(210, 924)
 
-[node name="camera_anchor" type="Node2D" parent="." node_paths=PackedStringArray("target")]
+[node name="camera_anchor" type="Area2D" parent="." node_paths=PackedStringArray("target") groups=["camera_zone"]]
 position = Vector2(216, 926)
 script = ExtResource("5_eehit")
 mode = "follow"
@@ -70,9 +70,7 @@ follow_speed = 5.0
 
 [node name="camera" type="Camera2D" parent="camera_anchor"]
 
-[node name="camera_zone" type="Area2D" parent="camera_anchor/camera" groups=["camera_zone"]]
-
-[node name="camera_zone_collision" type="CollisionShape2D" parent="camera_anchor/camera/camera_zone"]
+[node name="camera_zone" type="CollisionShape2D" parent="camera_anchor"]
 shape = SubResource("RectangleShape2D_icxts")
 debug_color = Color(0, 1, 0.69803923, 0)
 

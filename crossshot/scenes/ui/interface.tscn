@@ -1,0 +1,138 @@
+[gd_scene load_steps=14 format=3 uid="uid://v2mmqmd24slk"]
+
+[ext_resource type="LabelSettings" uid="uid://crls46ui7nhuh" path="res://crossshot/resources/ui/label_settings.tres" id="1_j2p66"]
+[ext_resource type="Texture2D" uid="uid://41fk3w5b4pw3" path="res://crossshot/assets/graphics/ui/bars/std_under.png" id="2_gpb62"]
+[ext_resource type="Texture2D" uid="uid://c7qqlhvbn5mxq" path="res://crossshot/assets/graphics/ui/bars/std_over.png" id="3_6dcxd"]
+[ext_resource type="Texture2D" uid="uid://c6mv6ow1k1p1h" path="res://crossshot/assets/graphics/ui/bars/progress_hp.png" id="4_i5svp"]
+[ext_resource type="FontFile" uid="uid://cnl3r4gx413xr" path="res://crossshot/assets/fonts/font.ttf" id="5_u7kg1"]
+[ext_resource type="Texture2D" uid="uid://icayfbucto54" path="res://crossshot/assets/graphics/ui/in_game/vignette.png" id="6_fn1yq"]
+[ext_resource type="Script" uid="uid://cb0babfj3qds0" path="res://crossshot/scripts/ui/interface_manager.gd" id="7_dv2mj"]
+[ext_resource type="Theme" uid="uid://caxycusoad52c" path="res://crossshot/resources/ui/theme.tres" id="7_u7kg1"]
+[ext_resource type="FontFile" uid="uid://b0abyfw0kw5gt" path="res://crossshot/assets/fonts/font_b.ttf" id="8_fn1yq"]
+[ext_resource type="FontFile" uid="uid://by6nnvmcgmek7" path="res://crossshot/assets/fonts/font_bi.ttf" id="9_dv2mj"]
+[ext_resource type="FontFile" uid="uid://bqk618xan8rk6" path="res://crossshot/assets/fonts/font_i.ttf" id="10_jj6hx"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_jj6hx"]
+font = ExtResource("5_u7kg1")
+font_size = 28
+
+[sub_resource type="LabelSettings" id="LabelSettings_sday1"]
+font = ExtResource("5_u7kg1")
+font_size = 36
+
+[node name="interface" type="Control"]
+layout_mode = 3
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+
+[node name="screen_margin_container" type="MarginContainer" parent="."]
+z_index = 10
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 16
+theme_override_constants/margin_top = 16
+theme_override_constants/margin_right = 16
+theme_override_constants/margin_bottom = 16
+
+[node name="info_container" type="PanelContainer" parent="screen_margin_container"]
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 8
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="label_container" type="MarginContainer" parent="screen_margin_container/info_container"]
+layout_mode = 2
+mouse_filter = 2
+theme_override_constants/margin_left = 8
+theme_override_constants/margin_top = 8
+theme_override_constants/margin_right = 8
+theme_override_constants/margin_bottom = 8
+
+[node name="info_label" type="Label" parent="screen_margin_container/info_container/label_container"]
+layout_mode = 2
+text = "info"
+label_settings = ExtResource("1_j2p66")
+
+[node name="state_info_container" type="VBoxContainer" parent="screen_margin_container"]
+layout_mode = 2
+mouse_filter = 2
+
+[node name="hpbar_container" type="HBoxContainer" parent="screen_margin_container/state_info_container"]
+z_index = 2
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+mouse_filter = 2
+
+[node name="hp_bar" type="TextureProgressBar" parent="screen_margin_container/state_info_container/hpbar_container"]
+custom_minimum_size = Vector2(700, 40)
+layout_mode = 2
+value = 100.0
+texture_under = ExtResource("2_gpb62")
+texture_over = ExtResource("3_6dcxd")
+texture_progress = ExtResource("4_i5svp")
+
+[node name="hp_percentage" type="Label" parent="screen_margin_container/state_info_container/hpbar_container"]
+layout_mode = 2
+text = "100%"
+label_settings = SubResource("LabelSettings_jj6hx")
+
+[node name="active_effects_container" type="GridContainer" parent="screen_margin_container/state_info_container"]
+layout_mode = 2
+mouse_filter = 2
+columns = 15
+
+[node name="passive_effects_container" type="GridContainer" parent="screen_margin_container/state_info_container"]
+custom_minimum_size = Vector2(800, 0)
+layout_mode = 2
+size_flags_horizontal = 0
+mouse_filter = 2
+columns = 28
+
+[node name="time" type="Label" parent="screen_margin_container/state_info_container"]
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+text = "Time 0:00"
+label_settings = SubResource("LabelSettings_sday1")
+
+[node name="vignette_container" type="MarginContainer" parent="."]
+layout_mode = 1
+anchors_preset = 15
+anchor_right = 1.0
+anchor_bottom = 1.0
+grow_horizontal = 2
+grow_vertical = 2
+mouse_filter = 2
+
+[node name="vignette" type="TextureRect" parent="vignette_container"]
+layout_mode = 2
+mouse_filter = 2
+texture = ExtResource("6_fn1yq")
+
+[node name="mouse_tooltip" type="RichTextLabel" parent="."]
+z_index = 12
+layout_mode = 0
+offset_right = 765.0
+offset_bottom = 93.0
+theme = ExtResource("7_u7kg1")
+theme_override_colors/font_shadow_color = Color(0, 0, 0, 1)
+theme_override_constants/shadow_outline_size = 8
+theme_override_fonts/normal_font = ExtResource("5_u7kg1")
+theme_override_fonts/bold_font = ExtResource("8_fn1yq")
+theme_override_fonts/bold_italics_font = ExtResource("9_dv2mj")
+theme_override_fonts/italics_font = ExtResource("10_jj6hx")
+bbcode_enabled = true
+fit_content = true
+
+[node name="interface_manager" type="Node" parent="."]
+script = ExtResource("7_dv2mj")

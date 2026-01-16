@@ -25,7 +25,7 @@ func _on_btn_play_pressed() -> void:
 
 func _on_btn_settings_pressed() -> void:
 	fader.play("fade_out")
-	next_scene_path = "res://crossshot/scenes/ui/screens/settings_menu.tscn"
+	next_scene_path = "res://crossshot/scenes/levels/menus/settings_menu.tscn"
 
 func _on_btn_exit_pressed() -> void:
 	fader.play("fade_out")
