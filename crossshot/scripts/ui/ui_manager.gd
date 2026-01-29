@@ -25,22 +25,6 @@ func _input(event: InputEvent) -> void:
 func _ready():
 	app_version = ProjectSettings.get_setting("application/config/version")
 
-func _process(delta: float) -> void:
-	fps_update_timer += delta # FPS-relative game info update timer
-	
-	# Update game info
-	if fps_update_timer >= 0.2:
-		fps_update_timer = 0.0
-		game_info.text = "CroSSShot!\n%s\nFPS: %d" % [app_version, Engine.get_frames_per_second()]
-
-# Update health visualization
-func _on_health_updated(health: int, max_health: int):
-	# Update percentage
-	hp_percentage.text = str(health) + "%"
-	# Update bar
-	hp_bar.value = health
-	hp_bar.max_value = max_health
-
 # Update level timer
 func _on_level_timer_timeout() -> void:
 	time += 1

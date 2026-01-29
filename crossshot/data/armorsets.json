@@ -1,8 +1,0 @@
-{
-	"none": {
-		"slots": 1,
-		"effects": []},
-	"silver_eyes": {
-		"slots": 2,
-		"effects": ["autoshoot"]}
-}

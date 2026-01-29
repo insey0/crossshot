@@ -1,0 +1,53 @@
+[gd_scene load_steps=6 format=3 uid="uid://bgmydt2l8dkyn"]
+
+[ext_resource type="Script" uid="uid://dcmm2h3aitbny" path="res://crossshot/scripts/ui/active_effect.gd" id="1_hx0t3"]
+[ext_resource type="Texture2D" uid="uid://dpwca8p3ov0ih" path="res://crossshot/assets/graphics/ui/effects/effect_outline.png" id="3_wanv6"]
+[ext_resource type="FontFile" uid="uid://cnl3r4gx413xr" path="res://crossshot/assets/fonts/font.ttf" id="4_t112e"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lyp1g"]
+font = ExtResource("4_t112e")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[sub_resource type="LabelSettings" id="LabelSettings_hx0t3"]
+font = ExtResource("4_t112e")
+font_size = 20
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="active_effect" type="MarginContainer" node_paths=PackedStringArray("amount_label", "time_left_label")]
+offset_right = 64.0
+offset_bottom = 64.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_hx0t3")
+amount_label = NodePath("amount_label")
+time_left_label = NodePath("time_left_label")
+
+[node name="effect_texture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+
+[node name="outline" type="TextureRect" parent="."]
+visible = false
+custom_minimum_size = Vector2(80, 80)
+layout_mode = 2
+texture = ExtResource("3_wanv6")
+
+[node name="amount_label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+text = "1x"
+label_settings = SubResource("LabelSettings_lyp1g")
+horizontal_alignment = 2
+
+[node name="time_left_label" type="Label" parent="."]
+visible = false
+layout_mode = 2
+size_flags_vertical = 0
+text = "120s"
+label_settings = SubResource("LabelSettings_hx0t3")
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]

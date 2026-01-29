@@ -2,6 +2,7 @@ class_name Player
 extends Entity
 
 @export var flip: AnimationPlayer
+@export var weapon: Node2D
 
 func _ready() -> void:
 	# Collision layers setup

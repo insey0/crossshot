@@ -1,16 +1,20 @@
-[gd_scene load_steps=6 format=3 uid="uid://4jpwtgwg1fpg"]
+[gd_scene load_steps=5 format=3 uid="uid://4jpwtgwg1fpg"]
 
 [ext_resource type="Script" uid="uid://bufc7avm701sg" path="res://crossshot/scripts/objects/interactive/powerup.gd" id="1_ftk3k"]
 [ext_resource type="Texture2D" uid="uid://cn1xgkabwumq5" path="res://crossshot/assets/graphics/objects/interactive/effect_powerups/double_jump.png" id="2_wlyqk"]
-[ext_resource type="Script" uid="uid://bah7r22teby5" path="res://crossshot/scripts/effects/double_jump.gd" id="3_wlyqk"]
-[ext_resource type="Texture2D" uid="uid://cu53xbl6ixavv" path="res://crossshot/assets/graphics/ui/in_game/pickup_indicators/double_jump.png" id="4_x30vn"]
+[ext_resource type="Texture2D" uid="uid://cu53xbl6ixavv" path="res://crossshot/assets/graphics/ui/effects/double_jump.png" id="2_x30vn"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_6iy7b"]
 size = Vector2(60, 60)
 
-[node name="double_jump" type="Area2D" node_paths=PackedStringArray("effect")]
+[node name="double_jump" type="Area2D"]
 script = ExtResource("1_ftk3k")
-effect = NodePath("double_jump")
+texture = ExtResource("2_x30vn")
+effect_id = "double_jump"
+is_active = true
+is_stackable = true
+max_stack = 5
+active_time = 5.0
 display_name = "Double Jump"
 
 [node name="powerup_sprite" type="Sprite2D" parent="."]
@@ -20,13 +24,3 @@ texture = ExtResource("2_wlyqk")
 [node name="powerup_collision" type="CollisionShape2D" parent="."]
 shape = SubResource("RectangleShape2D_6iy7b")
 debug_color = Color(0.9558837, 9.62615e-07, 0.5434295, 0.41960785)
-
-[node name="double_jump" type="Node" parent="."]
-script = ExtResource("3_wlyqk")
-is_active = true
-active_time = 15.0
-cooldown_time = 15.0
-max_uses = 1
-display_icon = ExtResource("4_x30vn")
-display_name = "Double Jump"
-description = "Allows you to jump twice and not a single jump more >:("

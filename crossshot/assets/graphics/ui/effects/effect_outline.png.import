@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://xblj2r571qfb"
-path="res://.godot/imported/silver_eyes_hand.png-c13f5695b0ec64d8e8b68c3178a08bc0.ctex"
+uid="uid://dpwca8p3ov0ih"
+path="res://.godot/imported/effect_outline.png-22eef921033d1f516755d104f4baeeba.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://crossshot/assets/graphics/entities/player/armorsets/silver_eyes/silver_eyes_hand.png"
-dest_files=["res://.godot/imported/silver_eyes_hand.png-c13f5695b0ec64d8e8b68c3178a08bc0.ctex"]
+source_file="res://crossshot/assets/graphics/ui/effects/effect_outline.png"
+dest_files=["res://.godot/imported/effect_outline.png-22eef921033d1f516755d104f4baeeba.ctex"]
 
 [params]
 

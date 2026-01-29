@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://f8dkl3dfhfge"
-path="res://.godot/imported/head.png-e9f84d86b71ba2cc288590a00b32e8dc.ctex"
+uid="uid://cu53xbl6ixavv"
+path="res://.godot/imported/double_jump.png-dd1170074f486fae4c78f76d944278c4.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://crossshot/assets/graphics/entities/player/armorsets/silver_eyes/head.png"
-dest_files=["res://.godot/imported/head.png-e9f84d86b71ba2cc288590a00b32e8dc.ctex"]
+source_file="res://crossshot/assets/graphics/ui/effects/double_jump.png"
+dest_files=["res://.godot/imported/double_jump.png-dd1170074f486fae4c78f76d944278c4.ctex"]
 
 [params]
 

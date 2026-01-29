@@ -2,16 +2,16 @@
 
 importer="texture"
 type="CompressedTexture2D"
-uid="uid://cu53xbl6ixavv"
-path="res://.godot/imported/double_jump.png-50a365f700100a860052ae5ed26b69ef.ctex"
+uid="uid://dh41or2x6tqmm"
+path="res://.godot/imported/module_2.png-215dcd64602ba90681775bb88f8d3774.ctex"
 metadata={
 "vram_texture": false
 }
 
 [deps]
 
-source_file="res://crossshot/assets/graphics/ui/in_game/pickup_indicators/double_jump.png"
-dest_files=["res://.godot/imported/double_jump.png-50a365f700100a860052ae5ed26b69ef.ctex"]
+source_file="res://crossshot/assets/graphics/objects/interactive/modules/module_2.png"
+dest_files=["res://.godot/imported/module_2.png-215dcd64602ba90681775bb88f8d3774.ctex"]
 
 [params]
 

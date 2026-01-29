@@ -103,12 +103,42 @@ layout_mode = 2
 mouse_filter = 2
 columns = 15
 
+[node name="active_effect" parent="screen_margin_container/state_info_container/active_effects_container" instance=ExtResource("7_sday1")]
+layout_mode = 2
+
+[node name="active_effect2" parent="screen_margin_container/state_info_container/active_effects_container" instance=ExtResource("7_sday1")]
+layout_mode = 2
+
+[node name="active_effect3" parent="screen_margin_container/state_info_container/active_effects_container" instance=ExtResource("7_sday1")]
+layout_mode = 2
+
+[node name="active_effect4" parent="screen_margin_container/state_info_container/active_effects_container" instance=ExtResource("7_sday1")]
+layout_mode = 2
+
 [node name="passive_effects_container" type="GridContainer" parent="screen_margin_container/state_info_container"]
 custom_minimum_size = Vector2(800, 0)
 layout_mode = 2
 size_flags_horizontal = 0
 mouse_filter = 2
 columns = 28
+
+[node name="passive_effect" parent="screen_margin_container/state_info_container/passive_effects_container" instance=ExtResource("8_sday1")]
+layout_mode = 2
+
+[node name="passive_effect2" parent="screen_margin_container/state_info_container/passive_effects_container" instance=ExtResource("8_sday1")]
+layout_mode = 2
+
+[node name="passive_effect3" parent="screen_margin_container/state_info_container/passive_effects_container" instance=ExtResource("8_sday1")]
+layout_mode = 2
+
+[node name="passive_effect4" parent="screen_margin_container/state_info_container/passive_effects_container" instance=ExtResource("8_sday1")]
+layout_mode = 2
+
+[node name="passive_effect5" parent="screen_margin_container/state_info_container/passive_effects_container" instance=ExtResource("8_sday1")]
+layout_mode = 2
+
+[node name="passive_effect6" parent="screen_margin_container/state_info_container/passive_effects_container" instance=ExtResource("8_sday1")]
+layout_mode = 2
 
 [node name="weapon_container" type="HBoxContainer" parent="screen_margin_container"]
 layout_mode = 2
@@ -162,11 +192,8 @@ theme_override_fonts/italics_font = ExtResource("10_jj6hx")
 bbcode_enabled = true
 fit_content = true
 
-[node name="interface_manager" type="Node" parent="." node_paths=PackedStringArray("hp_bar", "hp_percentage", "actives_container", "passives_container")]
+[node name="interface_manager" type="Node" parent="." node_paths=PackedStringArray("hp_bar", "hp_percentage")]
 script = ExtResource("7_dv2mj")
 hp_bar = NodePath("../screen_margin_container/state_info_container/hpbar_container/hp_bar")
 hp_percentage = NodePath("../screen_margin_container/state_info_container/hpbar_container/hp_percentage")
 active_effect = ExtResource("7_sday1")
-passive_effect = ExtResource("8_sday1")
-actives_container = NodePath("../screen_margin_container/state_info_container/active_effects_container")
-passives_container = NodePath("../screen_margin_container/state_info_container/passive_effects_container")

@@ -1,0 +1,24 @@
+[gd_scene load_steps=5 format=3 uid="uid://ck0wukmf3xigo"]
+
+[ext_resource type="Script" uid="uid://bufc7avm701sg" path="res://crossshot/scripts/objects/interactive/powerup.gd" id="1_pjpas"]
+[ext_resource type="Texture2D" uid="uid://cieo4k7824gct" path="res://crossshot/assets/graphics/objects/interactive/effect_powerups/shoot_delay.png" id="2_pjpas"]
+[ext_resource type="Texture2D" uid="uid://b35401v74k0e3" path="res://crossshot/assets/graphics/ui/effects/passive/shoot_delay.png" id="2_rep18"]
+
+[sub_resource type="RectangleShape2D" id="RectangleShape2D_6iy7b"]
+size = Vector2(60, 60)
+
+[node name="shoot_delay" type="Area2D"]
+script = ExtResource("1_pjpas")
+texture = ExtResource("2_rep18")
+effect_id = "shoot_delay"
+is_stackable = true
+max_stack = 5
+display_name = "Shoot Delay"
+
+[node name="powerup_sprite" type="Sprite2D" parent="."]
+scale = Vector2(6, 6)
+texture = ExtResource("2_pjpas")
+
+[node name="powerup_collision" type="CollisionShape2D" parent="."]
+shape = SubResource("RectangleShape2D_6iy7b")
+debug_color = Color(0.9558837, 9.62615e-07, 0.5434295, 0.41960785)

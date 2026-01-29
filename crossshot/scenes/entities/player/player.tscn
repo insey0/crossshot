@@ -1,4 +1,4 @@
-[gd_scene load_steps=35 format=3 uid="uid://dc7xw8xtq6255"]
+[gd_scene load_steps=34 format=3 uid="uid://dc7xw8xtq6255"]
 
 [ext_resource type="Script" uid="uid://dmg01okpiy5bw" path="res://crossshot/scripts/entities/player/player.gd" id="1_25sog"]
 [ext_resource type="Texture2D" uid="uid://btalmd2rk10hj" path="res://crossshot/assets/graphics/entities/player/player_idle.png" id="1_qfrec"]
@@ -6,7 +6,6 @@
 [ext_resource type="Script" uid="uid://c48l1u4rmpq2v" path="res://crossshot/scripts/game/sound_manager.gd" id="3_kmp7g"]
 [ext_resource type="Script" uid="uid://sgsj0q8xodi6" path="res://crossshot/scripts/entities/player/cheats.gd" id="4_bhmcr"]
 [ext_resource type="Script" uid="uid://b5cel82eyli3j" path="res://crossshot/scripts/entities/_managers/health_manager.gd" id="4_jyp4v"]
-[ext_resource type="Script" uid="uid://crstyswkhsucp" path="res://crossshot/scripts/entities/player/managers/armor_manager.gd" id="5_ckofk"]
 [ext_resource type="Script" uid="uid://ca6fhdah7xwoe" path="res://crossshot/scripts/entities/player/managers/input_manager.gd" id="5_vgbk8"]
 [ext_resource type="Script" uid="uid://bi8yncjnohvyi" path="res://crossshot/scripts/entities/_managers/effect_manager.gd" id="6_lgjcb"]
 [ext_resource type="Script" uid="uid://bwgav1xvjankw" path="res://crossshot/scripts/entities/player/managers/movement_manager.gd" id="7_bhmcr"]
@@ -297,9 +296,10 @@ _data = {
 &"weapon_unflipped": SubResource("Animation_t2m0i")
 }
 
-[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("flip", "controller", "movement", "health", "sound", "effects", "anim", "detect_box") groups=["entities"]]
+[node name="player" type="CharacterBody2D" node_paths=PackedStringArray("flip", "weapon", "controller", "movement", "health", "sound", "effects", "anim", "detect_box") groups=["entities"]]
 script = ExtResource("1_25sog")
 flip = NodePath("player_flip_animation")
+weapon = NodePath("player_weapon")
 controller = NodePath("input_manager")
 movement = NodePath("movement_manager")
 health = NodePath("health_manager")
@@ -396,14 +396,3 @@ libraries = {
 position = Vector2(54, 0)
 
 [node name="shoot_timer" type="Timer" parent="player_weapon"]
-
-[node name="player_armor" type="Node2D" parent="."]
-
-[node name="armor_manager" type="Node" parent="player_armor"]
-script = ExtResource("5_ckofk")
-
-[node name="armor_head" type="Sprite2D" parent="player_armor"]
-
-[node name="armor_body" type="Sprite2D" parent="player_armor"]
-
-[node name="armor_hand" type="Sprite2D" parent="player_armor"]

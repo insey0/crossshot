@@ -7,9 +7,9 @@
 [ext_resource type="Script" uid="uid://c48l1u4rmpq2v" path="res://crossshot/scripts/game/sound_manager.gd" id="3_y1v7g"]
 [ext_resource type="PackedScene" uid="uid://dc7xw8xtq6255" path="res://crossshot/scenes/entities/player/player.tscn" id="4_kdvu3"]
 [ext_resource type="Script" uid="uid://cg250f4sjeds3" path="res://crossshot/scripts/ui/camera.gd" id="5_eehit"]
-[ext_resource type="PackedScene" uid="uid://brwbp1g6m0wex" path="res://crossshot/scenes/ui/ui_manager.tscn" id="6_7d6ra"]
 [ext_resource type="TileSet" uid="uid://dvpmgwtw7htn5" path="res://crossshot/resources/levels/1_spaceship/1_spaceship_bg_tileset.tres" id="7_bjcse"]
 [ext_resource type="TileSet" uid="uid://dfyqk3i1644em" path="res://crossshot/resources/levels/1_spaceship/1_spaceship_lvl_tileset.tres" id="8_eowfx"]
+[ext_resource type="PackedScene" uid="uid://v2mmqmd24slk" path="res://crossshot/scenes/ui/interface.tscn" id="8_kdvu3"]
 [ext_resource type="PackedScene" uid="uid://bkvwv3ygul52p" path="res://crossshot/scenes/objects/dangers/spike.tscn" id="9_shuy7"]
 [ext_resource type="PackedScene" uid="uid://bnlrjelia7q3r" path="res://crossshot/scenes/objects/levelements/moving_platform.tscn" id="10_btyk4"]
 [ext_resource type="PackedScene" uid="uid://ursnofj1oqmn" path="res://crossshot/scenes/objects/levelements/door.tscn" id="15_nmciw"]
@@ -18,7 +18,7 @@
 [ext_resource type="Material" uid="uid://ca8p2x1tkvh42" path="res://crossshot/resources/objects/particles/rocket_fire.tres" id="18_defd7"]
 [ext_resource type="PackedScene" uid="uid://4jpwtgwg1fpg" path="res://crossshot/scenes/objects/interactive/powerups/double_jump.tscn" id="18_kdvu3"]
 [ext_resource type="Material" uid="uid://bjam8j17htr40" path="res://crossshot/resources/objects/particles/rocket_fire_small.tres" id="19_8ay3p"]
-[ext_resource type="PackedScene" uid="uid://c37cd2g6g28h8" path="res://crossshot/scenes/objects/interactive/powerups/extra_jump.tscn" id="19_gjacr"]
+[ext_resource type="PackedScene" uid="uid://ck0wukmf3xigo" path="res://crossshot/scenes/objects/interactive/powerups/shoot_delay.tscn" id="19_kdvu3"]
 
 [sub_resource type="RectangleShape2D" id="RectangleShape2D_icxts"]
 size = Vector2(1920, 1080)
@@ -27,6 +27,8 @@ size = Vector2(1920, 1080)
 script = ExtResource("1_kdvu3")
 data = NodePath("data_manager")
 music = NodePath("sound_manager")
+
+[node name="level_timer" type="Timer" parent="."]
 
 [node name="data_manager" type="Node" parent="."]
 script = ExtResource("2_i2uos")
@@ -74,7 +76,17 @@ follow_speed = 5.0
 shape = SubResource("RectangleShape2D_icxts")
 debug_color = Color(0, 1, 0.69803923, 0)
 
-[node name="ui_manager" parent="." groups=["ui"] instance=ExtResource("6_7d6ra")]
+[node name="interface_layer" type="CanvasLayer" parent="."]
+
+[node name="interface" parent="interface_layer" node_paths=PackedStringArray("current_player") instance=ExtResource("8_kdvu3")]
+anchors_preset = 0
+anchor_right = 0.0
+anchor_bottom = 0.0
+offset_right = 1920.0
+offset_bottom = 1080.0
+grow_horizontal = 1
+grow_vertical = 1
+current_player = NodePath("../../player")
 
 [node name="tiles" type="Node2D" parent="."]
 
@@ -249,8 +261,17 @@ process_material = ExtResource("19_8ay3p")
 [node name="double_jump" parent="powerups" instance=ExtResource("18_kdvu3")]
 position = Vector2(1206, 930)
 
-[node name="double_jump_powerup" parent="powerups" instance=ExtResource("19_gjacr")]
-position = Vector2(1374, 930)
+[node name="double_jump2" parent="powerups" instance=ExtResource("18_kdvu3")]
+position = Vector2(1275, 930)
 
-[node name="double_jump_powerup2" parent="powerups" instance=ExtResource("19_gjacr")]
-position = Vector2(1440, 930)
+[node name="shoot_delay" parent="powerups" instance=ExtResource("19_kdvu3")]
+position = Vector2(1350, 930)
+
+[node name="shoot_delay2" parent="powerups" instance=ExtResource("19_kdvu3")]
+position = Vector2(1416, 930)
+
+[node name="shoot_delay3" parent="powerups" instance=ExtResource("19_kdvu3")]
+position = Vector2(1482, 930)
+
+[node name="shoot_delay4" parent="powerups" instance=ExtResource("19_kdvu3")]
+position = Vector2(1548, 930)

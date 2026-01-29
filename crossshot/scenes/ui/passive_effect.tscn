@@ -1,0 +1,34 @@
+[gd_scene load_steps=4 format=3 uid="uid://i1b1fk0sdkal"]
+
+[ext_resource type="Script" uid="uid://one0td2sxekw" path="res://crossshot/scripts/ui/passive_effect.gd" id="1_7ynju"]
+[ext_resource type="FontFile" uid="uid://cnl3r4gx413xr" path="res://crossshot/assets/fonts/font.ttf" id="4_uw2vt"]
+
+[sub_resource type="LabelSettings" id="LabelSettings_lyp1g"]
+font = ExtResource("4_uw2vt")
+font_size = 24
+outline_size = 5
+outline_color = Color(0, 0, 0, 1)
+
+[node name="passive_effect" type="MarginContainer" node_paths=PackedStringArray("amount_label")]
+offset_right = 48.0
+offset_bottom = 48.0
+size_flags_horizontal = 0
+size_flags_vertical = 0
+script = ExtResource("1_7ynju")
+amount_label = NodePath("amount_label")
+
+[node name="effect_texture" type="TextureRect" parent="."]
+custom_minimum_size = Vector2(48, 48)
+layout_mode = 2
+size_flags_horizontal = 0
+size_flags_vertical = 0
+
+[node name="amount_label" type="Label" parent="."]
+layout_mode = 2
+size_flags_vertical = 8
+text = "1x"
+label_settings = SubResource("LabelSettings_lyp1g")
+horizontal_alignment = 2
+
+[connection signal="mouse_entered" from="." to="." method="_on_mouse_entered"]
+[connection signal="mouse_exited" from="." to="." method="_on_mouse_exited"]
